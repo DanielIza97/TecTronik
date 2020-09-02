@@ -1,2 +1,2 @@
-# NuevasTecnicas
+# Nuevas Técnicas de programación
  proyectofinal
