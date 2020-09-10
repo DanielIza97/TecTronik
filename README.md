@@ -1,2 +1,2 @@
-# Nuevas Técnicas de programación
+# Grupo TecTronik NTP
 # El cronograma muchachos, falta eso
