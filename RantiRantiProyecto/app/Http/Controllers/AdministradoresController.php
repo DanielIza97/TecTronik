@@ -51,6 +51,8 @@ class AdministradoresController extends Controller
         $administrador->correoadministrador=$request->correoadministrador;
         
         $administrador->save();
+        $administrador=Administrador::all();
+        return view('CRUD.Administradoresview.Index',compact('administrador'));
     }
 
     /**
@@ -93,7 +95,7 @@ class AdministradoresController extends Controller
         }
         $administrador->save();
         $administrador=Administrador::all();
-        return view('CRUD.Administradoresview.Index',compact('administrador'));
+        return back()->with('mensaje','Actualizado correctamente');
     }
 
     /**

@@ -9,6 +9,11 @@
         Listado de Administradores
         <a href="{{route('administradores.create')}}"class="btn btn-primary pull-right">nuevo</a>
     </h2>
+    @if(session('mensaje'))
+        <div class="alert alert-success">
+            {{ session('mensaje') }}
+        </div>
+    @endif
     <table class="table table-hover table-striped">
         <thead>
             <tr>

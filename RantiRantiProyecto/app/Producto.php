@@ -10,4 +10,7 @@ class Producto extends Model
     protected $fillable =['idproducto','nombreproducto','tipoproducto','cantidadproducto','precioproducto','imagenproducto'];
     public $incrementing = false;
     public $timestamps = false;
+    public function recetas(){
+        return $this->belongsToMany(Receta::class,'recetaxproductos', 'idproducto', 'idreceta');
+}
 }

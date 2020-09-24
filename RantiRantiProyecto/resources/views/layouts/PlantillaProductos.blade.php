@@ -19,7 +19,7 @@
         <div class="contenido">
             @yield('contenido')
         </div>
-        <div class="index">
+        <div class="index"style="padding-left:1%; padding-top:1%">
         <a href="/productos" class ="btn btn-primary">Regresar</a>
         </div> 
         <div class="pie">

@@ -22,3 +22,7 @@ Route::resource('/productos', 'ProductosController');
 Route::resource('/administradores', 'AdministradoresController');
 
 Route::resource('/recetas', 'RecetasController');
+
+Route::get('/ingredientes/{idrecetas}', 'IngredientesController@index_recetas');
+
+Route::post('/ingredientes/create_recetas', 'IngredientesController@create_recetas');

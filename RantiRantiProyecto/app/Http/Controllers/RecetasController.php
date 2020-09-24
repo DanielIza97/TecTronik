@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Receta;
+use App\Producto;
 
 class RecetasController extends Controller
 {
@@ -49,6 +50,10 @@ class RecetasController extends Controller
         $receta->descripcionreceta=$request->descripcionreceta;
         
         $receta->save();
+        $receta=Receta::find($request->idreceta);
+        $producto=Producto::all();
+        $produc=$receta->productos->pluck('nombreproducto');
+        return view('CRUD.Ingredientesview.Index',compact('receta','producto','produc'));
     }
 
     /**

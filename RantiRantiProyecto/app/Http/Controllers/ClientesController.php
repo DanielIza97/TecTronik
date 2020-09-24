@@ -50,6 +50,8 @@ class ClientesController extends Controller
         $cliente->correocliente=$request->correocliente;
         
         $cliente->save();
+        $clientes=Cliente::all();
+        return view('CRUD.Clientesview.Index',compact('clientes'));
     }
 
     /**

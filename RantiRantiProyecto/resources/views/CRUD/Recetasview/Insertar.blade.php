@@ -33,6 +33,7 @@
         <input type="file" name="imagenreceta" accept="image/*">
         </div>
       </div>
+      <div style="padding-left:1%; padding-top:1%">
           <button type="submit" class="btn btn-success">CREAR</button>
   </form>
 @endsection

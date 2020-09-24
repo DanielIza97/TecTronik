@@ -51,6 +51,8 @@ class ProductosController extends Controller
         $producto->precioproducto=$request->precioproducto;
         
         $producto->save();
+        $producto=Producto::all();
+        return view('CRUD.Productosview.Index',compact('producto'));
     }
 
     /**

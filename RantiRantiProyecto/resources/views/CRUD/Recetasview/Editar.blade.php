@@ -40,4 +40,6 @@
       </div>
     </div>
   </form>
+  <div style="padding-left:1%; padding-top:1%">
+    <a href="/ingredientes/{{$receta->idreceta}}"class="btn btn-primary" >Agregar Ingredientes</a><br>
 @endsection

@@ -19,8 +19,8 @@
         <div class="contenido">
             @yield('contenido')
         </div>
-        <div class="index">
-            <a href="/" class ="btn btn-primary">Regresar</a>
+        <div class="index"style="padding-left:1%; padding-top:1%">
+            <a href="/" class ="btn btn-primary" >Regresar</a>
         </div> 
         <div class="pie">
             @yield('pie')
