@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('IndexMenu');
 });
 
-Route::resource('/clientes', 'ClientesController');
+Route::resource('/users', 'UsersController');
 
 Route::resource('/productos', 'ProductosController');
 

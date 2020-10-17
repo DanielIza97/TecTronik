@@ -65,7 +65,7 @@
     <div class="flex-center position-ref full-height">
         <section   >
             <div >
-                <a href="{{'/administradores'}}" class ="btn btn-primary">Administradores</a>
+                <a href="{{'/users'}}" class ="btn btn-primary">Administradores</a>
                 <a href="{{'/clientes'}}" class ="btn btn-primary">Clientes</a>
                 <a href="{{'/productos'}}" class ="btn btn-primary">Productos </a>
                 <a href="{{'/recetas'}}" class ="btn btn-primary">Recetas </a>

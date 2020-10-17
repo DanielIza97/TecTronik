@@ -3,7 +3,6 @@
 <title>Laravel</title>
 @endsection   
 @section('contenido')
-
 <div class="col-sm-8">
     <h2>
         Listado de clientes
@@ -45,4 +44,5 @@
         </tbody>
     </table>
 </div>
+
 @endsection
