@@ -4,18 +4,14 @@
 @endsection   
 @section('contenido')
 <div class="col-sm-8">
-    @if($informacion==null)
-    <h2>
-        Listado de informacion
-    <a href="/informacion_cliente/crear/{{$id}}"class="btn btn-primary pull-right">Agregar Informacion</a>
-    </h2>
-    @else
     <table class="table table-hover table-striped">
         <thead>
             <tr>
-                <th with="20px"> CEDULA</th>
-                <th> NOMBRE</th>
-                <th > TELEFONO</th>
+                <th with="20px"> Id</th>
+                <th> Calle Principal</th>
+                <th > Calle Secundaria</th>
+                <th > Numero de casa</th>
+                <th > Foto</th>
                 <th colspan="2">&nbsp;</th>
             </tr>
         </thead>
@@ -41,7 +37,6 @@
             </tr>
         </tbody>
     </table>
-    @endif
 </div>
 
 @endsection

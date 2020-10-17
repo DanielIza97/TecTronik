@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cliente;
 use App\User;
+use App\Direccion;
+use App\InformacionCliente;
 class ClientesController extends Controller
 {
     /**
@@ -16,16 +17,16 @@ class ClientesController extends Controller
     {
         $user=User::find($id);
         $informacion=$user->Informacion_Cli;
-        return view('CRUD.InformacionClientesview.Index',compact('informacion'));
+        return view('CRUD.InformacionClientesview.Index',compact('informacion','id'));
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('CRUD.Clientesview.Insertar');
+        return view('CRUD.InformacionClientesview.Insertar',compact('id'));
     }
 
     /**
@@ -36,22 +37,28 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        $cliente=new Cliente();
-        $c1=$request->all();
-        if($file=$request->file('imagencliente'))
+        $informacion=new InformacionCliente();
+        $direccion=new Direccion();
+        $informacion->idcedulacliente=$request->idcedulacliente;
+        $informacion->user_id=$request->user_id;
+        $informacion->idcedulacliente=$request->idcedulacliente;
+        $informacion->telefonocliente=$request->telefonocliente;
+        $informacion->nombrecliente=$request->nombrecliente;
+        if($file=$request->file('imagendireccion'))
         {
             $nombre=time().$file->getClientOriginalName();
-            $file->move(public_path().'/images/',$nombre);
-            $cliente->imagencliente=$nombre;
+            $file->move(public_path().'/imagesdireccion/',$nombre);
+            $direccion->imagendireccion=$nombre;
         }
-        $cliente->idcedulacliente=$request->idcedulacliente;
-        $cliente->telefonocliente=$request->telefonocliente;
-        $cliente->nombrecliente=$request->nombrecliente;
-        $cliente->correocliente=$request->correocliente;
-        
-        $cliente->save();
-        $clientes=Cliente::all();
-        return view('CRUD.Clientesview.Index',compact('clientes'));
+        $direccion->iddireccion=$request->iddireccion;
+        $direccion->idcedulacliente=$request->idcedulacliente;
+        $direccion->calleprincipal=$request->calleprincipal;
+        $direccion->callesecundaria=$request->callesecundaria;
+        $direccion->numerodecasa=$request->numerodecasa;
+        $informacion->save();
+        $direccion->save();
+        $informacion=InformacionCliente::all();
+        return view('CRUD.InformacionClientesview.Index',compact('informacion'));
     }
 
     /**
@@ -62,8 +69,8 @@ class ClientesController extends Controller
      */
     public function show($idcedulacliente)
     {
-        $cliente=Cliente::find($idcedulacliente);
-        return view('CRUD.Clientesview.Editar',compact('cliente'));
+        $informacion=InformacionCliente::find($idcedulacliente);
+        return view('CRUD.InformacionClientesview.Editar',compact('informacion'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -73,6 +80,7 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
+        
     }
 
     /**
@@ -84,17 +92,10 @@ class ClientesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cliente=Cliente::find($id);
-        $cliente->fill($request->all());
-        if($file=$request->file('imagencliente'))
-        {
-            $nombre=time().$file->getClientOriginalName();
-            $file->move(public_path().'/images/',$nombre);
-            $cliente->imagencliente=$nombre;
-        }
-        $cliente->save();
-        $clientes=Cliente::all();
-        return view('CRUD.Clientesview.Index',compact('clientes'));
+        $informacion=InformacionCliente::find($id);
+        $informacion->fill($request->all());
+        $informacion->save();
+        return view('CRUD.InformacionClientesview.Index',compact('informacion'));
     }
 
     /**
@@ -105,8 +106,8 @@ class ClientesController extends Controller
      */
     public function destroy($id)
     {
-        $cliente=Cliente::find($id);
-        $cliente->delete();
+        $informacion=InformacionCliente::find($id);
+        $informacion->delete();
         return back()->with('info','cliente eliminado correctamente');
     }
 }

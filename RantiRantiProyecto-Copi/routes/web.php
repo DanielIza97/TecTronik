@@ -20,7 +20,8 @@ Route::resource('/users', 'UsersController');
 Route::resource('/productos', 'ProductosController');
 
 Route::resource('/informacion', 'ClientesController');
-Route::get('/informacion_cliente/{id}', 'ClientesController@index');
+Route::get('/informacion_cliente/{id ?? }', 'ClientesController@index');
+Route::get('/informacion_cliente/crear/{id}', 'ClientesController@create');
 
 Route::resource('/recetas', 'RecetasController');
 
