@@ -16,25 +16,17 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($direcciones ?? '' as $direccion)
             <tr>
-            <td>{{$informacion->idcedulacliente}}</td>
-            <td>{{$informacion->nombrecliente}}</td>
-            <td>{{$informacion->telefonocliente}}</td>
+            <td>{{$direccion->iddireccion}}</td>
+            <td>{{$direccion->calleprincipal}}</td>
+            <td>{{$direccion->callesecundaria}}</td>
+            <td>{{$direccion->numerodecasa}}</td>
             <td>
-            <td>
-                <a href="{{route('informacion.show',$informacion->idcedulacliente)}}"class="btn btn-primary" >Ver direcciones</a>
-            </td>
-            <td>
-            <a href="{{route('informacion.show',$informacion->idcedulacliente)}}"class="btn btn-primary" >Editar</a>
-            </td>
-            <td>
-            <form action="{{route('informacion.destroy',$informacion->idcedulacliente)}}" method="POST">
-                {{csrf_field()}}
-                <input type="hidden" name="_method" value="DELETE">
-                <button class="btn btn-link btn-warning" style="color: white">Eliminar</button>
-            </form>
+                <img src="../imagesdireccion/{{$direccion->imagendireccion}}" width="75"/>
             </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

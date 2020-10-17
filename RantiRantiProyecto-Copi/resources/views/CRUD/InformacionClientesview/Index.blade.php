@@ -26,7 +26,7 @@
             <td>{{$informacion->telefonocliente}}</td>
             <td>
             <td>
-                <a href="{{route('informacion.show',$informacion->idcedulacliente)}}"class="btn btn-primary" >Ver direcciones</a>
+                <a href="/direcciones/{{$informacion->idcedulacliente}}"class="btn btn-primary" >Ver direcciones</a>
             </td>
             <td>
             <a href="{{route('informacion.show',$informacion->idcedulacliente)}}"class="btn btn-primary" >Editar</a>

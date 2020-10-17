@@ -39,4 +39,5 @@ class User extends Authenticatable
     public function Informacion_Cli(){
             return $this->hasOne(InformacionCliente::class);
     }
+    
 }

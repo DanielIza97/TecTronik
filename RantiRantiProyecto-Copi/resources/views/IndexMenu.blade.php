@@ -65,10 +65,11 @@
     <div class="flex-center position-ref full-height">
         <section   >
             <div >
-                <a href="{{'/users'}}" class ="btn btn-primary">Administradores</a>
-                <a href="{{'/clientes'}}" class ="btn btn-primary">Clientes</a>
+                <a href="{{'/users'}}" class ="btn btn-primary">Usuarios</a>
                 <a href="{{'/productos'}}" class ="btn btn-primary">Productos </a>
                 <a href="{{'/recetas'}}" class ="btn btn-primary">Recetas </a>
+                <a href="{{'/categoriasP'}}" class ="btn btn-primary">Categorias Productos </a>
+                <a href="{{'/categoriasR'}}" class ="btn btn-primary">Categorias Recetas </a>
             </div>
         </section>
     </div>
