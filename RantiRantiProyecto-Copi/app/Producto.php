@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     protected $primaryKey='idproducto';
-    protected $fillable =['idproducto','nombreproducto','tipoproducto','cantidadproducto','precioproducto','imagenproducto'];
+    protected $fillable =['idproducto','nombreproducto','tipoproducto','cantidadproducto','precioproducto','imagenproducto','tamanoproducto'];
     public $incrementing = false;
     public $timestamps = false;
     public function recetas(){

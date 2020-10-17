@@ -23,6 +23,10 @@ Route::resource('/productos', 'ProductosController');
 
 Route::resource('/recetas', 'RecetasController');
 
+Route::resource('/categoriasP', 'CategoriasPController');
+
+Route::resource('/categoriasR', 'CategoriasRController');
+
 Route::get('/ingredientes/{idrecetas}', 'IngredientesController@index_recetas');
 
 Route::post('/ingredientes/create_recetas', 'IngredientesController@create_recetas');
@@ -31,4 +35,4 @@ Route::get('/informacion_cliente/{id}', 'ClientesController@index');
 
 Route::get('/informacion_cliente/crear/{id}', 'ClientesController@create');
 
-Route::get('/direcciones/{id}', 'DireccionesController@index');
+Route::get('/direcciones/{id}', 'DireccionController@index');

@@ -21,13 +21,25 @@
       </div>
     </div>
     <div class="form-inline">
+      <label for="telfclien" class="col-sm-2 control-label">Detalle</label>
+      <div >
+        <input type="Text" name="detalle">
+      </div>
+    </div>
+    <div class="form-inline">
       <label for="tipprod" class="col-sm-2 control-label">Tipo de producto</label>
       <div >
         <input type="Text" name="tipoproducto">
       </div>
     </div>
     <div class="form-inline">
-      <label for="cant" class="col-sm-2 control-label">Cantidad en libras</label>
+      <label for="tipprod" class="col-sm-2 control-label">Tamaño de producto</label>
+      <div >
+        <input type="Text" name="tamanoproducto">
+      </div>
+    </div>
+    <div class="form-inline">
+      <label for="cant" class="col-sm-2 control-label">Cantidad</label>
       <div >
         <input type="Text" name="cantidadproducto">
       </div>

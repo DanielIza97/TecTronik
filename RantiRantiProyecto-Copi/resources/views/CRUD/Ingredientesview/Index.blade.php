@@ -55,7 +55,7 @@
     </table>
 
 
-    <a href="{{route('recetas.show',$receta->idreceta)}}" class ="btn btn-primary">Regresar</a>
+    <a href="/recetas" class ="btn btn-primary">Regresar</a>
 </div>
 </body>
 </html>

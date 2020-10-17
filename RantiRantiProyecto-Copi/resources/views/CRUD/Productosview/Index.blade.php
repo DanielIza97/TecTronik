@@ -26,7 +26,9 @@
             <tr>
             <td>{{$productos->idproducto}}</td>
             <td>{{$productos->nombreproducto}}</td>
+            <td>{{$productos->detalle}}</td>
             <td>{{$productos->tipoproducto}}</td>
+            <td>{{$productos->tamanoproducto}}</td>
             <td>{{$productos->cantidadproducto}}</td>
             <td>{{$productos->precioproducto}}</td>
             <td>

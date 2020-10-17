@@ -22,9 +22,21 @@
     </div>
   </div>
   <div class="form-inline">
+    <label for="telfclien" class="col-sm-2 control-label">Detalle</label>
+    <div >
+      <input type="Text" name="detalle"value="{{$producto->detalle}}">
+    </div>
+  </div>
+  <div class="form-inline">
     <label for="tipprod" class="col-sm-2 control-label">Tipo de producto</label>
     <div >
       <input type="Text" name="tipoproducto" value="{{$producto->tipoproducto}}">
+    </div>
+  </div>
+  <div class="form-inline">
+    <label for="tipprod" class="col-sm-2 control-label">Tamaño de producto</label>
+    <div >
+      <input type="Text" name="tamanoproducto" value="{{$producto->tamanoproducto}}">
     </div>
   </div>
   <div class="form-inline">

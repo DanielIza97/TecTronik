@@ -37,7 +37,6 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         $producto=new Producto();
-        $c1=$request->all();
         if($file=$request->file('imagenproducto'))
         {
             $nombre=time().$file->getClientOriginalName();
@@ -46,10 +45,11 @@ class ProductosController extends Controller
         }
         $producto->idproducto=$request->idproducto;
         $producto->nombreproducto=$request->nombreproducto;
+        $producto->detalle=$request->detalle;
         $producto->tipoproducto=$request->tipoproducto;
         $producto->cantidadproducto=$request->cantidadproducto;
         $producto->precioproducto=$request->precioproducto;
-        
+        $producto->tamanoproducto=$request->tamanoproducto;
         $producto->save();
         $producto=Producto::all();
         return view('CRUD.Productosview.Index',compact('producto'));
