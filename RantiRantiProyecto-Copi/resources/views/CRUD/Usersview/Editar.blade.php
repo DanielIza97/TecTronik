@@ -1,49 +1,49 @@
-@extends('../layouts.PlantillaAdministradores')
+@extends('../layouts.Plantillausers')
 @section('titulo')
 <title>Insertar</title>
 @endsection   
 @section('contenido')
 <h2>
-    Editar administrador
+    Editar Usuarios
 </h2>
-<form class="form-horizontal" method="post" action="{{route('administradores.update',$administrador->idcedulaadministrador)}}" enctype="multipart/form-data">
+<form class="form-horizontal" method="post" action="{{route('users.update',$users->id)}}" enctype="multipart/form-data">
   @csrf
   <input type="hidden" name="_method" value="put">
   <div class="form-inline">
-    <label for="Cedula" class="col-sm-2 control-label">Cedula</label>
+    <label for="Cedula" class="col-sm-2 control-label">Id</label>
     <div>
-      <input type="text" name="idcedulaadministrador"value="{{$administrador->idcedulaadministrador}}"readonly >
+      <input type="text" name="id"value="{{$users->id}}" >
     </div>
   </div>
   <div class="form-inline">
-    <label for="nomcli" class="col-sm-2 control-label" >Nombre del administrador</label>
+    <label for="nomcli" class="col-sm-2 control-label" >Nombre Usuario</label>
     <div >
-      <input type="Text" name="nombreadministrador"value="{{$administrador->nombreadministrador}}">
+      <input type="Text" name="name"value="{{$users->name}}">
     </div>
   </div>
   <div class="form-inline">
-    <label for="nomcli" class="col-sm-2 control-label" >Cargo</label>
+    <label for="nomcli" class="col-sm-2 control-label" >Email</label>
     <div >
-      <input type="Text" name="cargoadministrador"value="{{$administrador->cargoadministrador}}">
+      <input type="Text" name="email"value="{{$users->email}}">
     </div>
   </div>
     <div class="form-inline">
-      <label for="telfclien" class="col-sm-2 control-label">Telefono</label>
+      <label for="telfclien" class="col-sm-2 control-label">Rol</label>
       <div >
-        <input type="Text" name="telefonoadministrador"value="{{$administrador->telefonoadministrador}}">
+        <input type="Text" name="rol"value="{{$users->rol}}">
       </div>
     </div>
     <div class="form-inline">
-      <label for="correo" class="col-sm-2 control-label" >Correo electronico</label>
+      <label for="correo" class="col-sm-2 control-label" >Password</label>
       <div>
-        <input type="Text" name="correoadministrador" value="{{$administrador->correoadministrador}}">
+        <input type="Text" name="password" value="{{$users->password}}">
       </div>
     </div>
     <div class="form-inline">
       <label for="foto" class="col-sm-2 control-label">FOTO</label>
       <div class="form-inline">
-        <img src="../imagesadmi/{{$administrador->imagenadministrador}} "width="150"/>
-        <input type="file" name="imagenadministrador" accept="image/*">
+        <img src="../imagesusers/{{$users->fotouser}} "width="150"/>
+        <input type="file" name="fotouser" accept="image/*">
       </div>
     </div>
     <div class="form-inline ">

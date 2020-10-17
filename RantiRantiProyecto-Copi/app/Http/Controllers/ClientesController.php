@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cliente;
-
+use App\User;
 class ClientesController extends Controller
 {
     /**
@@ -12,12 +12,12 @@ class ClientesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $clientes=Cliente::all();
-        return view('CRUD.Clientesview.Index',compact('clientes'));
+        $user=User::find($id);
+        $informacion=$user->Informacion_Cli;
+        return view('CRUD.InformacionClientesview.Index',compact('informacion'));
     }
-
     /**
      * Show the form for creating a new resource.
      *

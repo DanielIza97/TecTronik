@@ -19,7 +19,8 @@ Route::resource('/users', 'UsersController');
 
 Route::resource('/productos', 'ProductosController');
 
-Route::resource('/administradores', 'AdministradoresController');
+Route::resource('/informacion', 'ClientesController');
+Route::get('/informacion_cliente/{id}', 'ClientesController@index');
 
 Route::resource('/recetas', 'RecetasController');
 

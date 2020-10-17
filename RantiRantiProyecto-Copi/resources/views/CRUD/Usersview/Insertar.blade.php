@@ -1,4 +1,4 @@
-@extends('../layouts.PlantillaAdministradores')
+@extends('../layouts.PlantillaUsers')
 @section('titulo')
 <title>Insertar</title>
 @endsection   

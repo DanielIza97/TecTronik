@@ -48,7 +48,7 @@ class UsersController extends Controller
         $user->email=;
         $user->rol=;
         $user->password=;*/
-        $nombre='';
+        $nombre='si';
         if($file=$request->file('fotouser'))
             {
             $nombre=time().$file->getClientOriginalName();
@@ -63,7 +63,7 @@ class UsersController extends Controller
             'rol'=>$request->rol,
         ]);
         $users=User::all();
-        return view('CRUD.Usersview.Index',compact('users'));
+        return $nombre;
     }
 
     /**
@@ -74,7 +74,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $users=User::find($id);
+        return view('CRUD.Usersview.Editar',compact('users'));
     }
 
     /**
@@ -97,7 +98,24 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::find($id);
+        $user->fill($request->all());
+        $nombre='si';
+        if($file=$request->file('fotouser'))
+        {
+            $nombre=time().$file->getClientOriginalName();
+            $file->move(public_path().'/imagesusers/',$nombre);
+        }
+        User::updateOrCreate(
+            ['id'=>$id],
+            ['id'=>$request->id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'rol'=>$request->rol,
+            'fotouser'=>$nombre,]);
+        $users=User::all();
+        return back()->with('mensaje','Actualizado correctamente');
     }
 
     /**
@@ -108,6 +126,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users=User::find($id);
+        $users->delete();
+        return back()->with('info','cliente eliminado correctamente');
     }
 }
