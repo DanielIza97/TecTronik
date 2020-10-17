@@ -1,28 +1,26 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 8                                 */
-/* Created on:     3/10/2020 20:03:29                           */
+/* Created on:     16/10/2020 19:14:48                          */
 /*==============================================================*/
 
-
-drop index ADMINISTRADOR_PK;
-
-drop table ADMINISTRADOR;
 
 drop index CATEGORIA_PRODUCTO_PK;
 
 drop table CATEGORIA_PRODUCTO;
-
-drop index RELATIONSHIP_3_FK;
-
-drop index CLIENTE_PK;
-
-drop table CLIENTE;
 
 drop index TIENE_FK;
 
 drop index DIRECCION_PK;
 
 drop table DIRECCION;
+
+drop index POSEE2_FK;
+
+drop index RELATIONSHIP_3_FK;
+
+drop index INFORMACION_CLIENTE_PK;
+
+drop table INFORMACION_CLIENTE;
 
 drop index REALIZA_FK;
 
@@ -66,25 +64,11 @@ drop index TIPO_RECETA_PK;
 
 drop table TIPO_RECETA;
 
-/*==============================================================*/
-/* Table: ADMINISTRADOR                                         */
-/*==============================================================*/
-create table ADMINISTRADOR (
-   IDCEDULAADMINISTRADOR CHAR(10)             not null,
-   NOMBREADMINISTRADOR  CHAR(40)             not null,
-   CARGOADMINISTRADOR   CHAR(30)             not null,
-   TELEFONOADMINISTRADOR CHAR(10)             not null,
-   CORREOADMINISTRADOR  CHAR(40)             not null,
-   IMAGENADMINISTRADOR  CHAR(254)            not null,
-   constraint PK_ADMINISTRADOR primary key (IDCEDULAADMINISTRADOR)
-);
+drop index POSEE_FK;
 
-/*==============================================================*/
-/* Index: ADMINISTRADOR_PK                                      */
-/*==============================================================*/
-create unique index ADMINISTRADOR_PK on ADMINISTRADOR (
-IDCEDULAADMINISTRADOR
-);
+drop index USERS_PK;
+
+drop table USERS;
 
 /*==============================================================*/
 /* Table: CATEGORIA_PRODUCTO                                    */
@@ -100,36 +84,6 @@ create table CATEGORIA_PRODUCTO (
 /*==============================================================*/
 create unique index CATEGORIA_PRODUCTO_PK on CATEGORIA_PRODUCTO (
 IDTIPOPROD
-);
-
-/*==============================================================*/
-/* Table: CLIENTE                                               */
-/*==============================================================*/
-create table CLIENTE (
-   IDCEDULACLIENTE      CHAR(10)             not null,
-   NOMBREUSUARIO        CHAR(10)             not null,
-   CONTRASENA           CHAR(10)             not null,
-   ROL                  CHAR(15)             not null,
-   IDCEDULAADMINISTRADOR CHAR(10)             not null,
-   TELEFONOCLIENTE      CHAR(10)             not null,
-   NOMBRECLIENTE        CHAR(30)             not null,
-   CORREOCLIENTE        CHAR(40)             not null,
-   IMAGENCLIENTE        CHAR(254)            not null,
-   constraint PK_CLIENTE primary key (IDCEDULACLIENTE)
-);
-
-/*==============================================================*/
-/* Index: CLIENTE_PK                                            */
-/*==============================================================*/
-create unique index CLIENTE_PK on CLIENTE (
-IDCEDULACLIENTE
-);
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_3_FK                                     */
-/*==============================================================*/
-create  index RELATIONSHIP_3_FK on CLIENTE (
-IDCEDULAADMINISTRADOR
 );
 
 /*==============================================================*/
@@ -156,6 +110,41 @@ IDDIRECCION
 /*==============================================================*/
 create  index TIENE_FK on DIRECCION (
 IDCEDULACLIENTE
+);
+
+/*==============================================================*/
+/* Table: INFORMACION_CLIENTE                                   */
+/*==============================================================*/
+create table INFORMACION_CLIENTE (
+   IDCEDULACLIENTE      CHAR(10)             not null,
+   ID                   CHAR(10)             not null,
+   USE_ID               CHAR(10)             not null,
+   TELEFONOCLIENTE      CHAR(10)             not null,
+   NOMBRECLIENTE        CHAR(30)             not null,
+   CORREOCLIENTE        CHAR(40)             not null,
+   IMAGENCLIENTE        CHAR(254)            not null,
+   constraint PK_INFORMACION_CLIENTE primary key (IDCEDULACLIENTE)
+);
+
+/*==============================================================*/
+/* Index: INFORMACION_CLIENTE_PK                                */
+/*==============================================================*/
+create unique index INFORMACION_CLIENTE_PK on INFORMACION_CLIENTE (
+IDCEDULACLIENTE
+);
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_3_FK                                     */
+/*==============================================================*/
+create  index RELATIONSHIP_3_FK on INFORMACION_CLIENTE (
+ID
+);
+
+/*==============================================================*/
+/* Index: POSEE2_FK                                             */
+/*==============================================================*/
+create  index POSEE2_FK on INFORMACION_CLIENTE (
+USE_ID
 );
 
 /*==============================================================*/
@@ -187,12 +176,12 @@ IDCEDULACLIENTE
 /*==============================================================*/
 create table PRODUCTO (
    IDPRODUCTO           CHAR(10)             not null,
-   IDCEDULAADMINISTRADOR CHAR(10)             not null,
+   ID                   CHAR(10)             not null,
    IDTIPOPROD           CHAR(10)             not null,
    NOMBREPRODUCTO       CHAR(30)             not null,
    DETALLE              CHAR(100)            not null,
    TAMANOPRODUCTO       CHAR(10)             not null,
-   CANTIDADPRODUCTO     FLOAT8               not null,
+   CANTIDADPRODUCTO     DECIMAL(6,2)         not null,
    PRECIOPRODUCTO       NUMERIC(5)           not null,
    IMAGENPRODUCTO       CHAR(254)            null,
    constraint PK_PRODUCTO primary key (IDPRODUCTO)
@@ -209,7 +198,7 @@ IDPRODUCTO
 /* Index: ADMINISTRA_FK                                         */
 /*==============================================================*/
 create  index ADMINISTRA_FK on PRODUCTO (
-IDCEDULAADMINISTRADOR
+ID
 );
 
 /*==============================================================*/
@@ -225,6 +214,9 @@ IDTIPOPROD
 create table PRODUCTOXPEDIDO (
    IDPEDIDO             CHAR(10)             not null,
    IDPRODUCTO           CHAR(10)             not null,
+   SUBTOTAL             DECIMAL(6,2)         not null,
+   IVA                  DECIMAL(6,2)         not null,
+   TAP                  DECIMAL(6,2)         not null,
    constraint PK_PRODUCTOXPEDIDO primary key (IDPEDIDO, IDPRODUCTO)
 );
 
@@ -255,7 +247,7 @@ IDPRODUCTO
 /*==============================================================*/
 create table RECETAS (
    IDRECETA             CHAR(10)             not null,
-   IDCEDULAADMINISTRADOR CHAR(10)             not null,
+   ID                   CHAR(10)             not null,
    IDTIPORECETA         CHAR(10)             not null,
    NOMBRERECETA         CHAR(15)             not null,
    DESCRIPCIONRECETA    CHAR(30)             not null,
@@ -274,7 +266,7 @@ IDRECETA
 /* Index: ADMINISTRA2_FK                                        */
 /*==============================================================*/
 create  index ADMINISTRA2_FK on RECETAS (
-IDCEDULAADMINISTRADOR
+ID
 );
 
 /*==============================================================*/
@@ -331,24 +323,59 @@ create unique index TIPO_RECETA_PK on TIPO_RECETA (
 IDTIPORECETA
 );
 
-alter table CLIENTE
-   add constraint FK_CLIENTE_RELATIONS_ADMINIST foreign key (IDCEDULAADMINISTRADOR)
-      references ADMINISTRADOR (IDCEDULAADMINISTRADOR)
-      on delete restrict on update restrict;
+/*==============================================================*/
+/* Table: USERS                                                 */
+/*==============================================================*/
+create table USERS (
+   ID                   CHAR(10)             not null,
+   IDCEDULACLIENTE      CHAR(10)             null,
+   USER_NAME            CHAR(40)             not null,
+   EMAIL                CHAR(30)             not null,
+   PASWORD              CHAR(10)             not null,
+   ROL                  CHAR(15)             not null,
+   REMEMBER_TOKEN       CHAR(40)             not null,
+   CREATED_AT           CHAR(254)            not null,
+   UPDATES_AT           DATE                 not null,
+   constraint PK_USERS primary key (ID)
+);
+
+/*==============================================================*/
+/* Index: USERS_PK                                              */
+/*==============================================================*/
+create unique index USERS_PK on USERS (
+ID
+);
+
+/*==============================================================*/
+/* Index: POSEE_FK                                              */
+/*==============================================================*/
+create  index POSEE_FK on USERS (
+IDCEDULACLIENTE
+);
 
 alter table DIRECCION
-   add constraint FK_DIRECCIO_TIENE_CLIENTE foreign key (IDCEDULACLIENTE)
-      references CLIENTE (IDCEDULACLIENTE)
+   add constraint FK_DIRECCIO_TIENE_INFORMAC foreign key (IDCEDULACLIENTE)
+      references INFORMACION_CLIENTE (IDCEDULACLIENTE)
+      on delete restrict on update restrict;
+
+alter table INFORMACION_CLIENTE
+   add constraint FK_INFORMAC_POSEE2_USERS foreign key (USE_ID)
+      references USERS (ID)
+      on delete restrict on update restrict;
+
+alter table INFORMACION_CLIENTE
+   add constraint FK_INFORMAC_RELATIONS_USERS foreign key (ID)
+      references USERS (ID)
       on delete restrict on update restrict;
 
 alter table PEDIDO
-   add constraint FK_PEDIDO_REALIZA_CLIENTE foreign key (IDCEDULACLIENTE)
-      references CLIENTE (IDCEDULACLIENTE)
+   add constraint FK_PEDIDO_REALIZA_INFORMAC foreign key (IDCEDULACLIENTE)
+      references INFORMACION_CLIENTE (IDCEDULACLIENTE)
       on delete restrict on update restrict;
 
 alter table PRODUCTO
-   add constraint FK_PRODUCTO_ADMINISTR_ADMINIST foreign key (IDCEDULAADMINISTRADOR)
-      references ADMINISTRADOR (IDCEDULAADMINISTRADOR)
+   add constraint FK_PRODUCTO_ADMINISTR_USERS foreign key (ID)
+      references USERS (ID)
       on delete restrict on update restrict;
 
 alter table PRODUCTO
@@ -367,8 +394,8 @@ alter table PRODUCTOXPEDIDO
       on delete restrict on update restrict;
 
 alter table RECETAS
-   add constraint FK_RECETAS_ADMINISTR_ADMINIST foreign key (IDCEDULAADMINISTRADOR)
-      references ADMINISTRADOR (IDCEDULAADMINISTRADOR)
+   add constraint FK_RECETAS_ADMINISTR_USERS foreign key (ID)
+      references USERS (ID)
       on delete restrict on update restrict;
 
 alter table RECETAS
@@ -384,5 +411,10 @@ alter table RECETAXPRODUCTO
 alter table RECETAXPRODUCTO
    add constraint FK_RECETAXP_RECETAXPR_PRODUCTO foreign key (IDPRODUCTO)
       references PRODUCTO (IDPRODUCTO)
+      on delete restrict on update restrict;
+
+alter table USERS
+   add constraint FK_USERS_POSEE_INFORMAC foreign key (IDCEDULACLIENTE)
+      references INFORMACION_CLIENTE (IDCEDULACLIENTE)
       on delete restrict on update restrict;
 
