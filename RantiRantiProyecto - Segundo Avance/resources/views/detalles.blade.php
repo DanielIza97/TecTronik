@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="description" content="Nombre del producto">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../css/app.css" rel="stylesheet" type="text/css">
+        <link href="../public/css/app.css" rel="stylesheet" type="text/css">
         <title>Detalles del producto</title>
     </head>
     <body>
