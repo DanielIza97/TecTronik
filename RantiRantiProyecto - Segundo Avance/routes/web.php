@@ -39,7 +39,6 @@ Route::get('/informacion_cliente/crear/{id}', 'ClientesController@create');
 
 Route::get('/direcciones/{id}', 'DireccionesController@index');
 
-
 Auth::routes();
 
 Route::get('/index', 'HomeController@index');
