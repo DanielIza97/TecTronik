@@ -20,7 +20,7 @@
             @yield('contenido')
         </div>
         <div class="index"style="padding-left:1%; padding-top:1%">
-        <a href="/recetas" class ="btn btn-primary">Regresar</a>
+        <a href="/recetasprotegido" class ="btn btn-primary">Regresar</a>
         </div> 
         <div class="pie">
             @yield('pie')

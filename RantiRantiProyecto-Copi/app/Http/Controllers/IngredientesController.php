@@ -21,5 +21,6 @@ class IngredientesController extends Controller
         $produc=$receta->productos->pluck('nombreproducto');
         return view('CRUD.Ingredientesview.Index',compact('receta','producto','produc'));
     }
+    
 }
 /**/

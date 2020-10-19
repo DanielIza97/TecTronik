@@ -6,7 +6,7 @@
 <h2>
     Editar Receta
 </h2>
-<form class="form-horizontal" method="post" action="{{route('recetas.update',$receta->idreceta)}}" enctype="multipart/form-data">
+<form class="form-horizontal" method="post" action="{{route('recetasprotegido.update',$receta->idreceta)}}" enctype="multipart/form-data">
   @csrf
   <input type="hidden" name="_method" value="put">
   <div class="form-inline">
@@ -40,7 +40,7 @@
     <div class="form-inline">
       <label for="foto" class="col-sm-2 control-label">Fotrografia</label>
       <div class="form-inline">
-        <img src="../imagesrecetas/{{$receta->imagenreceta}} "width="150"/>
+        <img src="../imagesreceta/{{$receta->imagenreceta}} "width="150"/>
         <input type="file" name="imagenreceta" accept="image/*">
       </div>
     </div>

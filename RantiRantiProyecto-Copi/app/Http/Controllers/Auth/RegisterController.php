@@ -67,14 +67,14 @@ class RegisterController extends Controller
     {
         InformacionCliente::create([
             'idcedulacliente'=>$data['idcedulacliente'],
-            'telefonocliente' => '0985412365',
-            'nombrecliente' => 'Sancudo',
+            'telefonocliente' =>$data['telefonocliente'],
+            'nombrecliente' => $data['nombrecliente'],
         ]);
         User::create([
             'idcedulacliente'=>$data['idcedulacliente'],
             'name' => $data['name'],
             'email' => $data['email'],
-            'rol' => $data['rol'],
+            'rol' => 'cliente',
             'fotouser' => $data['fotouser'],
             'password' => Hash::make($data['password']),
         ]);

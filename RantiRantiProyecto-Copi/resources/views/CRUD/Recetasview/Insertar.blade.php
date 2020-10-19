@@ -6,7 +6,7 @@
 <h2>
     Nueva Receta
 </h2>
-<form class="form-horizontal" method="POST" action="{{route('recetas.store')}}"  enctype="multipart/form-data">
+<form class="form-horizontal" method="POST" action="{{route('recetasprotegido.store')}}"  enctype="multipart/form-data">
     @csrf
   <div class="form-inline">
     <label for="id" class="col-sm-2 control-label">Id</label>

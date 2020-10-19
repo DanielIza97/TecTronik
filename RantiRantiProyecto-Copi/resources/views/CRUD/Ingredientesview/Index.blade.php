@@ -55,7 +55,7 @@
     </table>
 
 
-    <a href="/recetas" class ="btn btn-primary">Regresar</a>
+    <a href="/recetasprotegido" class ="btn btn-primary">Regresar</a>
 </div>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <div class="col-sm-8">
     <h2>
         Listado de Recetas
-        <a href="{{route('recetas.create')}}"class="btn btn-primary pull-right">nuevo</a>
+        <a href="{{route('recetasprotegido.create')}}"class="btn btn-primary pull-right">nuevo</a>
     </h2>
     <table class="table table-hover table-striped">
         <thead>
@@ -31,10 +31,10 @@
                 <img src="../imagesreceta/{{$recetas->imagenreceta}}" width="75"/>
             </td>
             <td>
-            <a href="{{route('recetas.show',$recetas->idreceta)}}"class="btn btn-primary" >Editar</a>
+            <a href="{{route('recetasprotegido.show',$recetas->idreceta)}}"class="btn btn-primary" >Editar</a>
             </td>
             <td>
-            <form action="{{route('recetas.destroy',$recetas->idreceta)}}" method="POST">
+            <form action="{{route('recetasprotegido.destroy',$recetas->idreceta)}}" method="POST">
                 {{csrf_field()}}
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-link btn-warning" style="color: white">Eliminar</button>
