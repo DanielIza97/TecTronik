@@ -6,7 +6,7 @@
 <h2>
     Nuevo cliente
 </h2>
-<form class="form-horizontal" method="POST" action="{{route('productos.store')}}"  enctype="multipart/form-data">
+<form class="form-horizontal" method="POST" action="{{route('productosprotegido.store')}}"  enctype="multipart/form-data">
     @csrf
   <div class="form-inline">
     <label for="Idproducto" class="col-sm-2 control-label">Id producto</label>

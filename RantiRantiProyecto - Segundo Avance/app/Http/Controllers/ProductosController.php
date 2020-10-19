@@ -31,7 +31,7 @@ class ProductosController extends Controller
     public function create()
     {
         $cateprod=CategoriaProducto::all();
-        return view('CRUD.Productosview.Insertar',compact('$cateprod'));
+        return view('CRUD.Productosview.Insertar',compact('cateprod'));
     }
 
     /**

@@ -6,7 +6,7 @@
 <h2>
     Editar producto
 </h2>
-<form class="form-horizontal" method="post" action="{{route('productos.update',$producto->idproducto)}}" enctype="multipart/form-data">
+<form class="form-horizontal" method="post" action="{{route('productosprotegido.update',$producto->idproducto)}}" enctype="multipart/form-data">
   @csrf
   <input type="hidden" name="_method" value="put">
   <div class="form-inline">
