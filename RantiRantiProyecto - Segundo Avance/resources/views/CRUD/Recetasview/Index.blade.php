@@ -28,7 +28,7 @@
             <td>{{$recetas->nombrereceta}}</td>
             <td>{{$recetas->descripcionreceta}}</td>
             <td>
-                <img src="../imagesreceta/{{$recetas->imagenreceta}}" width="75"/>
+                <img src="../imagesrecetas/{{$recetas->imagenreceta}}" width="75"/>
             </td>
             <td>
             <a href="{{route('recetasprotegido.show',$recetas->idreceta)}}"class="btn btn-primary" >Editar</a>

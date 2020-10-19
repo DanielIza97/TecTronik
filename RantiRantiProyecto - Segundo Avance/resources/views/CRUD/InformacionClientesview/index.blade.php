@@ -32,11 +32,6 @@
             <a href="{{route('informacion.show',$informacion->idcedulacliente)}}"class="btn btn-primary" >Editar</a>
             </td>
             <td>
-            <form action="{{route('informacion.destroy',$informacion->idcedulacliente)}}" method="POST">
-                {{csrf_field()}}
-                <input type="hidden" name="_method" value="DELETE">
-                <button class="btn btn-link btn-warning" style="color: white">Eliminar</button>
-            </form>
             </td>
             </tr>
         </tbody>

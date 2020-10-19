@@ -4,7 +4,7 @@
 @endsection   
 @section('contenido')
 <h2>
-    Nuevo cliente
+    Nuevo producto
 </h2>
 <form class="form-horizontal" method="POST" action="{{route('productosprotegido.store')}}"  enctype="multipart/form-data">
     @csrf

@@ -4,11 +4,11 @@
     <div>
        <h4> Productos</h4>
         @foreach($categoriasp ?? '' as $categoria)
-           <a href="">&nbsp;&nbsp;&nbsp; {{$categoria->nombretipoprod}}</a>
+           <a href="/productos/{{$categoria->nombretipoprod}}">&nbsp;&nbsp;&nbsp; {{$categoria->nombretipoprod}}</a>
         @endforeach
         <h4>Recetas</h4>
         @foreach($categoriasr ?? '' as $categoria)
-           <a href="">&nbsp;&nbsp;&nbsp; {{$categoria->nombretiporeceta}}</a>
+           <a href="/recetas/{{$categoria->nombretiporeceta}}">&nbsp;&nbsp;&nbsp; {{$categoria->nombretiporeceta}}</a>
         @endforeach
     </div>
     <div>

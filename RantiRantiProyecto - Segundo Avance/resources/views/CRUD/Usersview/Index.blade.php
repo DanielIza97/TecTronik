@@ -39,6 +39,7 @@
                     <td>
                         <a href="{{route('users.show',$user->id)}}"class="btn btn-primary" >Editar</a> 
                     </td>
+                    @if($user->rol!='cliente')
                     <td>
                         <form action="{{route('users.destroy',$user->id)}}" method="POST">
                             {{csrf_field()}}
@@ -46,6 +47,7 @@
                             <button class="btn btn-link btn-warning" style="color: white">Eliminar</button>
                         </form>
                     </td> 
+                    @endif
                 </tr>
                 @endforeach
         </tbody>

@@ -40,7 +40,7 @@
     <div class="form-inline">
       <label for="foto" class="col-sm-2 control-label">Fotrografia</label>
       <div class="form-inline">
-        <img src="../imagesreceta/{{$receta->imagenreceta}} "width="150"/>
+        <img src="../imagesrecetas/{{$receta->imagenreceta}} "width="150"/>
         <input type="file" name="imagenreceta" accept="image/*">
       </div>
     </div>

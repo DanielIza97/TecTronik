@@ -105,6 +105,7 @@ class UsersController extends Controller
     {
         $user=User::find($id);
         $user->fill($request->all());
+        $nombre='';
         if($file=$request->file('fotouser'))
         {
             $nombre=time().$file->getClientOriginalName();

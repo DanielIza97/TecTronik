@@ -27,7 +27,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body"style="text-align: center">
-                    <a href=""> <img src="../imagesreceta/{{$produ->imagenreceta}}" width="100"/></a>
+                    <a href=""> <img src="../imagesrecetas/{{$produ->imagenreceta}}" width="200"/></a>
                 </div>
                 <div class="card-header"style="text-align: center">
                     <a href="">{{$produ->nombrereceta}}</a>
