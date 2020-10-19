@@ -10856,7 +10856,7 @@ a.text-dark:focus {
     size: a3;
 }
 
-  body {
+body {
     min-width: 992px !important;
   }
 
@@ -10903,3 +10903,24 @@ a.text-dark:focus {
   }
 }
 
+section {
+    margin-left: auto;
+    margin-right: auto;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+.imagen_producto {
+    float: left;
+}
+.descripción_producto {
+    float: left;
+}
+.nombre_producto {
+    text-align: center
+}
+.descripción_precio {
+    text-align: center;
+    font-family: Arial;
+}
