@@ -38,7 +38,11 @@
                         </div>
 
                         <div class="form-group row">
+<<<<<<< HEAD
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('UserName') }}</label>
+=======
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+>>>>>>> parent of c1c0deb... Update register.blade.php
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
