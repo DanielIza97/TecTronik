@@ -18,9 +18,9 @@ class Aminis
         if(!Auth::user()==null)
         {
             $user=Auth::user();
-            if(!$user->esadmi())
+            if(!($user->rol=='administrador'))
                 return redirect('/');
-                return $next($request);
+            return $next($request);
         }
         return redirect('/');
     }

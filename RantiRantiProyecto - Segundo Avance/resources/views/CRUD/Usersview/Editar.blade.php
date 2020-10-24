@@ -36,13 +36,13 @@
     <div class="form-inline">
       <label for="correo" class="col-sm-2 control-label" >Password</label>
       <div>
-        <input type="Text" name="password" value="{{$users->password}}">
+        <input type="Text" name="password" value="{{$users->password}}" readonly>
       </div>
     </div>
     <div class="form-inline">
       <label for="foto" class="col-sm-2 control-label">FOTO</label>
       <div class="form-inline">
-        <img src="../imagesusers/{{$users->fotouser}} "width="150"/>
+        <img src="/imagesusers/{{$users->fotouser}}" width="75"/>
         <input type="file" name="fotouser" accept="image/*">
       </div>
     </div>

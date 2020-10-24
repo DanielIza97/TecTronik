@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 8                                 */
-/* Created on:     16/10/2020 19:14:48                          */
+/* Created on:     24/10/2020 15:24:31                          */
 /*==============================================================*/
 
 
@@ -16,17 +16,23 @@ drop table DIRECCION;
 
 drop index POSEE2_FK;
 
-drop index RELATIONSHIP_3_FK;
+drop index ADMINISTRA1_FK;
 
 drop index INFORMACION_CLIENTE_PK;
 
 drop table INFORMACION_CLIENTE;
+
+drop index MEDIDA_PK;
+
+drop table MEDIDA;
 
 drop index REALIZA_FK;
 
 drop index PEDIDO_PK;
 
 drop table PEDIDO;
+
+drop index CLASIFICAR_FK;
 
 drop index PERTENECE_A_FK;
 
@@ -36,9 +42,9 @@ drop index PRODUCTO_PK;
 
 drop table PRODUCTO;
 
-drop index PRODUCTOXPEDIDO_FK;
-
 drop index PRODUCTOXPEDIDO2_FK;
+
+drop index PRODUCTOXPEDIDO_FK;
 
 drop index PRODUCTOXPEDIDO_PK;
 
@@ -52,9 +58,9 @@ drop index RECETAS_PK;
 
 drop table RECETAS;
 
-drop index RECETAXPRODUCTO_FK;
-
 drop index RECETAXPRODUCTO2_FK;
+
+drop index RECETAXPRODUCTO_FK;
 
 drop index RECETAXPRODUCTO_PK;
 
@@ -134,9 +140,9 @@ IDCEDULACLIENTE
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_3_FK                                     */
+/* Index: ADMINISTRA1_FK                                        */
 /*==============================================================*/
-create  index RELATIONSHIP_3_FK on INFORMACION_CLIENTE (
+create  index ADMINISTRA1_FK on INFORMACION_CLIENTE (
 ID
 );
 
@@ -145,6 +151,22 @@ ID
 /*==============================================================*/
 create  index POSEE2_FK on INFORMACION_CLIENTE (
 USE_ID
+);
+
+/*==============================================================*/
+/* Table: MEDIDA                                                */
+/*==============================================================*/
+create table MEDIDA (
+   IDMEDIDA             CHAR(10)             not null,
+   NOMBREMEDIDA         CHAR(20)             not null,
+   constraint PK_MEDIDA primary key (IDMEDIDA)
+);
+
+/*==============================================================*/
+/* Index: MEDIDA_PK                                             */
+/*==============================================================*/
+create unique index MEDIDA_PK on MEDIDA (
+IDMEDIDA
 );
 
 /*==============================================================*/
@@ -178,12 +200,14 @@ create table PRODUCTO (
    IDPRODUCTO           CHAR(10)             not null,
    ID                   CHAR(10)             not null,
    IDTIPOPROD           CHAR(10)             not null,
+   IDMEDIDA             CHAR(10)             null,
    NOMBREPRODUCTO       CHAR(30)             not null,
    DETALLE              CHAR(100)            not null,
    TAMANOPRODUCTO       CHAR(10)             not null,
    CANTIDADPRODUCTO     DECIMAL(6,2)         not null,
    PRECIOPRODUCTO       NUMERIC(5)           not null,
    IMAGENPRODUCTO       CHAR(254)            null,
+   SEXO                 CHAR(1)              not null,
    constraint PK_PRODUCTO primary key (IDPRODUCTO)
 );
 
@@ -209,6 +233,13 @@ IDTIPOPROD
 );
 
 /*==============================================================*/
+/* Index: CLASIFICAR_FK                                         */
+/*==============================================================*/
+create  index CLASIFICAR_FK on PRODUCTO (
+IDMEDIDA
+);
+
+/*==============================================================*/
 /* Table: PRODUCTOXPEDIDO                                       */
 /*==============================================================*/
 create table PRODUCTOXPEDIDO (
@@ -229,16 +260,16 @@ IDPRODUCTO
 );
 
 /*==============================================================*/
-/* Index: PRODUCTOXPEDIDO2_FK                                   */
+/* Index: PRODUCTOXPEDIDO_FK                                    */
 /*==============================================================*/
-create  index PRODUCTOXPEDIDO2_FK on PRODUCTOXPEDIDO (
+create  index PRODUCTOXPEDIDO_FK on PRODUCTOXPEDIDO (
 IDPEDIDO
 );
 
 /*==============================================================*/
-/* Index: PRODUCTOXPEDIDO_FK                                    */
+/* Index: PRODUCTOXPEDIDO2_FK                                   */
 /*==============================================================*/
-create  index PRODUCTOXPEDIDO_FK on PRODUCTOXPEDIDO (
+create  index PRODUCTOXPEDIDO2_FK on PRODUCTOXPEDIDO (
 IDPRODUCTO
 );
 
@@ -282,6 +313,7 @@ IDTIPORECETA
 create table RECETAXPRODUCTO (
    IDPRODUCTO           CHAR(10)             not null,
    IDRECETA             CHAR(10)             not null,
+   DETALLEINGREDIENTES  CHAR(50)             not null,
    constraint PK_RECETAXPRODUCTO primary key (IDPRODUCTO, IDRECETA)
 );
 
@@ -294,16 +326,16 @@ IDRECETA
 );
 
 /*==============================================================*/
-/* Index: RECETAXPRODUCTO2_FK                                   */
+/* Index: RECETAXPRODUCTO_FK                                    */
 /*==============================================================*/
-create  index RECETAXPRODUCTO2_FK on RECETAXPRODUCTO (
+create  index RECETAXPRODUCTO_FK on RECETAXPRODUCTO (
 IDPRODUCTO
 );
 
 /*==============================================================*/
-/* Index: RECETAXPRODUCTO_FK                                    */
+/* Index: RECETAXPRODUCTO2_FK                                   */
 /*==============================================================*/
-create  index RECETAXPRODUCTO_FK on RECETAXPRODUCTO (
+create  index RECETAXPRODUCTO2_FK on RECETAXPRODUCTO (
 IDRECETA
 );
 
@@ -359,12 +391,12 @@ alter table DIRECCION
       on delete restrict on update restrict;
 
 alter table INFORMACION_CLIENTE
-   add constraint FK_INFORMAC_POSEE2_USERS foreign key (USE_ID)
+   add constraint FK_INFORMAC_ADMINISTR_USERS foreign key (ID)
       references USERS (ID)
       on delete restrict on update restrict;
 
 alter table INFORMACION_CLIENTE
-   add constraint FK_INFORMAC_RELATIONS_USERS foreign key (ID)
+   add constraint FK_INFORMAC_POSEE2_USERS foreign key (USE_ID)
       references USERS (ID)
       on delete restrict on update restrict;
 
@@ -379,18 +411,23 @@ alter table PRODUCTO
       on delete restrict on update restrict;
 
 alter table PRODUCTO
+   add constraint FK_PRODUCTO_CLASIFICA_MEDIDA foreign key (IDMEDIDA)
+      references MEDIDA (IDMEDIDA)
+      on delete restrict on update restrict;
+
+alter table PRODUCTO
    add constraint FK_PRODUCTO_PERTENECE_CATEGORI foreign key (IDTIPOPROD)
       references CATEGORIA_PRODUCTO (IDTIPOPROD)
       on delete restrict on update restrict;
 
 alter table PRODUCTOXPEDIDO
-   add constraint FK_PRODUCTO_PRODUCTOX_PRODUCTO foreign key (IDPRODUCTO)
-      references PRODUCTO (IDPRODUCTO)
+   add constraint FK_PRODUCTO_PRODUCTOX_PEDIDO foreign key (IDPEDIDO)
+      references PEDIDO (IDPEDIDO)
       on delete restrict on update restrict;
 
 alter table PRODUCTOXPEDIDO
-   add constraint FK_PRODUCTO_PRODUCTOX_PEDIDO foreign key (IDPEDIDO)
-      references PEDIDO (IDPEDIDO)
+   add constraint FK_PRODUCTO_PRODUCTOX_PRODUCTO foreign key (IDPRODUCTO)
+      references PRODUCTO (IDPRODUCTO)
       on delete restrict on update restrict;
 
 alter table RECETAS
@@ -404,13 +441,13 @@ alter table RECETAS
       on delete restrict on update restrict;
 
 alter table RECETAXPRODUCTO
-   add constraint FK_RECETAXP_RECETAXPR_RECETAS foreign key (IDRECETA)
-      references RECETAS (IDRECETA)
+   add constraint FK_RECETAXP_RECETAXPR_PRODUCTO foreign key (IDPRODUCTO)
+      references PRODUCTO (IDPRODUCTO)
       on delete restrict on update restrict;
 
 alter table RECETAXPRODUCTO
-   add constraint FK_RECETAXP_RECETAXPR_PRODUCTO foreign key (IDPRODUCTO)
-      references PRODUCTO (IDPRODUCTO)
+   add constraint FK_RECETAXP_RECETAXPR_RECETAS foreign key (IDRECETA)
+      references RECETAS (IDRECETA)
       on delete restrict on update restrict;
 
 alter table USERS

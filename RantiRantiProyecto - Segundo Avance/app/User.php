@@ -39,10 +39,4 @@ class User extends Authenticatable
     public function Informacion_Cli(){
             return $this->hasOne(InformacionCliente::class);
     }
-    public function esadmi(){
-        if($this->rol=='administrador')
-            return true;
-        return false;
-    }
-
 }

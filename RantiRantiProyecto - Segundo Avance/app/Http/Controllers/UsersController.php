@@ -54,11 +54,13 @@ class UsersController extends Controller
         $user->password=;*/
         $nombre='';
         if($file=$request->file('fotouser'))
-            {
-            $nombre=time().$file->getClientOriginalName();
-            $file->move(public_path().'/imagesusers/',$nombre);
-            
-            }
+        {
+        $nombre=time().$file->getClientOriginalName();
+        $file->move(public_path().'/imagesusers/',$nombre);
+        
+        }
+        else
+            $nombre='usuario.jpg';
         User::create([
             'fotouser'=>$nombre,
             'name' => $request->name,
@@ -113,12 +115,12 @@ class UsersController extends Controller
         }
         User::updateOrCreate(
             ['id'=>$id],
-            ['id'=>$request->id,
-            'name' => $request->name,
+            ['name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'rol'=>$request->rol,
-            'fotouser'=>$nombre,]);
+            'fotouser'=>$nombre,
+            ]);
         $users=User::all();
         return back()->with('mensaje','Actualizado correctamente');
     }
