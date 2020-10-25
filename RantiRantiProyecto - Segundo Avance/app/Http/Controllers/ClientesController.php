@@ -48,19 +48,23 @@ class ClientesController extends Controller
         $informacion->idcedulacliente=$request->idcedulacliente;
         $informacion->telefonocliente=$request->telefonocliente;
         $informacion->nombrecliente=$request->nombrecliente;
+        $informacion->generocliente=$request->generocliente;
         if($file=$request->file('imagendireccion'))
         {
-            $nombre=time().$file->getClientOriginalName();
+            $nombre=$file->getClientOriginalName();
             $file->move(public_path().'/imagesdireccion/',$nombre);
             $direccion->imagendireccion=$nombre;
         }
-        $direccion->iddireccion=$request->iddireccion;
-        $direccion->idcedulacliente=$request->idcedulacliente;
-        $direccion->calleprincipal=$request->calleprincipal;
-        $direccion->callesecundaria=$request->callesecundaria;
-        $direccion->numerodecasa=$request->numerodecasa;
         $informacion->save();
-        $direccion->save();
+        if(!($request->iddireccion==null))
+        {
+            $direccion->iddireccion=$request->iddireccion;
+            $direccion->idcedulacliente=$request->idcedulacliente;
+            $direccion->calleprincipal=$request->calleprincipal;
+            $direccion->callesecundaria=$request->callesecundaria;
+            $direccion->numerodecasa=$request->numerodecasa;
+            $direccion->save();
+        }
         User::updateOrCreate(
             ['id'=>$request->user_id],
             ['idcedulacliente'=>$request->idcedulacliente]);

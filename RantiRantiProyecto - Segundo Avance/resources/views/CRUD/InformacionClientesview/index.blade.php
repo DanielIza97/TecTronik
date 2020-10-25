@@ -16,6 +16,7 @@
                 <th with="20px"> CEDULA</th>
                 <th> NOMBRE</th>
                 <th > TELEFONO</th>
+                <th > GENERO</th>
                 <th colspan="2">&nbsp;</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
             <td>{{$informacion->idcedulacliente}}</td>
             <td>{{$informacion->nombrecliente}}</td>
             <td>{{$informacion->telefonocliente}}</td>
+            <td>{{$informacion->generocliente}}</td>
             <td>
             <td>
                 <a href="/direcciones/{{$informacion->idcedulacliente}}"class="btn btn-primary" >Ver direcciones</a>

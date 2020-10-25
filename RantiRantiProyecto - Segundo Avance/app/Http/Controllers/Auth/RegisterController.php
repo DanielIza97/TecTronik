@@ -65,17 +65,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $nombre='';
         InformacionCliente::create([
             'idcedulacliente'=>$data['idcedulacliente'],
             'telefonocliente' =>$data['telefonocliente'],
-            'nombrecliente' => $data['nombrecliente'],
+            'nombrecliente' => $data['name'].' '.$data['apellido'],
+            'generocliente'=>$data['generocliente'],
         ]);
+        if($file=$data['fotouser'])
+        {
+            $nombre=$file->getClientOriginalName();
+            $file->move(public_path().'/imagesusers/',$nombre);
+        }
+        else 
+        {
+            if($data['generocliente']=='Hombre')
+                $nombre='hombre.jpg';
+            else
+                $nombre='mujer.jpg';
+
+        }
         User::create([
             'idcedulacliente'=>$data['idcedulacliente'],
-            'name' => $data['name'],
+            'name' => $data['name'].' '.$data['apellido'],
             'email' => $data['email'],
             'rol' => 'cliente',
-            'fotouser' => $data['fotouser'],
+            'fotouser' => $nombre,
             'password' => Hash::make($data['password']),
         ]);
         $user=User::orderby('id','desc')->first();

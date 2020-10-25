@@ -55,12 +55,12 @@ class UsersController extends Controller
         $nombre='';
         if($file=$request->file('fotouser'))
         {
-        $nombre=time().$file->getClientOriginalName();
-        $file->move(public_path().'/imagesusers/',$nombre);
+            $nombre=$file->getClientOriginalName();
+            $file->move(public_path().'/imagesusers/',$nombre);
         
         }
         else
-            $nombre='usuario.jpg';
+            $nombre='hombre.jpg';
         User::create([
             'fotouser'=>$nombre,
             'name' => $request->name,
@@ -110,7 +110,7 @@ class UsersController extends Controller
         $nombre='';
         if($file=$request->file('fotouser'))
         {
-            $nombre=time().$file->getClientOriginalName();
+            $nombre=$file->getClientOriginalName();
             $file->move(public_path().'/imagesusers/',$nombre);
         }
         User::updateOrCreate(

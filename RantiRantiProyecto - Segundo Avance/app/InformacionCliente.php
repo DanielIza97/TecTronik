@@ -7,7 +7,7 @@ class InformacionCliente extends Model
 {
     //protected $table = 'infomracion_cliente';
     protected $primaryKey='idcedulacliente';
-    protected $fillable =['idcedulacliente','user_id','telefonocliente','nombrecliente',];
+    protected $fillable =['idcedulacliente','user_id','telefonocliente','nombrecliente','generocliente'];
     public $incrementing = false;
     public $timestamps = false;
     

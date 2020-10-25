@@ -27,7 +27,13 @@
     </div>
   </div>
   <div class="form-inline"style="padding-left:1%; padding-top:1%">
-    <label for="telfclien" class="col-sm-2 control-label">teléfono</label>
+    <label for="telfclien" class="col-sm-2 control-label">Teléfono</label>
+    <div >
+      <input type="Text" name="telefonocliente">
+    </div>
+  </div>
+  <div class="form-inline"style="padding-left:1%; padding-top:1%">
+    <label for="telfclien" class="col-sm-2 control-label">Género</label>
     <div >
       <input type="Text" name="telefonocliente">
     </div>

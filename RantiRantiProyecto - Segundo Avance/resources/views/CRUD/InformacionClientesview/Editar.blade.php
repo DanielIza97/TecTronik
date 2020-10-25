@@ -26,6 +26,12 @@
       <input type="Text" name="telefonocliente" value="{{$informacion->telefonocliente}}">
     </div>
   </div>
+  <div class="form-inline"style="padding-left:1%; padding-top:1%">
+    <label for="telfclien" class="col-sm-2 control-label">Género</label>
+    <div >
+      <input type="Text" name="generocliente" value="{{$informacion->generocliente}}">
+    </div>
+  </div>
   <div class="form-inline ">
     <div class="col-sm-offset-11 col-sm-10">
       <button type="submit" class="btn btn-success" name="_method" value="PUT" >Actualizar</button>
