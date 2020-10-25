@@ -25,23 +25,32 @@
       <div >
         <input type="Text" name="detalle">
       </div>
-    </div>
+    </div><br>
     <div class="form-inline">
-      <label for="nompro" class="col-sm-2 control-label">Tipo producto</label>
+      <label for="idmedida" class="col-sm-2 control-label">Tipo de medida</label>
           <div>
-          <select name="idtipoprod">
-            @foreach($cateprod ?? '' as $categoria)
-                <option label="{{$categoria->nombretipoprod}}">{{$categoria->idtipoprod}}</option>
-            @endforeach
+          <select name="idmedida" >
+              <option label="Unidades">M2</option>
+              <option label="Libreado">M1</option>
           </select><br>
         </div>
       </div><br>
     <div class="form-inline">
-      <label for="tipprod" class="col-sm-2 control-label">Tamaño de producto</label>
-      <div >
-        <input type="Text" name="tamanoproducto">
+      <label for="nompro" class="col-sm-2 control-label">Tipo producto</label>
+      <div>
+        <select name="idtipoprod">
+          @foreach($cateprod ?? '' as $categoria)
+            <option label="{{$categoria->nombretipoprod}}">{{$categoria->idtipoprod}}</option>
+          @endforeach
+        </select><br>
       </div>
-    </div>
+    </div><br>
+      <div class="form-inline">
+        <label for="idmedida" class="col-sm-2 control-label">Tamaño de producto</label>
+        <div >
+          <input type="Text" name="tamanoproducto">
+        </div>
+      </div>
     <div class="form-inline">
       <label for="cant" class="col-sm-2 control-label">Cantidad por cada tamaño</label>
       <div >

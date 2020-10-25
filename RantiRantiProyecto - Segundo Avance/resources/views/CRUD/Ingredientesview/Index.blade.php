@@ -30,10 +30,16 @@
         <label for="nompro" class="col-sm-2 control-label">Nombre del producto</label>
         <div>
             <select name="idproducto">
-                @foreach($producto ?? '' as $productos)
-                    <option label="{{$productos->nombreproducto}}">{{$productos->idproducto}}</option>
+                @foreach($libreados ?? '' as $libreado)
+                    <option label="{{$libreado->nombreproducto}}">{{$libreado->idproducto}}</option>
                 @endforeach
             </select><br>
+        </div>
+    </div><br>
+    <div class="form-inline">
+        <label for="nompro" class="col-sm-2 control-label">Cantidad</label>
+        <div>
+            <input type="text" name="cantidad"> 
         </div>
     </div><br>
         <button type="submit" class="btn btn-success" style="text-align:center">Insertar</button>

@@ -28,6 +28,15 @@
     </div>
   </div>
   <div class="form-inline">
+    <label for="idmedida" class="col-sm-2 control-label">Tipo de medida</label>
+        <div>
+        <select name="idmedida" >
+            <option label="Unidades">M2</option>
+            <option label="Libreado">M1</option>
+        </select><br>
+      </div>
+    </div><br>
+  <div class="form-inline">
     <label for="nompro" class="col-sm-2 control-label">Tipo producto</label>
         <div>
         <select name="idtipoprod">

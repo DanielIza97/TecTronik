@@ -56,6 +56,7 @@ class ProductosController extends Controller
         $producto->cantidadproducto=$request->cantidadproducto;
         $producto->precioproducto=$request->precioproducto;
         $producto->tamanoproducto=$request->tamanoproducto;
+        $producto->idmedida=$request->idmedida;
         $producto->save();
         $producto=Producto::all();
         return view('CRUD.Productosview.Index',compact('producto'));

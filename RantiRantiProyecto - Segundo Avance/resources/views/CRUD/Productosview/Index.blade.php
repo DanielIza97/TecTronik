@@ -14,6 +14,7 @@
             <tr>
                 <th with="10px"> Id</th>
                 <th> Nombre del producto</th>
+                <th > Tipo de medida</th>
                 <th > Tipo de Producto</th>
                 <th >Detalle</th>
                 <th > Tamaño de Producto</th>
@@ -28,6 +29,7 @@
             <tr>
             <td>{{$productos->idproducto}}</td>
             <td>{{$productos->nombreproducto}}</td>
+            <td>{{$productos->idmedida}}</td>
             <td>{{$productos->idtipoprod}}</td>
             <td>{{$productos->detalle}}</td>
             <td>{{$productos->tamanoproducto}}</td>
