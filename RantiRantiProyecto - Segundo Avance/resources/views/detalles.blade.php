@@ -23,9 +23,12 @@
                         <img src="/imagesrecetas/{{$receta[0]->imagenreceta}}" alt="Receta" width="300">
                     </figure> 
                     <div class="descripción_producto">
-                        <h5 class="nombre_producto">Nombre de la receta: {{$receta[0]->nombrereceta}}</h5>
-                        <h5 class="nombre_producto">Procedimiento: {{$receta[0]->descripcionreceta}}</h5>
-                        <h5 class="nombre_producto">Ingredientes: </h5>
+                        <h4 class="nombre_producto">Nombre de la receta: {{$receta[0]->nombrereceta}}</h4>
+                        <h4 class="nombre_producto">Procedimiento: {{$receta[0]->descripcionreceta}}</h4>
+                        <h4 class="nombre_producto">Ingredientes:</h4>
+                        @foreach ($ingredientes as $ingrediente)
+                            <h5>{{$ingrediente->pivot->cantidad}} de {{$ingrediente->nombreproducto}}  </h5>
+                        @endforeach
                         <input type="number" id="quantity" name="quantity" min="1" max="5">
                         <input type="button" name="botón_agregar" value="Agregar al carrito">
                     </div>
