@@ -38,13 +38,12 @@ class CategoriasPController extends Controller
         $categoriasp=new CategoriaProducto();
         if($file=$request->file('fototipoprod'))
         {
-            $nombre=time().$file->getClientOriginalName();
+            $nombre=$file->getClientOriginalName();
             $file->move(public_path().'/imagestipoprod/',$nombre);
             $categoriasp->fototipoprod=$nombre;
         }
         $categoriasp->idtipoprod=$request->idtipoprod;
         $categoriasp->nombretipoprod=$request->nombretipoprod;
-        $categoriasp->fototipoprod=$request->fototipoprod;
         $categoriasp->save();
         $categoriasp=CategoriaProducto::all();
         return view('CRUD.CategoriaProductos.Index',compact('categoriasp'));
@@ -86,7 +85,7 @@ class CategoriasPController extends Controller
         $categoriasp->fill($request->all());
         if($file=$request->file('fototipoprod'))
         {
-            $nombre=time().$file->getClientOriginalName();
+            $nombre=$file->getClientOriginalName();
             $file->move(public_path().'/imagestipoprod/',$nombre);
             $categoriasp->fototipoprod=$nombre;
         }

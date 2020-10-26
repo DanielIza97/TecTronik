@@ -23,7 +23,7 @@
     <div class="form-inline">
       <label for="foto" class="col-sm-2 control-label">Fotrografia</label>
       <div class="form-inline">
-        <input type="file" name="imagenreceta" accept="image/*">
+        <input type="file" name="fototipoprod" accept="image/*">
       </div>
     </div>
     <div style="padding-left:1%; padding-top:1%">
