@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
@@ -36,6 +37,7 @@
   --breakpoint-xl: 1200px;
   --font-family-sans-serif: "Nunito", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
 }
 
 *,
@@ -4976,6 +4978,7 @@ input[type=button].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.25rem;
+  text-align: right;
 }
 
 .card-title {
@@ -10918,9 +10921,8 @@ img {
     float: left;
 }
 .nombre_producto {
-    text-align: center
+  font-family: Arial;
 }
 .descripción_precio {
-    text-align: center;
     font-family: Arial;
 }

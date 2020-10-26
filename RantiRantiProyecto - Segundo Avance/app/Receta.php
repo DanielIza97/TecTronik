@@ -11,7 +11,7 @@ class Receta extends Model
     public $incrementing = false;
     public $timestamps = false;
     public function productos(){
-            return $this->belongsToMany(Producto::class,'recetaxproductos','idreceta', 'idproducto');
+            return $this->belongsToMany(Producto::class,'recetaxproductos','idreceta', 'idproducto')->withPivot('cantidad');
     }
     public function caterece(){
         return $this->belongsTo(CategoriaReceta::class,'idtiporeceta');

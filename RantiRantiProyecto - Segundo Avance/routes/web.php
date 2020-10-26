@@ -17,6 +17,10 @@ Route::get('/productos/{request}','PeticionesController@show');
 
 Route::get('/recetas/{request}','PeticionesController@show');
 
+Route::get('/productos/detalle/{request}','PeticionesController@showdetalle');
+
+Route::get('/recetas/detalle/{request}','PeticionesController@showdetalle');
+
 Route::resource('/admi/users', 'UsersController');
 
 Route::resource('/informacion', 'ClientesController');

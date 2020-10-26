@@ -19,7 +19,7 @@ class ProductosController extends Controller
     }
     public function index()
     {
-        $producto=Producto::all();
+        $producto=Producto::orderBy('nombreproducto','asc')->get();
         return view('CRUD.Productosview.Index',compact('producto'));
     }
 
