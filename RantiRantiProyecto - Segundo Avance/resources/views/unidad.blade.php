@@ -1,16 +1,23 @@
 @extends('layouts.app')
-
-@section('content')
+@section('menu')
 <div>
-    <h4> Productos</h4>
-     @foreach($categoriasp ?? '' as $cate)
-        <a href="/productos/{{$cate->nombretipoprod}}">&nbsp;&nbsp;&nbsp; {{$cate->nombretipoprod}}</a>
-     @endforeach
-     <h4>Recetas</h4>
-     @foreach($categoriasr ?? '' as $cate)
-        <a href="/recetas/{{$cate->nombretiporeceta}}">&nbsp;&nbsp;&nbsp; {{$cate->nombretiporeceta}}</a>
-     @endforeach
- </div>
+    <ul>
+    <li> Productos</li>
+    @foreach($categoriasp ?? '' as $cate)
+    <ul>
+    <li><a href="/productos/{{$cate->nombretipoprod}}">{{$cate->nombretipoprod}}</a></li>
+    </ul>
+    @endforeach
+    <li>Recetas</li>
+    @foreach($categoriasr ?? '' as $cate)
+    <ul>
+        <li><a href="/recetas/{{$cate->nombretiporeceta}}">{{$cate->nombretiporeceta}}</a></li>
+    </ul>
+    @endforeach
+    </ul>
+</div>
+@endsection
+@section('content')
 @if ($categoria=='Productos')
 <br><br> <h3 style="text-align: center">Productos</h3><br>
     @foreach($respuesta ?? '' as $prod)
