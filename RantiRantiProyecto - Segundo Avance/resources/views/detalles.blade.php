@@ -1,6 +1,5 @@
 @extends('layouts.app')
 <?php
-
 ?>
 @section('menu')
 <div>
@@ -45,9 +44,9 @@
                 <h4 class="nombre_producto">Ingredientes:</h4>
                 @foreach ($ingredientes as $ingrediente)
                     <h5>{{$ingrediente->pivot->cantidad}} de {{$ingrediente->nombreproducto}}  </h5>
+                    <input type="number" id="quantity" name="quantity" min="0.5" max="5" step="{{0.5}}" readonly>
+                    <input type="button" name="botón_agregar" value="Agregar al carrito">
                 @endforeach
-                <input type="number" id="quantity" name="quantity" min="1" max="5">
-                <input type="button" name="botón_agregar" value="Agregar al carrito">
             </div>
         @endif                
     </div>
