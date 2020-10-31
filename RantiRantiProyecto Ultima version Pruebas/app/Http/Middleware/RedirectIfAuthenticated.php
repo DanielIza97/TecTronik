@@ -23,6 +23,7 @@ class RedirectIfAuthenticated
             $user=Auth::user();
             if(!($user->rol=='administrador'))
                 return redirect('/');
+                
         }
         return $next($request);
     }

@@ -49,3 +49,5 @@ Route::get('/index', 'HomeController@index');
 
 Route::get('/admi','AdministradorController@index');
 
+Route::get('/clienteperfil/{idcliente}','InformacionController@perfil');
+
