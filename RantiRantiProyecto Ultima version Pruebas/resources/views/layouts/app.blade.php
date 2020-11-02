@@ -66,9 +66,11 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <a class="dropdown-item" href="/clienteinformacion/{{Auth::user()->id}}">
-                                        {{ __('Información') }}
-                                    </a>
+                                    @if (Auth::user()->rol=='cliente')
+                                        <a class="dropdown-item" href="/clienteinformacion/{{Auth::user()->name}}">
+                                            {{ __('Información') }}
+                                        </a>
+                                    @endif
                                 </div>
                                 
                             </li>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <informacion-page identificador="{{$idcedulacliente}}">
+    <informacion-page :cedula="{{$cedula}}">
     </informacion-page>
 @endsection
 <script>

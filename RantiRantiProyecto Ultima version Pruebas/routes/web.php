@@ -49,7 +49,8 @@ Route::get('/index', 'HomeController@index');
 
 Route::get('/admi','AdministradorController@index');
 
-Route::get('/clienteinformacion/{id}','InformacionController@informacion');
+Route::get('/clienteinformacion/{id}','InformacionController@informacion')->name('cliente');
 
 Route::get('/clienteperfil/{user_id}','InformacionController@perfil');
+Route::get('/clientedirecciones/{user_id}','InformacionController@direcciones');
 

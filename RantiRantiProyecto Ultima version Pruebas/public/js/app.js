@@ -1927,24 +1927,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['identificador'],
+  props: ['id', 'cedula'],
   data: function data() {
     return {
-      informacioncliente: '',
-      ruta: '/clienteperfil/' + this.identificador
+      informacioncliente: [],
+      direccionescliente: [],
+      rutainformacion: '/clienteperfil/' + this.cedula,
+      rutadirecciones: '/clientedirecciones/' + this.cedula
     };
   },
   mounted: function mounted() {
     this.loadInformacion();
-    console.log('hola');
+    this.loadDirecciones();
   },
   methods: {
     loadInformacion: function loadInformacion() {
       var _this = this;
 
-      axios.get(this.ruta).then(function (response) {
+      axios.get(this.rutainformacion).then(function (response) {
         _this.informacioncliente = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadDirecciones: function loadDirecciones() {
+      var _this2 = this;
+
+      axios.get(this.rutadirecciones).then(function (response) {
+        _this2.direccionescliente = response.data.data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -37551,7 +37576,7 @@ var render = function() {
           _c("div", { staticClass: "card-body" }, [
             _c("h3", [_vm._v("Mi informacion")]),
             _vm._v(" "),
-            _c("h4", [_vm._v("Mira tu informacion persona a continuación")]),
+            _c("h4", [_vm._v("Mira tu informacion personal a continuación")]),
             _vm._v(" "),
             _c("h5", [_vm._v("Cedula ")]),
             _c("h5", [_vm._v(_vm._s(_vm.informacioncliente.cedula))]),
@@ -37566,6 +37591,40 @@ var render = function() {
             _c("h5", [_vm._v(_vm._s(_vm.informacioncliente.genero))])
           ])
         ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c(
+          "div",
+          { staticClass: "card" },
+          _vm._l(_vm.direccionescliente, function(direccion) {
+            return _c("div", { key: direccion.id, staticClass: "card-body" }, [
+              _c("h3", [_vm._v("Mis direcciones")]),
+              _vm._v(" "),
+              _c("h4", [_vm._v("Mira tus direcciones almacenadas")]),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Calle Principal")]),
+              _c("h5", [_vm._v(_vm._s(direccion.principal))]),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Calle Secundaria")]),
+              _c("h5", [_vm._v(" " + _vm._s(direccion.secundaria))]),
+              _vm._v(" "),
+              _c("h5", [_vm._v("No. de Casa")]),
+              _c("h5", [_vm._v(_vm._s(direccion.numero))]),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Imagen de Casa")]),
+              _c("img", {
+                attrs: {
+                  src: /imagesdireccion/ + direccion.imagen,
+                  width: "75"
+                }
+              })
+            ])
+          }),
+          0
+        )
       ])
     ])
   ])
