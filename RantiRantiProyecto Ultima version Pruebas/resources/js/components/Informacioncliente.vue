@@ -3,12 +3,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
-
                     <div class="card-body">
-                            <h4>Cedula: {{informacioncliente.cedula}}</h4><h4>Nombre del cliente: {{informacioncliente.nombre}}</h4>
-                            <h4>Telefono: {{informacioncliente.telefono}}</h4>
-                            <h4>Genero: {{informacioncliente.genero}}</h4>
+                        <h3>Mi informacion</h3>
+                        <h4>Mira tu informacion persona a continuación</h4>
+                            <h5>Cedula </h5><h5>{{informacioncliente.cedula}}</h5>
+                            <h5>Nombre del cliente</h5><h5> {{informacioncliente.nombre}}</h5>
+                            <h5>Telefono</h5><h5> {{informacioncliente.telefono}}</h5>
+                            <h5>Genero</h5><h5>{{informacioncliente.genero}}</h5>
                     </div>
                 </div>
             </div>

@@ -1926,6 +1926,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['identificador'],
   data: function data() {
@@ -37547,27 +37548,22 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Example Component")
-          ]),
-          _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("h4", [
-              _vm._v("Cedula: " + _vm._s(_vm.informacioncliente.cedula))
-            ]),
-            _c("h4", [
-              _vm._v(
-                "Nombre del cliente: " + _vm._s(_vm.informacioncliente.nombre)
-              )
-            ]),
+            _c("h3", [_vm._v("Mi informacion")]),
             _vm._v(" "),
-            _c("h4", [
-              _vm._v("Telefono: " + _vm._s(_vm.informacioncliente.telefono))
-            ]),
+            _c("h4", [_vm._v("Mira tu informacion persona a continuación")]),
             _vm._v(" "),
-            _c("h4", [
-              _vm._v("Genero: " + _vm._s(_vm.informacioncliente.genero))
-            ])
+            _c("h5", [_vm._v("Cedula ")]),
+            _c("h5", [_vm._v(_vm._s(_vm.informacioncliente.cedula))]),
+            _vm._v(" "),
+            _c("h5", [_vm._v("Nombre del cliente")]),
+            _c("h5", [_vm._v(" " + _vm._s(_vm.informacioncliente.nombre))]),
+            _vm._v(" "),
+            _c("h5", [_vm._v("Telefono")]),
+            _c("h5", [_vm._v(" " + _vm._s(_vm.informacioncliente.telefono))]),
+            _vm._v(" "),
+            _c("h5", [_vm._v("Genero")]),
+            _c("h5", [_vm._v(_vm._s(_vm.informacioncliente.genero))])
           ])
         ])
       ])

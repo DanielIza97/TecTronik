@@ -40,7 +40,7 @@
         <div class="container">
            <div class="row justify-content-center">
                 <div class="card">
-                    <div class="card-body" >
+                    <div class="card-body" style="text-align: center">
                         <a href="/recetas/{{$categoria->nombretiporeceta}}"> <img src="../imagestiporeceta/{{$categoria->fototiporece  }}" width="100" /></a>
                     </div>
                     <div class="card-header"style="text-align: center;">
