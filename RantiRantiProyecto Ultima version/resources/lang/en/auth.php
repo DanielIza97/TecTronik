@@ -16,5 +16,4 @@ return [
     'failedemail' => 'Cuenta no encontrada.',
     'failedpassword' => 'Contraseña incorrecta.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
 ];

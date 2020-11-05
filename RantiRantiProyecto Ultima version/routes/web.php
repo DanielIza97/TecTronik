@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/','PeticionesController@index_cate');
+Route::get('/ca98tewagao32ri74as14p','PeticionesController@indexproducto');
+
+Route::get('/c9789ate45641gorsdwiasr','PeticionesController@indexrecetas');
 
 Route::get('/productos/{request}','PeticionesController@show');
 
@@ -45,12 +47,13 @@ Route::get('/direcciones/{id}', 'DireccionesController@index');
 
 Auth::routes();
 
-Route::get('/index', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('/admi','AdministradorController@index');
 
 Route::get('/clienteinformacion/{id}','InformacionController@informacion')->name('cliente');
 
 Route::get('/clienteperfil/{user_id}','InformacionController@perfil');
+
 Route::get('/clientedirecciones/{user_id}','InformacionController@direcciones');
 

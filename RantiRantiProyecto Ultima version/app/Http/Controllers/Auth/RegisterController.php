@@ -54,6 +54,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'idcedulacliente' => ['required','numeric','max:9999999999','between:0159999999,2459999999'],
+            'telefonocliente' => ['required','numeric','max:9999999999','between:0900000000,0999999999'],
+            'fotouser'=>['required'],
         ]);
     }
 

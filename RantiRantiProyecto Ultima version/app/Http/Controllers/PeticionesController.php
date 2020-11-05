@@ -7,13 +7,16 @@ use App\CategoriaProducto;
 use App\CategoriaReceta;
 use App\Producto;
 use App\Receta;
+use App\Http\Resources\CategoriaProductoResource;
+use App\Http\Resources\CategoriaRecetaResource;
+
 class PeticionesController extends Controller
 {
-    //
-    public function index_cate(){
-        $categoriasp=CategoriaProducto::orderBy('nombretipoprod','asc')->get();
-        $categoriasr=CategoriaReceta::orderBy('nombretiporeceta','asc')->get();
-        return view('index',compact('categoriasr','categoriasp'));
+    public function indexproducto(){
+        return CategoriaProductoResource::collection(CategoriaProducto::orderBy('nombretipoprod','asc')->get());
+    }
+    public function indexrecetas(){
+        return CategoriaRecetaResource::collection(CategoriaReceta::orderBy('nombretiporeceta','asc')->get());
     }
     public function show($request){
         $categoriasp=CategoriaProducto::orderBy('nombretipoprod','asc')->get();

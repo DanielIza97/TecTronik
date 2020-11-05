@@ -402,6 +402,7 @@ h2,
 h3,
 .h3 {
   font-size: 1.575rem;
+  color:#006ca8;
 }
 
 h4,
@@ -10641,6 +10642,7 @@ button.bg-dark:focus {
 
   .text-lg-center {
     text-align: center !important;
+    text-decoration: none;
   }
 }
 
@@ -10937,8 +10939,9 @@ a.text-dark:focus {
   padding: 25px;
 }
 
-.card-footer .footer-content .about h1{
+.card-footer .footer-content h1{
   font-style: italic;
+  color: rgb(240,240,235 );
 }
 .card-footer .footer-content .about h1, .card-footer .footer-content .footer-section p, 
 .card-footer .footer-content .footer-section h4 {
@@ -10970,6 +10973,12 @@ a.text-dark:focus {
   text-decoration: none;
   color: rgb(240,240,235 );
 }
+
+a{
+  text-decoration: none;
+  font-family: 'Roboto';
+  color:rgb(240,240,235 );
+} 
 
 .icon i {
   width: 20px;

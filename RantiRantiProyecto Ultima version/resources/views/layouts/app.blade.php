@@ -55,8 +55,8 @@
                             @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img src="/imagesusers/{{ Auth::user()->fotouser}}" width="50px" class="image">
                                     {{ Auth::user()->name}}<span class="caret"></span>
+                                    <img src="/imagesusers/{{ Auth::user()->fotouser}}" width="50px" class="image">
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -84,7 +84,7 @@
                 
             </div>
             <nav class="navbar navbar-expand-md navbar-light bg-white1 shadow-sm">
-                @yield('menu')
+                <menu-navbar></menu-navbar>
             </nav>
         </header>
         <main class="py-4" style="">
@@ -92,35 +92,25 @@
         </main>
         <footer class="card-footer">
             <div class="footer-content">
-                <div class="footer-section about">
-                    <div>
-                        <h1>
-                            Ranti-Ranti
-                        </h1>
-                        <p>
-                            Página web universitario que trata de ayudar a la comunidad en general
-                            a conocer sobre los trastornos mentales causados por la cuarentena a causa del
-                            virus Covid-19
-
-                        </p>
-                    </div>
-                </div>
+                <h1>
+                    Ranti-Ranti
+                </h1>
                 <div class="footer-section contact icon">
                     <h4>Contactanos con:</h4>
                     <div>
-                        <p>Telefono</p>
+                        <p>Teléfono:</p>
                         <div><i class="fa fa-phone" aria-hidden="true"></i>  Telf oficinas: 4751158</div>
-                        <p>Correo Electronico</p>
+                        <p>Tambien puedes escribirnos por nuestro <br>correo electronico</p>
                         <div> <i class="fa fa-envelope-o" aria-hidden="true"></i> productosdecalid_rantiranti@gmail.com</div>
                     </div>
                 </div>
                 <div class="footer-section  links">
-                    <h4>Siguenos en nuestras redes sociales </h4>
+                    <h4>Puedes encontrarnos en:</h4>
                     <div>
                         <div class="icon">
-                            <a href="https://www.facebook.com"><i class="fa fa-facebook " aria-hidden="true"></i>infoMentalEc</a><br />
-                            <a href="https://www.instagram.com/?hl=es-la"><i class="fa fa-instagram " aria-hidden="true"></i>@infoMentalEc</a><br />
-                            <a href="https://twitter.com/home"><i class="fa fa-twitter " aria-hidden="true"></i>infoMentalEc</a><br />
+                            <a href="https://www.facebook.com"><i class="fa fa-facebook " aria-hidden="true"></i>ranti-ranti_ec</a><br />
+                            <a href="https://www.instagram.com/?hl=es-la"><i class="fa fa-instagram " aria-hidden="true"></i>@ranti-ranti_ec</a><br />
+                            <a href="https://twitter.com/home"><i class="fa fa-twitter " aria-hidden="true"></i>#ranti-ranti_ec</a><br />
                         </div>
                     </div>
                 </div>
