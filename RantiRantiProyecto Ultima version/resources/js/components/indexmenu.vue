@@ -10,7 +10,9 @@
                     <li><p class="dropdown-toggle">Productos</p>
                         <ul>
                             <div >
-                                <li v-for="categoriap in categoriasp" :key="categoriap.id"><a class="dropdown-item" v-bind:href="/recetas/+categoriap.nombre">{{categoriap.nombre}}</a></li>
+                                <li v-for="categoriap in categoriasp" :key="categoriap.id">
+                                    <a class="dropdown-item" v-bind:href="/productos/+categoriap.nombre">{{categoriap.nombre}}</a>
+                                </li>
                             </div>
                         </ul>
                     </li>

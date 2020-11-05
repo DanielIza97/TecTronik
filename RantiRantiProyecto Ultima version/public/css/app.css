@@ -76,7 +76,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  padding-top: 10%;
+  padding-top: 15%;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -10914,6 +10914,11 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+
+footer{
+  margin-top: 7%;
+}
+
 #container {
   width: 100%;
   padding-top: 12px;

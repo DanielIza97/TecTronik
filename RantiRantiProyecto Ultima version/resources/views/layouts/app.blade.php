@@ -100,7 +100,7 @@
                     <div>
                         <p>Teléfono:</p>
                         <div><i class="fa fa-phone" aria-hidden="true"></i>  Telf oficinas: 4751158</div>
-                        <p>Tambien puedes escribirnos por nuestro <br>correo electronico</p>
+                        <p>Tambien puedes escribirnos por nuestro correo electronico</p>
                         <div> <i class="fa fa-envelope-o" aria-hidden="true"></i> productosdecalid_rantiranti@gmail.com</div>
                     </div>
                 </div>
