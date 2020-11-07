@@ -69,6 +69,15 @@ ul.menu-menu>li:hover ul{display:block}
 #block-navegacionprincipal li:last-of-type>p{padding-right:0}
 @media(min-width:263px){.affix #block-navegacionprincipal{width:auto}.affix #block-ctacompraonline-3{float:right;display:inline-block !important;margin-top:0;top:10px}}
 .image{
-    border-radius: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    width: 50px;
+    display: inline-flex;
+    height: 50px;
 }
 #bloques>div{display:inline-block}
+.centrado{
+    display: inline;
+    padding: 10px;
+
+}

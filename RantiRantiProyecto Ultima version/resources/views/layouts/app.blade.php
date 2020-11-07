@@ -53,10 +53,10 @@
                                     </li>
                                 @endif
                             @else
+                            <div style="background-image:url('/imagesusers/{{ Auth::user()->fotouser}}')" class="image"></div>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name}}<span class="caret"></span>
-                                    <img src="/imagesusers/{{ Auth::user()->fotouser}}" width="50px" class="image">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <div class="centrado">{{ Auth::user()->name}}</div>  
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -75,7 +75,6 @@
                                         </a>
                                     @endif
                                 </div>
-                                
                             </li>
                             @endguest
                         </ul>
@@ -87,7 +86,7 @@
                 <menu-navbar></menu-navbar>
             </nav>
         </header>
-        <main class="py-4" style="">
+        <main class="py-4">
             @yield('content')
         </main>
         <footer class="card-footer">
@@ -121,5 +120,8 @@
             </div>
         </footer>
     </div>
+    <script>
+        src="{{mix('js/app.js')}}"        
+    </script>
 </body>
 </html>

@@ -5,10 +5,9 @@
             <div class="row justify-content-center">
                 <div  v-for="categoriap in categoriasp" :key="categoriap.id">
                     <div class="card">
-                        <div class="card-body text-lg-center" >
-                            <a class="dropdown-item" v-bind:href="/productos/+categoriap.nombre">
-                            <img v-bind:src="/imagestipoprod/+categoriap.foto" width="250" height="175"/></a>
-                        </div>
+                        <a  v-bind:href="/productos/+categoriap.nombre" >
+                            <div class="card-body text-lg-center" :style="`background-image:url('../imagestipoprod/${categoriap.foto}')`"></div>
+                        </a>
                         <div class="card-header text-lg-center" >
                             <a class="dropdown-item" v-bind:href="/productos/+categoriap.nombre">{{categoriap.nombre}}</a>
                         </div>
@@ -21,11 +20,10 @@
             <div class="row justify-content-center">
                 <div v-for="categoriar in categoriasr" :key="categoriar.idtiporeceta">
                     <div class="card" >
-                        <div class="card-body text-lg-center">
-                            <a class="dropdown-item" v-bind:href="/recetas/+categoriar.nombretiporeceta">
-                            <img v-bind:src="/imagestiporeceta/+categoriar.fototiporece" width="250" height="175"/></a>
-                        </div>
-                        <div class="card-body text-lg-center">
+                        <a v-bind:href="/recetas/+categoriar.nombretiporeceta">
+                            <div class="card-body text-lg-center" :style="`background-image:url('../imagestiporeceta/${categoriar.fototiporece}')`"></div>
+                        </a>
+                        <div class="card-header text-lg-center">
                             <a class="dropdown-item" v-bind:href="/recetas/+categoriar.nombretiporeceta">{{categoriar.nombretiporeceta}}</a>
                         </div>
                     </div>

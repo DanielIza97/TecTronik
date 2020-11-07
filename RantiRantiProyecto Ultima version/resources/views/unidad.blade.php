@@ -1,63 +1,40 @@
 @extends('layouts.app')
-@section('menu')
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupported" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-    <span class="navbar-toggler-icon"></span>
-</button>
-<div  class="collapse navbar-collapse" id="navbarSupported">
-    <div id="block-navegacionprincipal">
-        
-        <ul class="menu-menu dropdown-item1">
-            <li><p >Productos</p>
-                <ul>
-                    @foreach($categoriasp ?? '' as $cate)
-                        <li><a href="/productos/{{$cate->nombretipoprod}}">{{$cate->nombretipoprod}}</a></li>
-                    @endforeach
-                </ul>
-            </li>
-            <li><p>Recetas</p>
-                <ul>
-                    @foreach($categoriasr ?? '' as $cate)
-                        <li><a href="/recetas/{{$cate->nombretiporeceta}}">{{$cate->nombretiporeceta}}</a></li>
-                    @endforeach
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-@endsection
 @section('content')
+<article>
 @if ($categoria=='Productos')
-<br><br> <h3 style="text-align: center">Productos</h3><br>
-    @foreach($respuesta ?? '' as $prod)
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="card">
-                    <div class="card-body">
-                        <a href="/productos/detalle/{{$prod->nombreproducto}}"> <img src="../imagesproducto/{{$prod->imagenproducto}}" width="100"/></a>
-                    </div>
-                    <div class="card-header">
-                        <a href="/productos/detalle/{{$prod->nombreproducto}}">{{$prod->nombreproducto}}</a>
-                    </div>
+<div>
+    <h3 class="container text-bg-left">{{$request}}</h3><br>
+    <div class="row justify-content-center">
+        @foreach($respuesta ?? '' as $prod)
+            <div class="card">
+                <a href="/productos/detalle/{{$prod->nombreproducto}}">
+                    <div class="card-body" style="background-image:url('../imagesproducto/{{$prod->imagenproducto}}')"></div>
+                </a>
+                <div class="card-header text-lg-center">
+                    <a class="dropdown-item" href="/productos/detalle/{{$prod->nombreproducto}}">{{$prod->nombreproducto}}</a>
                 </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
+    </div>
+</div>
 @else
-<br><br> <h3 style="text-align: center">{{$categoria}}</h3><br>
-@foreach($respuesta ?? '' as $produ)
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="card">
-            <div class="card-body"style="text-align: center">
-                <a href="/recetas/detalle/{{$produ->nombrereceta}}"> <img src="../imagesrecetas/{{$produ->imagenreceta}}" width="100"/></a>
+<div>
+    <h3 class="container text-bg-left">{{$request}}</h3>
+    <div>
+        <div class="row justify-content-center">
+            @foreach($respuesta ?? '' as $produ)
+            <div class="card">
+                <a href="/recetas/detalle/{{$produ->nombrereceta}}">
+                    <div class="card-body text-lg-center"style="background-image:url('../imagesrecetas/{{$produ->imagenreceta}}')"></div>
+                </a>
+                <div class="card-header text-lg-center">
+                    <a class="dropdown-item" href="/recetas/detalle/{{$produ->nombrereceta}}">{{$produ->nombrereceta}}</a>
+                </div>
             </div>
-            <div class="card-header"style="text-align: center">
-                <a href="/recetas/detalle/{{$produ->nombrereceta}}">{{$produ->nombrereceta}}</a>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
-@endforeach
-@endif
-         
+@endif 
+</article>
 @endsection

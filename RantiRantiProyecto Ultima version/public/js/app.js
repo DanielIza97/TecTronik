@@ -2022,13 +2022,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       categoriasp: [],
-      categoriasr: []
+      categoriasr: [],
+      color: 'blue'
     };
   },
   mounted: function mounted() {
@@ -37815,23 +37814,14 @@ var render = function() {
         _vm._l(_vm.categoriasp, function(categoriap) {
           return _c("div", { key: categoriap.id }, [
             _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body text-lg-center" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-item",
-                    attrs: { href: /productos/ + categoriap.nombre }
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: /imagestipoprod/ + categoriap.foto,
-                        width: "250",
-                        height: "175"
-                      }
-                    })
-                  ]
-                )
+              _c("a", { attrs: { href: /productos/ + categoriap.nombre } }, [
+                _c("div", {
+                  staticClass: "card-body text-lg-center",
+                  style:
+                    "background-image:url('../imagestipoprod/" +
+                    categoriap.foto +
+                    "')"
+                })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-header text-lg-center" }, [
@@ -37860,26 +37850,21 @@ var render = function() {
         _vm._l(_vm.categoriasr, function(categoriar) {
           return _c("div", { key: categoriar.idtiporeceta }, [
             _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body text-lg-center" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-item",
-                    attrs: { href: /recetas/ + categoriar.nombretiporeceta }
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: /imagestiporeceta/ + categoriar.fototiporece,
-                        width: "250",
-                        height: "175"
-                      }
-                    })
-                  ]
-                )
-              ]),
+              _c(
+                "a",
+                { attrs: { href: /recetas/ + categoriar.nombretiporeceta } },
+                [
+                  _c("div", {
+                    staticClass: "card-body text-lg-center",
+                    style:
+                      "background-image:url('../imagestiporeceta/" +
+                      categoriar.fototiporece +
+                      "')"
+                  })
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "card-body text-lg-center" }, [
+              _c("div", { staticClass: "card-header text-lg-center" }, [
                 _c(
                   "a",
                   {

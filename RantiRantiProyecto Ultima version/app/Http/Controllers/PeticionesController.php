@@ -19,8 +19,6 @@ class PeticionesController extends Controller
         return CategoriaRecetaResource::collection(CategoriaReceta::orderBy('nombretiporeceta','asc')->get());
     }
     public function show($request){
-        $categoriasp=CategoriaProducto::orderBy('nombretipoprod','asc')->get();
-        $categoriasr=CategoriaReceta::orderBy('nombretiporeceta','asc')->get();
         $categoria='';
         $categoria=CategoriaProducto::where('nombretipoprod',$request)->get()->all();
         $respuesta=[];
@@ -38,24 +36,22 @@ class PeticionesController extends Controller
                 $categoria='Recetas';
             }
         }
-        return view("unidad",compact('respuesta','categoria','categoriasr','categoriasp'));
+        return view("unidad",compact('respuesta','categoria','request'));
     }
     public function showdetalle($request){
-        $categoriasp=CategoriaProducto::orderBy('nombretipoprod','asc')->get();
-        $categoriasr=CategoriaReceta::orderBy('nombretiporeceta','asc')->get();
         $producto=Producto::where('nombreproducto',$request)->get();
         $respuesta=[];
         if(count($producto)>0)
         {
             $categoria='producto';
-            return view('detalles',compact('producto','categoria','categoriasr','categoriasp'));
+            return view('detalles',compact('producto','categoria','request'));
         }
         else{
             $receta=Receta::where('nombrereceta',$request)->get();
             //$receta=Receta::find('R-001');
             $ingredientes=$receta[0]->productos->all();
             $categoria='receta';
-            return view('detalles',compact('receta','categoria','ingredientes','categoriasp','categoriasr'));
+            return view('detalles',compact('receta','categoria','ingredientes','request'));
         }
     }
 }

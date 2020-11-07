@@ -42,22 +42,26 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        $producto=new Producto();
+        date_default_timezone_set ("America/Guayaquil");
+        $nombre='';
         if($file=$request->file('imagenproducto'))
         {
-            $nombre=time().$file->getClientOriginalName();
+            $nombre=$file->getClientOriginalName();
             $file->move(public_path().'/imagesproducto/',$nombre);
-            $producto->imagenproducto=$nombre;
         }
-        $producto->idproducto=$request->idproducto;
-        $producto->nombreproducto=$request->nombreproducto;
-        $producto->detalle=$request->detalle;
-        $producto->idtipoprod=$request->idtipoprod;
-        $producto->cantidadproducto=$request->cantidadproducto;
-        $producto->precioproducto=$request->precioproducto;
-        $producto->tamanoproducto=$request->tamanoproducto;
-        $producto->idmedida=$request->idmedida;
-        $producto->save();
+        Producto::create([
+            'idproducto'=>$request->idproducto,
+            'imagenproducto'=>$nombre,
+            'nombreproducto' => $request->nombreproducto,
+            'detalle' => $request->detalle,
+            'idtipoprod' => $request->idtipoprod,
+            'cantidadproducto'=>$request->cantidadproducto,
+            'precioproducto'=>$request->precioproducto,
+            'tamanoproducto'=>$request->tamanoproducto,
+            'idmedida'=>$request->idmedida,
+            'created_at'=>date("Y-m-d"),
+            'updated_at'=>date("Y-m-d"),
+        ]);
         $producto=Producto::all();
         return view('CRUD.Productosview.Index',compact('producto'));
     }

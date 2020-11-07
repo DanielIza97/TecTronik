@@ -5,16 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Crear Cuenta') }}</div>
+                <div class="card-header1">{{ __('Crear Cuenta') }}</div>
 
-                <div class="card-body">
+                <div class="card-body1">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="idcedulacliente" class="col-md-4 col-form-label text-md-right">{{ __('Cedula') }}</label>
                             <div style="color:red">*</div>
                             <div class="col-md-6">
-                                <input id="idcedulacliente" type="text" class="form-control @error('idcedulacliente') is-invalid @enderror" name="idcedulacliente"  required autocomplete="idcedulacliente" autofocus>
+                                <input id="idcedulacliente" type="text" class="form-control @error('idcedulacliente') is-invalid @enderror" name="idcedulacliente" value="{{ old('idcedulacliente') }}" required autocomplete="idcedulacliente" autofocus>
                                 @error('idcedulacliente')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -81,7 +81,7 @@
                             <label  for="fotouser" class="col-md-4 col-form-label text-md-right">{{ __('Fotografia') }}</label>
                             <div style="color:red">*</div>                            
                             <div class="col-md-6">
-                                <input id="fotouser" type="file" class="@error('fotouser') is-invalid @enderror" name="fotouser" accept="image/*">
+                                <input id="fotouser" type="file" class="@error('fotouser') is-invalid @enderror" name="fotouser" value="{{ old('fotouser') }}" accept="image/*">
                                 @error('fotouser')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

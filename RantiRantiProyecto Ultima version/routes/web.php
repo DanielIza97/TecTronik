@@ -51,7 +51,7 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/admi','AdministradorController@index');
 
-Route::get('/clienteinformacion/{id}','InformacionController@informacion')->name('cliente');
+Route::get('/clienteinformacion/{id}','InformacionController@informacion');
 
 Route::get('/clienteperfil/{user_id}','InformacionController@perfil');
 
