@@ -19,9 +19,13 @@ Route::get('/productos/{request}','PeticionesController@show');
 
 Route::get('/recetas/{request}','PeticionesController@show');
 
-Route::get('/productos/detalle/{request}','PeticionesController@showdetalle');
+Route::get('/{tipo}/detalle/{request}','PeticionesController@showviewdetalle');
 
-Route::get('/recetas/detalle/{request}','PeticionesController@showdetalle');
+Route::get('/detallesp/{request}','PeticionesController@showdetalleproducto');
+
+Route::get('/detallesr/{request}','PeticionesController@showdetallereceta');
+
+Route::get('/detallesi/{request}','PeticionesController@showdetalleingredientes');
 
 Route::resource('/admi/users', 'UsersController');
 

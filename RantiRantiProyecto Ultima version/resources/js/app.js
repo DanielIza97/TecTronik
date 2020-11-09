@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('informacion-page', require('./components/Informacioncliente.vue').default);
 Vue.component('menu-navbar', require('./components/indexmenu.vue').default);
 Vue.component('categorias-slider', require('./components/categorias.vue').default);
+Vue.component('detalle-page', require('./components/detalle.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

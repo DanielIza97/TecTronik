@@ -9,6 +9,7 @@ use App\Producto;
 use App\Receta;
 use App\Http\Resources\CategoriaProductoResource;
 use App\Http\Resources\CategoriaRecetaResource;
+use App\Http\Resources\DetalleResource;
 
 class PeticionesController extends Controller
 {
@@ -38,20 +39,19 @@ class PeticionesController extends Controller
         }
         return view("unidad",compact('respuesta','categoria','request'));
     }
-    public function showdetalle($request){
+    public function showviewdetalle($tipo,$request){
+        return view('detalles',compact('tipo','request'));
+    }
+    public function showdetalleproducto($request){
         $producto=Producto::where('nombreproducto',$request)->get();
-        $respuesta=[];
-        if(count($producto)>0)
-        {
-            $categoria='producto';
-            return view('detalles',compact('producto','categoria','request'));
-        }
-        else{
-            $receta=Receta::where('nombrereceta',$request)->get();
-            //$receta=Receta::find('R-001');
-            $ingredientes=$receta[0]->productos->all();
-            $categoria='receta';
-            return view('detalles',compact('receta','categoria','ingredientes','request'));
-        }
+        return DetalleResource::collection($producto)->all()[0];
+    }
+    public function showdetallereceta($request){
+        $receta=Receta::where('nombrereceta',$request)->get();
+        return DetalleResource::collection($receta)->all()[0];//DetalleResource::collection($receta)->all()[0]->productos->all()[1]->pivot;
+    }
+    public function showdetalleingredientes($request){
+        $receta=Receta::where('nombrereceta',$request)->get()[0]->productos;
+        return DetalleResource::collection($receta);//DetalleResource::collection($receta)->all()[0]->productos->all()[1]->pivot;
     }
 }
