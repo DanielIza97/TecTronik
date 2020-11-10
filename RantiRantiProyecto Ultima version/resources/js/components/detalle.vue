@@ -54,11 +54,12 @@
                         <h5 class="custom-control-inline">Precio por libra: </h5><i class="fa fa-dollar"></i>
                         <p class="custom-control-inline">{{producto.precioproducto}}</p>
                     </div>
-                    <h6 >Agregar producto al carrito</h6>
-                    <agregar-page :medida="producto.idmedida"></agregar-page>
+                    <div class="text-center">
+                        <h6 >Agregar producto al carrito</h6>
+                        <agregar-page :medida="producto.idmedida"></agregar-page>
+                    </div>
                 </div>
             </div> 
-            {{producto}}
         </div>
     </div>
 </template>

@@ -2,7 +2,7 @@
 @section('content')
 <article>
 @if ($categoria=='Productos')
-<div>
+<div >
     <h3 class="container text-bg-left">{{$request}}</h3><br>
     <div class="row justify-content-center">
         @foreach($respuesta ?? '' as $prod)

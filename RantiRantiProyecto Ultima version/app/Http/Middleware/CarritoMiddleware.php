@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
-class Aminis
+
+class CarritoMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,13 +15,6 @@ class Aminis
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::user()==null)
-        {
-            $rol=false;
-            $user=Auth::user();
-            if(($user->rol=='administrador'))
-            return $next($request);
-        }
-        return redirect('/');
+        return $next($request);
     }
 }

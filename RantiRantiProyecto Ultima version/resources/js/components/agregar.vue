@@ -1,6 +1,6 @@
 <template>
 <div class="pt1">
-    <button class=" btn fa fa-minus-circle" @click="resta"  ></button>
+    <button class=" btn fa fa-minus-circle text-lg-center" @click="resta"  ></button>
                 <div class="linea" v-if="medida=='M1'">
                     <div class="linea pt1">
                     <div class="linea" v-if="cantidad===0.5">{{render=''}} media libra</div>
@@ -15,6 +15,7 @@
                     {{cantidad}}
                 </div>
     <button class=" btn fa fa-plus-circle" @click="suma"></button>
+    <button class="btn btn-block btn-add my-4"> Agregar </button>
 </div>
 </template>
 <script>
@@ -38,7 +39,6 @@ export default {
             }
             else
                 this.cantidad=this.cantidad+1;
-            console.log(this.render);
         },
         resta:function(){
             if(this.medida=='M1')
@@ -56,7 +56,6 @@ export default {
                 if(this.cantidad>0)
                     this.cantidad=this.cantidad-1;
             }
-            console.log(this.render);
         }
     }
 }

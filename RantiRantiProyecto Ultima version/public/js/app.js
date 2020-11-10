@@ -2007,6 +2007,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['medida'],
   data: function data() {
@@ -2022,8 +2023,6 @@ __webpack_require__.r(__webpack_exports__);
         if (this.cantidad / 0.5 % 2 == 1) this.render = this.render + 1;
         this.cantidad = this.cantidad + 0.5;
       } else this.cantidad = this.cantidad + 1;
-
-      console.log(this.render);
     },
     resta: function resta() {
       if (this.medida == 'M1') {
@@ -2036,8 +2035,6 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         if (this.cantidad > 0) this.cantidad = this.cantidad - 1;
       }
-
-      console.log(this.render);
     }
   }
 });
@@ -2131,6 +2128,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -37990,7 +37988,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "pt1" }, [
     _c("button", {
-      staticClass: " btn fa fa-minus-circle",
+      staticClass: " btn fa fa-minus-circle text-lg-center",
       on: { click: _vm.resta }
     }),
     _vm._v(" "),
@@ -38033,7 +38031,11 @@ var render = function() {
     _c("button", {
       staticClass: " btn fa fa-plus-circle",
       on: { click: _vm.suma }
-    })
+    }),
+    _vm._v(" "),
+    _c("button", { staticClass: "btn btn-block btn-add my-4" }, [
+      _vm._v(" Agregar ")
+    ])
   ])
 }
 var staticRenderFns = []
@@ -38251,62 +38253,65 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-sm " },
-              [
-                _c(
-                  "h2",
-                  { staticClass: "line-bottom text-center align-self-start" },
-                  [_vm._v(_vm._s(_vm.producto.nombreproducto))]
-                ),
-                _vm._v(" "),
-                _c("h5", [_vm._v("Detalle:")]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(_vm.producto.detalle))]),
-                _vm._v(" "),
-                _vm.producto.idmedida === "M2"
-                  ? _c("div", [
-                      _c("div", [
-                        _c("h5", { staticClass: "custom-control-inline" }, [
-                          _vm._v("Tamaño por unidad:")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "custom-control-inline" }, [
-                          _vm._v(_vm._s(_vm.producto.tamanoproducto))
-                        ])
+            _c("div", { staticClass: "col-sm " }, [
+              _c(
+                "h2",
+                { staticClass: "line-bottom text-center align-self-start" },
+                [_vm._v(_vm._s(_vm.producto.nombreproducto))]
+              ),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Detalle:")]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.producto.detalle))]),
+              _vm._v(" "),
+              _vm.producto.idmedida === "M2"
+                ? _c("div", [
+                    _c("div", [
+                      _c("h5", { staticClass: "custom-control-inline" }, [
+                        _vm._v("Tamaño por unidad:")
                       ]),
                       _vm._v(" "),
-                      _c("div", [
-                        _c("h5", { staticClass: "custom-control-inline" }, [
-                          _vm._v("Precio: ")
-                        ]),
-                        _c("i", { staticClass: "fa fa-dollar" }),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "custom-control-inline" }, [
-                          _vm._v(_vm._s(_vm.producto.precioproducto))
-                        ])
+                      _c("p", { staticClass: "custom-control-inline" }, [
+                        _vm._v(_vm._s(_vm.producto.tamanoproducto))
                       ])
-                    ])
-                  : _c("div", [
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
                       _c("h5", { staticClass: "custom-control-inline" }, [
-                        _vm._v("Precio por libra: ")
+                        _vm._v("Precio: ")
                       ]),
                       _c("i", { staticClass: "fa fa-dollar" }),
                       _vm._v(" "),
                       _c("p", { staticClass: "custom-control-inline" }, [
                         _vm._v(_vm._s(_vm.producto.precioproducto))
                       ])
+                    ])
+                  ])
+                : _c("div", [
+                    _c("h5", { staticClass: "custom-control-inline" }, [
+                      _vm._v("Precio por libra: ")
                     ]),
-                _vm._v(" "),
-                _c("h6", [_vm._v("Agregar producto al carrito")]),
-                _vm._v(" "),
-                _c("agregar-page", { attrs: { medida: _vm.producto.idmedida } })
-              ],
-              1
-            )
-          ]),
-          _vm._v(" \n        " + _vm._s(_vm.producto) + "\n    ")
+                    _c("i", { staticClass: "fa fa-dollar" }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "custom-control-inline" }, [
+                      _vm._v(_vm._s(_vm.producto.precioproducto))
+                    ])
+                  ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "text-center" },
+                [
+                  _c("h6", [_vm._v("Agregar producto al carrito")]),
+                  _vm._v(" "),
+                  _c("agregar-page", {
+                    attrs: { medida: _vm.producto.idmedida }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
         ])
   ])
 }
