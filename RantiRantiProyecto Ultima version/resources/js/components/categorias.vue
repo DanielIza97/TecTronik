@@ -2,7 +2,7 @@
     <div>
         <h3 class="container text-lg-left">Productos</h3>
         <div>
-            <div class="row justify-content-center">
+            <div class="row offset-md1 justify-content-start">
                 <div  v-for="categoriap in categoriasp" :key="categoriap.id">
                     <div class="card">
                         <a  v-bind:href="/productos/+categoriap.nombre" >
@@ -17,7 +17,7 @@
         </div>
         <h3 class="container text-lg-left">Recetas</h3>
         <div>
-            <div class="row justify-content-center">
+            <div class="row offset-md1 justify-content-start">
                 <div v-for="categoriar in categoriasr" :key="categoriar.idtiporeceta">
                     <div class="card" >
                         <a v-bind:href="/recetas/+categoriar.nombretiporeceta">

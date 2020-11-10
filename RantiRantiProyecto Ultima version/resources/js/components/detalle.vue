@@ -1,36 +1,66 @@
 <template>
-    <article>
-        <section>
-            <div class="container">
-                <div class="row justify-content-start">
-                    <h3 class="col-12 ">{{receta.nombrereceta}}</h3>
+    <div class="container">
+        <div v-if="tipo==='recetas'">
+            <div class="row justify-content-start">
+                <h2 class="col-12 ">{{receta.nombrereceta}}</h2>
+            </div>
+            <div class="row justify-content-start">
+                <img class="offset-md-2 py-4" alt="buscando" :src="`/imagesrecetas/${receta.imagenreceta}`"  width=600 height="300">
+            </div>
+            <div class="row">
+                <div  class="col-md-4 offset-md1">
+                    <h3 class="py-4">Preparacion</h3>
+                    <p class="pl-5">{{receta.descripcionreceta}}</p>
                 </div>
-                <div class="row justify-content-center">
-                    <img class="col-10 py-4" :src="`/imagesrecetas/${receta.imagenreceta}`">
-                </div>
-                <div class="row">
-                    <div  class="col-md-4 offset-md-1">
-                        <h4 class="py-4">Preparacion</h4>
-                        <p class="pl-5">{{receta.descripcionreceta}}</p>
-                    </div>
-                    <div class="offset-md-1">  
-                        <h4>Ingredientes</h4>
-                        <div v-for="ingrediente in ingredientes" :key="ingrediente.idproducto">
-                            <div v-if="ingrediente.idmedida === 'M1'">
-                                <ul class="icon" >
-                                    <i class="fa fa-check-circle "></i>{{ingrediente.pivot.cantidad}} de {{ingrediente.nombreproducto}}
-                                </ul>
-                            </div>
-                            <div v-else>
-                                unidad
-                            </div>
+                <div class="offset-md1 col-md-5">  
+                    <h3 class="py-4">Ingredientes</h3>
+                    <div v-for="ingrediente in ingredientes" :key="ingrediente.idproducto">
+                        <div v-if="ingrediente.idmedida === 'M1'">
+                            <ul class="icon" >
+                                <i class="fa fa-check-circle "></i>{{ingrediente.pivot.cantidad}} de {{ingrediente.nombreproducto}}
+                            </ul>
+                        </div>
+                        <div v-else>
+                            <ul class="icon" >
+                                <i class="fa fa-check-circle "></i>{{ingrediente.pivot.cantidad}} {{ingrediente.nombreproducto}}
+                            </ul>
+                        </div>
+                        <div class="offset-md1 pt1">
+                            <h6 >Comprar ingrediente</h6>
+                            <agregar-page :medida="ingrediente.idmedida"></agregar-page>
                         </div>
                     </div>
-                </div>   
-                        {{ingredientes}}
-            </div>
-        </section>
-    </article>
+                </div>
+            </div>   
+        </div>
+        <div v-else>
+            <div class="row offset-md-1">
+                <div><img class="card-body2" :src="`/imagesproducto/${producto.imagenproducto}`" alt=""></div>
+                <div class="col-sm ">
+                    <h2 class="line-bottom text-center align-self-start">{{producto.nombreproducto}}</h2>
+                    <h5>Detalle:</h5>
+                    <p>{{producto.detalle}}</p>
+                    <div v-if="producto.idmedida==='M2'">
+                        <div>
+                            <h5  class="custom-control-inline" >Tamaño por unidad:</h5>
+                            <p class="custom-control-inline">{{producto.tamanoproducto}}</p>
+                        </div>
+                        <div>
+                            <h5 class="custom-control-inline">Precio: </h5><i class="fa fa-dollar"></i>
+                            <p class="custom-control-inline">{{producto.precioproducto}}</p>
+                        </div>
+                    </div>
+                    <div v-else>
+                        <h5 class="custom-control-inline">Precio por libra: </h5><i class="fa fa-dollar"></i>
+                        <p class="custom-control-inline">{{producto.precioproducto}}</p>
+                    </div>
+                    <h6 >Agregar producto al carrito</h6>
+                    <agregar-page :medida="producto.idmedida"></agregar-page>
+                </div>
+            </div> 
+            {{producto}}
+        </div>
+    </div>
 </template>
 <script>
 export default {

@@ -81,3 +81,10 @@ ul.menu-menu>li:hover ul{display:block}
     padding: 10px;
 
 }
+div.linea{
+    display: inline-flex;
+    width: 115px;
+}
+div.linea2{
+    display: inline-flex;
+}
