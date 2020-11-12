@@ -61,3 +61,5 @@ Route::get('/clienteperfil/{user_id}','InformacionController@perfil');
 
 Route::get('/clientedirecciones/{user_id}','InformacionController@direcciones');
 
+Route::get('/confirmaautentificacion','CarritoController@verificar');
+

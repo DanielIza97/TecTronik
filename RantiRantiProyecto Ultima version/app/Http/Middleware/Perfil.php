@@ -22,6 +22,6 @@ class Perfil
             if(($user->rol=='cliente'))
                 return $next($request);
         }
-        return redirect('/');
+        return redirect('/login');
     }
 }

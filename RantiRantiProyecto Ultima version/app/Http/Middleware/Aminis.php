@@ -22,6 +22,6 @@ class Aminis
             if(($user->rol=='administrador'))
             return $next($request);
         }
-        return redirect('/');
+        return redirect('/login');
     }
 }

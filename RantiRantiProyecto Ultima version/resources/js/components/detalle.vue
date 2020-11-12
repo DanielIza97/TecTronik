@@ -27,7 +27,7 @@
                         </div>
                         <div class="offset-md1 pt1">
                             <h6 >Comprar ingrediente</h6>
-                            <agregar-page :medida="ingrediente.idmedida"></agregar-page>
+                            <agregar-page :medida="ingrediente.idmedida" :product="ingrediente"></agregar-page>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="text-center">
                         <h6 >Agregar producto al carrito</h6>
-                        <agregar-page :medida="producto.idmedida"></agregar-page>
+                        <agregar-page :medida="producto.idmedida" :product="producto"></agregar-page>
                     </div>
                 </div>
             </div> 

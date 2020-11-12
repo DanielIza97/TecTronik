@@ -8,10 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo.png')}}" />
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -19,6 +18,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -36,14 +36,14 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
-
+                            
                         </ul>
 
                         <!-- Right Side Of Navbar -->
+                        <carrito-navbar></carrito-navbar>
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                             @guest
-                            
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesion') }}</a>
                                 </li>
@@ -60,6 +60,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if (Auth::user()->rol=='cliente')
+                                        <a class="dropdown-item" href="/clienteinformacion/{{Auth::user()->name}}">
+                                            {{ __('Información') }}
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -67,20 +72,15 @@
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        
                                         @csrf
                                     </form>
-                                    @if (Auth::user()->rol=='cliente')
-                                        <a class="dropdown-item" href="/clienteinformacion/{{Auth::user()->name}}">
-                                            {{ __('Información') }}
-                                        </a>
-                                    @endif
                                 </div>
                             </li>
                             @endguest
                         </ul>
                     </div>
                 </div>
-                
             </div>
             <nav class="navbar navbar-expand-md navbar-light bg-white1 shadow-sm">
                 <menu-navbar></menu-navbar>
@@ -121,7 +121,8 @@
         </footer>
     </div>
     <script>
-        src="{{mix('js/app.js')}}"        
+        src="{{mix('js/app.js')}}"  
+
     </script>
 </body>
 </html>

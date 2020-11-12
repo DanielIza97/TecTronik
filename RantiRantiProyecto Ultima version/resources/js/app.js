@@ -24,6 +24,8 @@ Vue.component('menu-navbar', require('./components/indexmenu.vue').default);
 Vue.component('categorias-slider', require('./components/categorias.vue').default);
 Vue.component('detalle-page', require('./components/detalle.vue').default);
 Vue.component('agregar-page', require('./components/agregar.vue').default);
+Vue.component('carrito-navbar', require('./components/carrito.vue').default);
+import store from './store';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -32,4 +34,5 @@ Vue.component('agregar-page', require('./components/agregar.vue').default);
 
 const app = new Vue({
     el: '#app',
+    store,
 });
