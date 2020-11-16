@@ -53357,7 +53357,7 @@ export default new Vuex.Store({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Documentos\GitHub\UnGrupoMas\RantiRantiProyecto Ultima version\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Daniel\Documents\GitHub\NuevasTecnicas\RantiRantiProyecto Ultima version\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })
