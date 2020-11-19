@@ -78,10 +78,10 @@
                         </div>
            
                         <div class="form-group row">
-                            <label  for="fotouser" class="col-md-4 col-form-label text-md-right">{{ __('Fotografia') }}</label>
+                            <label for="fotouser" class="col-md-4 col-form-label text-md-right" >{{ __('Fotografia') }}</label>
                             <div style="color:red">*</div>                            
                             <div class="col-md-6">
-                                <input id="fotouser" type="file" class="@error('fotouser') is-invalid @enderror" name="fotouser" value="{{ old('fotouser') }}" accept="image/*">
+                                <input style="color:red;" id="fotouser" type="file" class="@error('fotouser') is-invalid @enderror" name="fotouser" value="{{ old('fotouser') }}" accept="image/*">
                                 @error('fotouser')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -129,7 +129,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary btn-sm">
                                     {{ __('Crear Cuenta') }}
                                 </button>
                             </div>

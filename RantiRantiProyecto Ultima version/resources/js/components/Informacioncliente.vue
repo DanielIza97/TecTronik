@@ -4,12 +4,12 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <h3>Mi informacion</h3>
-                        <h4>Mira tu informacion personal a continuación</h4>
-                        <h5>Cedula </h5><h5>{{informacioncliente.cedula}}</h5>
-                        <h5>Nombre del cliente</h5><h5> {{informacioncliente.nombre}}</h5>
-                        <h5>Telefono</h5><h5> {{informacioncliente.telefono}}</h5>
-                        <h5>Genero</h5><h5>{{informacioncliente.genero}}</h5>
+                        <h3 style="text-align:center">Mi información</h3>
+                        <h5 style="text-align:center">  Mira tu información personal a continuación</h5>
+                        <h5>Cedula: </h5><h5 style="color:white">{{informacioncliente.cedula}}</h5>
+                        <h5>Nombre del cliente</h5><h5 style="color:white"> {{informacioncliente.nombre}}</h5>
+                        <h5>Telefono</h5><h5 style="color:white"> {{informacioncliente.telefono}}</h5>
+                        <h5>Genero:</h5><h5 style="color:white">{{informacioncliente.genero}}</h5>
                     </div>
                 </div>
             </div>
