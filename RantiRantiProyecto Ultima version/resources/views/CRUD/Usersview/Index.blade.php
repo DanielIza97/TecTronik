@@ -7,7 +7,7 @@
 <div class="col-sm-8">
     <h2>
         Listado de Usuarios
-        <a href="{{route('users.create')}}"class="btn btn-primary pull-right">nuevo</a>
+        <a href="{{route('users.create')}}"class="btn btn-primary">nuevo</a>
     </h2>
     @if(session('mensaje'))
         <div class="alert alert-success">

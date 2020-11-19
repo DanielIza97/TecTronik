@@ -2091,71 +2091,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['descripcioncarrito']))
-  /*
-  props:['medida','product'],
-  data:function(){
-      return {
-          cantidad:0,
-          render:0,
-          verificado:'',
-          carritodescripcion:[],
-          carritocatidad:[],
-      }
-  },
-  mounted(){
-          axios.get('/confirmaautentificacion')
-          .then((response)=>{
-              this.verificado=response.data.data;
-          })
-          .catch(function(error){
-              console.log(error)
-          });
-          
-  },
-  methods:{
-      suma:function(){
-          if(this.medida=='M1')
-          {
-              if(this.render=='')
-                  this.render=0;
-              if((this.cantidad/0.5)%2==1)
-                  this.render=this.render+1;
-              this.cantidad=this.cantidad+0.5;
-          }
-          else
-          {
-              this.cantidad=this.cantidad+1;
-          }
-      },
-      resta:function(){
-          if(this.medida=='M1')
-          {
-              if(this.cantidad==0.5)
-                  this.render=0;
-              if(this.cantidad>0){
-                  if((this.cantidad/0.5)%2==0)
-                      this.render=this.render-1;
-                  this.cantidad=this.cantidad-0.5;
-              }
-          }
-          else
-          {
-              if(this.cantidad>0)
-                  this.cantidad=this.cantidad-1;
-          }
-      },
-      agregarAlCarrito:function(producto,canti){
-          this.$store.dispatch('agregar',this.carritodescripcion);
-         
-      },
-      eliminardelCarrito:function(index){
-          this.$store.dispatch("eliminar",this.carritodescripcion);
-      }
-    },
-  computed:{
-      ...mapState(['descripcioncarrito'])
-  }*/
-
 });
 
 /***/ }),
@@ -38843,16 +38778,6 @@ var render = function() {
           _vm.verificado.valido === true
             ? _c("div", [
                 _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-block btn-add my-4",
-                    attrs: { href: "/login" }
-                  },
-                  [_vm._v("Agregar")]
-                )
-              ])
-            : _c("div", [
-                _c(
                   "button",
                   {
                     staticClass: "btn btn-block btn-add my-4",
@@ -38863,6 +38788,16 @@ var render = function() {
                     }
                   },
                   [_vm._v(" Agregar ")]
+                )
+              ])
+            : _c("div", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-block btn-add my-4",
+                    attrs: { href: "/login" }
+                  },
+                  [_vm._v("Agregar")]
                 )
               ])
         ])
