@@ -1,6 +1,6 @@
 @extends('../layouts.PlantillaGeneral')
 @section('titulo')
-<title>Laravel</title>
+<title>Ranti</title>
 @endsection   
 @section('contenido')
 

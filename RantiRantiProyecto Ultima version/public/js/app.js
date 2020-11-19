@@ -38909,21 +38909,33 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-body" }, [
-            _c("h3", [_vm._v("Mi informacion")]),
+            _c("h3", { staticStyle: { "text-align": "center" } }, [
+              _vm._v("Mi información")
+            ]),
             _vm._v(" "),
-            _c("h4", [_vm._v("Mira tu informacion personal a continuación")]),
+            _c("h5", { staticStyle: { "text-align": "center" } }, [
+              _vm._v("  Mira tu información personal a continuación")
+            ]),
             _vm._v(" "),
-            _c("h5", [_vm._v("Cedula ")]),
-            _c("h5", [_vm._v(_vm._s(_vm.informacioncliente.cedula))]),
+            _c("h5", [_vm._v("Cedula: ")]),
+            _c("h5", { staticStyle: { color: "white" } }, [
+              _vm._v(_vm._s(_vm.informacioncliente.cedula))
+            ]),
             _vm._v(" "),
             _c("h5", [_vm._v("Nombre del cliente")]),
-            _c("h5", [_vm._v(" " + _vm._s(_vm.informacioncliente.nombre))]),
+            _c("h5", { staticStyle: { color: "white" } }, [
+              _vm._v(" " + _vm._s(_vm.informacioncliente.nombre))
+            ]),
             _vm._v(" "),
             _c("h5", [_vm._v("Telefono")]),
-            _c("h5", [_vm._v(" " + _vm._s(_vm.informacioncliente.telefono))]),
+            _c("h5", { staticStyle: { color: "white" } }, [
+              _vm._v(" " + _vm._s(_vm.informacioncliente.telefono))
+            ]),
             _vm._v(" "),
-            _c("h5", [_vm._v("Genero")]),
-            _c("h5", [_vm._v(_vm._s(_vm.informacioncliente.genero))])
+            _c("h5", [_vm._v("Genero:")]),
+            _c("h5", { staticStyle: { color: "white" } }, [
+              _vm._v(_vm._s(_vm.informacioncliente.genero))
+            ])
           ])
         ])
       ])
