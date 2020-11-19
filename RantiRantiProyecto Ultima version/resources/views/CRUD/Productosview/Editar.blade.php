@@ -24,7 +24,7 @@
   <div class="form-inline">
     <label for="telfclien" class="col-sm-2 control-label">Detalle</label>
     <div >
-      <input type="Text" name="detalle"value="{{$producto->detalle}}">
+      <textarea name="detalle" rows="10" cols="50">{{$producto->detalle}}</textarea>
     </div>
   </div>
   <div class="form-inline">

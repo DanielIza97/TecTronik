@@ -66,12 +66,12 @@ export default new Vuex.Store({
 
 export default new Vuex.Store({
     state:{
-      descripcioncarrito: [],
+      descripcioncarrito:0,
       carritocatidad:[]
     },
     mutations:{
       agregar1:function(state,product){
-        state.descripcioncarrito.push(product);
+        state.descripcioncarrito=product;
       },
       agregar2:function(state,cantidad){
         state.carritocatidad.push(cantidad);

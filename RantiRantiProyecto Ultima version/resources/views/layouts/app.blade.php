@@ -11,6 +11,8 @@
     <link rel="icon" type="image/x-icon" href="{{asset('images/logo.png')}}" />
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/jquery-3.5.1.js') }}" defer></script>
+    <script src="{{ asset('js/toastr.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -18,6 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -45,7 +48,7 @@
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesion') }}</a>
+                                    <a class="nav-link" href="{{url('login')}}">{{ __('Iniciar sesion') }}</a>
                                 </li>
                                 @if (Route::has('register'))
                                     <li class="nav-item">
@@ -86,7 +89,7 @@
                 <menu-navbar></menu-navbar>
             </nav>
         </header>
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
         <footer class="card-footer">
@@ -120,9 +123,6 @@
             </div>
         </footer>
     </div>
-    <script>
-        src="{{mix('js/app.js')}}"  
-
-    </script>
+    <script>src="{{mix('js/app.js')}}"  </script>
 </body>
 </html>

@@ -17,26 +17,15 @@
         <button class=" btn fa fa-plus-circle" @click="suma"></button>
         <div v-if="cantidad>0">
         <div v-if="verificado.valido===true">
-            <button class="btn btn-block btn-add my-4" @click="agregarAlCarrito(product,cantidad)"> Agregar </button>
+            <button class="btn btn-block btn-add my-4" @click="agregar(cantidad)"> Agregar </button>
         </div>
         <div v-else>
             <a href="/login" class="btn btn-block btn-add my-4">Agregar</a>
         </div>
     </div>
-    <ul>
-        <div v-for="(descripcion,index) in descripcioncarrito" :key="index">
-            <li>
-                {{descripcion.nombreproducto}}  {{carritocatidad[index]}}
-                <button @click="eliminardelCarrito(index)">
-                    eliminar
-                </button>
-            </li>
-        </div>
-    </ul>
 </div>
 </template>
 <script>
-import {mapState,mapMutations} from 'vuex';
 export default {
     props:['medida','product'],
     data:function(){
@@ -44,8 +33,17 @@ export default {
             cantidad:0,
             render:0,
             verificado:'',
-            carritodescripcion:[],
+            carritodescripcion:
+                {id:this.product.idproducto,
+                    nombre:this.product.nombreproducto,
+                    precio:this.product.precioproducto,
+                    detalle:this.product.detalleproducto,
+                    canti:0
+                }
+            ,
             carritocatidad:[],
+            respuesta:[],
+            agregarurl:'',
         }
     },
     mounted(){
@@ -89,23 +87,30 @@ export default {
                     this.cantidad=this.cantidad-1;
             }
         },
-        agregarAlCarrito:function(product,cantidad){
-            this.carritodescripcion.push(product);
-            this.carritocatidad.push(cantidad);
-            this.$store.dispatch("agregar1",product);
-            this.$store.dispatch("agregar2",cantidad);
-        },
         eliminardelCarrito:function(index){
-            var producto = this.carritodescripcion[index];
-            var cantidad=this.carritocatidad[index];
-            this.carritodescripcion.splice(index,1);
-            this.carritocatidad.splice(index,1);
-            this.$store.dispatch("eliminar1",index);
-            this.$store.dispatch("eliminar2",index);
+            this.respuesta.splice(index,1);
+            this.agregarurl='/eliminardelcarrito';
+            axios.post(this.agregarurl,this.respuesta)
+            .then(response=>{
+                this.respuesta=response.data.data;
+            })
+            .catch(function(error){
+                console.log(error)
+            });
+        },
+        agregar:function(canti){
+            //this.carritodescripcion.push(this.product);
+            this.agregarurl='/agregarcarrito/'+canti;
+            axios.post(this.agregarurl,this.product)
+            .then(response=>{
+                this.respuesta=response.data.data;
+                toastr.success('Agregado al carrito correctamente');
+                
+            })
+            .catch(function(error){
+                console.log(error)
+            });
         }
-    },
-    computed:{
-        ...mapState(['descripcioncarrito'])
     }
 }
 </script>

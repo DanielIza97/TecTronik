@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\CrudControllers\InformacionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,27 +27,29 @@ Route::get('/detallesr/{request}','PeticionesController@showdetallereceta');
 
 Route::get('/detallesi/{request}','PeticionesController@showdetalleingredientes');
 
-Route::resource('/admi/users', 'UsersController');
+Route::resource('/admi/users', 'CrudControllers\UsersController');
 
-Route::resource('/informacion', 'ClientesController');
+Route::resource('/informacion', 'CrudControllers\ClientesController');
 
-Route::resource('/productosprotegido', 'ProductosController');
+Route::resource('/productosprotegido', 'CrudControllers\ProductosController');
 
-Route::resource('/recetasprotegido', 'RecetasController');
+Route::resource('/recetasprotegido', 'CrudControllers\RecetasController');
 
-Route::resource('/categoriasP', 'CategoriasPController');
+Route::resource('/categoriasP', 'CrudControllers\CategoriasPController');
 
-Route::resource('/categoriasR', 'CategoriasRController');
+Route::resource('/categoriasR', 'CrudControllers\CategoriasRController');
 
-Route::get('/ingredientes/{idrecetas}', 'IngredientesController@index_recetas');
+Route::get('/ingredientes/{idrecetas}', 'CrudControllers\IngredientesController@index_recetas');
 
-Route::post('/ingredientes/create_recetas', 'IngredientesController@create_recetas');
+Route::post('/ingredientes/create_recetas', 'CrudControllers\IngredientesController@create_recetas');
 
-Route::get('/informacion_cliente/{id}', 'ClientesController@index');
+Route::delete('/ingredientes/eliminar/{id}/{idreceta}', 'CrudControllers\IngredientesController@destroy');
 
-Route::get('/informacion_cliente/crear/{id}', 'ClientesController@create');
+Route::get('/informacion_cliente/{id}', 'CrudControllers\ClientesController@index');
 
-Route::get('/direcciones/{id}', 'DireccionesController@index');
+Route::get('/informacion_cliente/crear/{id}', 'CrudControllers\ClientesController@create');
+
+Route::get('/direcciones/{id}', 'CrudControllers\DireccionesController@index');
 
 Auth::routes();
 
@@ -63,3 +65,8 @@ Route::get('/clientedirecciones/{user_id}','InformacionController@direcciones');
 
 Route::get('/confirmaautentificacion','CarritoController@verificar');
 
+Route::post('/agregarcarrito/{cantidad}','CarritoController@agregar');
+
+Route::get('/borrarcarrito/{accion}','CarritoController@borrarcarrito');
+
+Route::get('/vercarrito','CarritoController@carrito');

@@ -30,8 +30,8 @@
         <label for="nompro" class="col-sm-2 control-label">Nombre del producto</label>
         <div>
             <select name="idproducto">
-                @foreach($libreados ?? '' as $libreado)
-                    <option label="{{$libreado->nombreproducto}}">{{$libreado->idproducto}}</option>
+                @foreach($productos ?? '' as $producto)
+                    <option label="{{$producto->nombreproducto}}">{{$producto->idproducto}}</option>
                 @endforeach
             </select><br>
         </div>
@@ -54,14 +54,20 @@
         <tbody>
             @foreach($produc  as $productos)
             <tr>
-            <td>{{$productos}}</td>
+            <td>{{$productos->nombreproducto}}</td>
+            <td>
+                <form method="post" action="{{ url('ingredientes/eliminar/'.$productos->idproducto.'/'.$receta->idreceta) }}">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button type="submit"class="btn btn-link btn-warning" >Eliminar</button>
+                </form>
+            </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-
-
     <a href="/recetasprotegido" class ="btn btn-primary">Regresar</a>
+    
 </div>
 </body>
 </html>

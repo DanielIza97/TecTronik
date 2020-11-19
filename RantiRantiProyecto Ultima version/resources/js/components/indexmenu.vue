@@ -11,7 +11,7 @@
                         <ul>
                             <div >
                                 <li v-for="categoriap in categoriasp" :key="categoriap.id">
-                                    <a class="dropdown-item" v-bind:href="/productos/+categoriap.nombre">{{categoriap.nombre}}</a>
+                                    <a class="dropdown-item text-left" v-bind:href="/productos/+categoriap.nombre">{{categoriap.nombre}}</a>
                                 </li>
                             </div>
                         </ul>
@@ -19,7 +19,7 @@
                     <li><p class="dropdown-toggle">Recetas</p>
                         <ul >
                             <li v-for="categoriar in categoriasr" :key="categoriar.idtiporeceta">
-                                <a class="dropdown-item" v-bind:href="/recetas/+categoriar.nombretiporeceta">{{categoriar.nombretiporeceta}}</a>
+                                <a class="dropdown-item text-left" v-bind:href="/recetas/+categoriar.nombretiporeceta">{{categoriar.nombretiporeceta}}</a>
                             </li>
                         </ul>
                     </li>

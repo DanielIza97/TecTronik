@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\InformacionCliente;
 use App\Http\Resources\InformacionResource;

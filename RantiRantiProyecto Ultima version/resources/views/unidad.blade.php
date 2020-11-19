@@ -3,34 +3,29 @@
 <article>
 @if ($categoria=='Productos')
 <div >
-    <h3 class="container text-bg-left">{{$request}}</h3><br>
-    <div class="row justify-content-center">
-        @foreach($respuesta ?? '' as $prod)
-            <div class="card">
-                <a href="/productos/detalle/{{$prod->nombreproducto}}">
-                    <div class="card-body" style="background-image:url('../imagesproducto/{{$prod->imagenproducto}}')"></div>
-                </a>
-                <div class="card-header text-lg-center">
-                    <a class="dropdown-item" href="/productos/detalle/{{$prod->nombreproducto}}">{{$prod->nombreproducto}}</a>
+    <h3 class="container text-bg-left">{{$request}}</h3>
+        <div class="offset-md-1 row justify-content-center m">
+            @foreach($respuesta ?? '' as $prod)
+                <div class="card1 ">
+                    <a href="/productos/detalle/{{$prod->nombreproducto}}">
+                    <img src="/imagesproducto/{{$prod->imagenproducto}}" class="card card-img-top align-self-center custom-control-inline" alt="'Sin foto'">
+                    <div class="card-body1 dropdown-item mt-5">{{$prod->nombreproducto}}</div>
+                    </a>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
     </div>
 </div>
 @else
 <div>
     <h3 class="container text-bg-left">{{$request}}</h3>
-    <div>
-        <div class="row justify-content-center">
+        <div class="offset-md-1 row justify-content-center m">
             @foreach($respuesta ?? '' as $produ)
-            <div class="card">
-                <a href="/recetas/detalle/{{$produ->nombrereceta}}">
-                    <div class="card-body text-lg-center"style="background-image:url('../imagesrecetas/{{$produ->imagenreceta}}')"></div>
-                </a>
-                <div class="card-header text-lg-center">
-                    <a class="dropdown-item" href="/recetas/detalle/{{$produ->nombrereceta}}">{{$produ->nombrereceta}}</a>
+                <div class="card1 ">
+                    <a href="/recetas/detalle/{{$produ->nombrereceta}}">
+                    <img src="/imagesrecetas/{{$produ->imagenreceta}}" class="card card-img-top align-self-center custom-control-inline" alt="'Sin foto'">
+                    <div class="card-body1 dropdown-item mt-5">{{$produ->nombrereceta}}</div>
+                    </a>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>

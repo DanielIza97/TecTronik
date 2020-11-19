@@ -5,7 +5,7 @@
                 <h2 class="col-12 ">{{receta.nombrereceta}}</h2>
             </div>
             <div class="row justify-content-start">
-                <img class="offset-md-2 py-4" alt="buscando" :src="`/imagesrecetas/${receta.imagenreceta}`"  width=600 height="300">
+                <img class="offset-md-2 py-4" :src="`/imagesrecetas/${receta.imagenreceta}`"  alt=" "  width=600 height="300">
             </div>
             <div class="row">
                 <div  class="col-md-4 offset-md1">
@@ -35,7 +35,7 @@
         </div>
         <div v-else>
             <div class="row offset-md-1">
-                <div><img class="card-body2" :src="`/imagesproducto/${producto.imagenproducto}`" alt=""></div>
+                <img class="card-body2 justify-content-center" :src="`/imagesproducto/${producto.imagenproducto}`" alt=" ">
                 <div class="col-sm ">
                     <h2 class="line-bottom text-center align-self-start">{{producto.nombreproducto}}</h2>
                     <h5>Detalle:</h5>
