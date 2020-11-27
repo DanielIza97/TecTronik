@@ -6,6 +6,7 @@ use App\InformacionCliente;
 use App\Http\Resources\InformacionResource;
 use App\Http\Resources\DireccionResource;
 use App\Direccion;
+use Illuminate\Support\Facades\Auth;
 
 class InformacionController extends Controller
 {
@@ -13,13 +14,13 @@ class InformacionController extends Controller
     {
        $this->middleware('cliente');
     }
-    public function perfil($idcedulacliente)
+    public function perfil()
     {
-        return InformacionResource::collection(InformacionCliente::where('idcedulacliente',$idcedulacliente)->get())->all()[0];
+        return InformacionResource::collection(InformacionCliente::where('idcedulacliente',Auth::user()->idcedulacliente)->get())->all()[0];
     }
-    public function direcciones($idcedulacliente)
+    public function direcciones()
     {
-        return DireccionResource::collection(Direccion::where('idcedulacliente',$idcedulacliente)->get());
+        return DireccionResource::collection(Direccion::where('idcedulacliente',Auth::user()->idcedulacliente)->get());
     }
     public function informacion($nombre)
     {

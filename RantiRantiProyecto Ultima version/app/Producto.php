@@ -19,4 +19,7 @@ class Producto extends Model
     public function medida(){
         return $this->belongsTo(Medida::class,'idmedida');
     }
+    public function pedidos(){
+        return $this->belongsToMany(Receta::class,'productoxpedidos', 'idproducto', 'idpedido')->withPivot('cantidad');
+    }
 }

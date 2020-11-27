@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container m5 m">
         <div v-if="tipo==='recetas'">
             <div class="row justify-content-start">
                 <h2 class="col-12 ">{{receta.nombrereceta}}</h2>
@@ -114,5 +114,3 @@ export default {
         }
     }
 </script>
-<style scoped>
-</style>

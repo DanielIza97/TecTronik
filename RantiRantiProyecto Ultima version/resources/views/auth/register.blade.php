@@ -63,19 +63,6 @@
                                 @enderror
                             </div>
                         </div>
-
-                         <div class="form-group row">
-                            <label for="telefonocliente" class="col-md-4 col-form-label text-md-right">{{ __('Celular') }}</label>
-                            <div style="color:red">*</div>
-                            <div class="col-md-6">
-                                <input id="telefonocliente" type="text" class="form-control @error('telefonocliente') is-invalid @enderror" name="telefonocliente" value="{{ old('telefonocliente') }}" required autocomplete="telefonocliente" autofocus>
-                                @error('telefonocliente')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
            
                         <div class="form-group row">
                             <label  for="fotouser" class="col-md-4 col-form-label text-md-right">{{ __('Fotografia') }}</label>

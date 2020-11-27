@@ -26,6 +26,7 @@ Vue.component('detalle-page', require('./components/detalle.vue').default);
 Vue.component('agregar-page', require('./components/agregar.vue').default);
 Vue.component('carrito-navbar', require('./components/carrito.vue').default);
 Vue.component('ordendecompra-page', require('./components/ordendecompra.vue').default);
+Vue.component('confirmar-page', require('./components/confirmar.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

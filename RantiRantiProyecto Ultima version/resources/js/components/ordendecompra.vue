@@ -1,5 +1,5 @@
 <template>
-    <div  class="container my-5">
+    <div  class="container mt-4 m">
         <h2>CARRITO DE COMPRAS</h2>
         <div v-if="carrito.length>0" class="">
             <div class="row justify-content-center">
@@ -39,19 +39,31 @@
             </div>
             <div class="row ">
                <div class="card-header2  col-md-2 offset-md-8 text-center" >
-                   <div class="linea close">Subtotal:</div><i class="fa fa-dollar colorfuente"></i> {{subtot}}
+                   <div class="linea close">Subtotal:</div><i class="fa fa-dollar colorfuente"></i> {{parseFloat(subtot).toFixed(2)}}
                </div>
             </div>
             <div class="row ">
                <a href="/" class="btn1 btn-outline-danger  my-4 close offset-md-4"><i class="fa fa-arrow-left"></i> Seguir Comprando</a>
-               <div class="btn1 btn-outline-success my-4 close col-md-2 offset-md-3">Generar Orden de compra</div>
+               <div class="btn1 btn-outline-success my-4 close col-md-2 offset-md-3" data-toggle="modal" data-target="#modal1" >Generar Orden de compra</div>
             </div>
         </div>
         <div v-else> <h3 class="row justify-content-center my-5">Sin productos en el carrito </h3></div>
+        <div class="modal fade" tabindex="-1" id="modal1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content ">
+                    <Confirmar :sub="parseFloat(subtot).toFixed(2)"/>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
+import $ from 'jquery';
+import Confirmar from './confirmar.vue';
 export default {
+    components:{
+        Confirmar
+    },
     data:function(){
         return{
             carrito:[],
@@ -62,17 +74,24 @@ export default {
         axios.get('/borrarcarrito/mostrar')
         .then((response)=>{
             this.carrito=response.data.data;
-            console.log(this.carrito[0].cantidad);
             this.carrito.forEach(element => {
                 var cati=element.cantidad;
-                console.log(cati++)
             });
         })
         .catch(function(error){
             console.log(error)
         });
+        $(function(){
+                $('#modal1').modal({
+                    backdrop:'static',
+                    keyboard:false,
+                    focus:false,
+                    show:false,
+                    });
+                });
     },
     methods:{
+        
         eliminardelCarrito:function(index){
             this.carrito.splice(index,1);
             axios.post('/agregarcarrito/borrar',this.carrito)
@@ -85,10 +104,7 @@ export default {
         },
         suma:function(index,cantidad){
             if(this.carrito[index].medida=='M1')
-            {
                  this.carrito[index].cantidad=(cantidad++)+0.5;
-                console.log(this.carrito[index].cantidad);
-            }
             else
                 this.carrito[index].cantidad=(cantidad++)+1;
             
@@ -119,13 +135,16 @@ export default {
     computed:{
         subtot:function(){
             this.subtotal=0;
-        this.carrito.forEach(element => {
-                var cati=element.cantidad*element.precio;
-                this.subtotal=this.subtotal+(cati++);
-            });
+            if(this.carrito.length>0)
+            {
+            this.carrito.forEach(element => {
+                    var cati=element.cantidad*element.precio;
+                    this.subtotal=this.subtotal+(cati++);
+                });
+            }
             return this.subtotal;
         }
-    }
+    },
     
 }
 </script>

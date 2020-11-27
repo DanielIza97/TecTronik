@@ -14,11 +14,7 @@ class DireccionResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'principal'=>$this->calleprincipal,
-            'secundaria'=>$this->callesecundaria,
-            'imagen'=>$this->imagendireccion,
-            'numero'=>$this->numerodecasa,
-        ];
+        return 
+        parent::toArray($request);
     }
 }

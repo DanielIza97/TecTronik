@@ -22,6 +22,7 @@
         <div v-else>
             <a href="/login" class="btn btn-block btn-add my-4">Agregar</a>
         </div>
+        {{respuesta}}
     </div>
 </div>
 </template>
@@ -66,9 +67,7 @@ export default {
                 this.cantidad=this.cantidad+0.5;
             }
             else
-            {
                 this.cantidad=this.cantidad+1;
-            }
         },
         resta:function(){
             if(this.medida=='M1')

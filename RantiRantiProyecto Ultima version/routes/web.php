@@ -49,7 +49,9 @@ Route::get('/informacion_cliente/{id}', 'CrudControllers\ClientesController@inde
 
 Route::get('/informacion_cliente/crear/{id}', 'CrudControllers\ClientesController@create');
 
-Route::get('/direcciones/{id}', 'CrudControllers\DireccionesController@index');
+Route::get('/direcciones/{id}', 'DireccionesController@index');
+
+Route::post('/apiconfirmar/{crear}', 'DireccionesController@store');
 
 Auth::routes();
 
@@ -59,9 +61,9 @@ Route::get('/admi','AdministradorController@index');
 
 Route::get('/clienteinformacion/{id}','InformacionController@informacion');
 
-Route::get('/clienteperfil/{user_id}','InformacionController@perfil');
+Route::get('/clienteperfil','InformacionController@perfil');
 
-Route::get('/clientedirecciones/{user_id}','InformacionController@direcciones');
+Route::get('/clientedirecciones','InformacionController@direcciones');
 
 Route::get('/confirmaautentificacion','CarritoController@verificar');
 

@@ -58,7 +58,6 @@ class CarritoController extends Controller
                     'detalle'=>$request->detalleproducto,
                     'cantidad'=>$cantidad,
                     'medida'=>$request->idmedida,
-                    'cantidad'=>$request->cantidadproducto
                 );
                 array_push($agregado,$nuevoarreglo);
                 $_SESSION['carrito']=$agregado;
@@ -73,7 +72,6 @@ class CarritoController extends Controller
                 'detalle'=>$request->detalleproducto,
                 'cantidad'=>$cantidad,
                 'medida'=>$request->idmedida,
-                'cantidad'=>$request->cantidadproducto
             );
             $_SESSION['carrito']=$arreglo;
         }
@@ -83,7 +81,14 @@ class CarritoController extends Controller
         session_start();
         if(isset($_SESSION['carrito']))
             if($accion=='items')
+            {
+                if(Auth::user()==null)
+                {
+                    session_destroy();
+                    return CarritoResource::collection([]);
+                }
                 return CarritoResource::collection(array(['items'=>count($_SESSION['carrito'])]))[0];
+            }
             else{
                 if($accion=='mostrar')
                     return CarritoResource::collection($_SESSION['carrito']);

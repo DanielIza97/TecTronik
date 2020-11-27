@@ -63,6 +63,10 @@ class ClientesController extends Controller
             $direccion->calleprincipal=$request->calleprincipal;
             $direccion->callesecundaria=$request->callesecundaria;
             $direccion->numerodecasa=$request->numerodecasa;
+            $direccion->provincia = $request->provincia;
+            $direccion->ciudad=$request->ciudad;
+            $direccion->sector=$request->sector;
+            $direccion->celular=$request->celular;
             $direccion->save();
         }
         User::updateOrCreate(

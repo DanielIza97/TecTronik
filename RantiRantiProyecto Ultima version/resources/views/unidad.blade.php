@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<article>
+<article class="m5">
 @if ($categoria=='Productos')
 <div >
     <h3 class="container text-bg-left">{{$request}}</h3>

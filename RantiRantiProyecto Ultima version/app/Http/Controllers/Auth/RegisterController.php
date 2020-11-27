@@ -55,7 +55,6 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'idcedulacliente' => ['required','numeric','max:9999999999','between:0159999999,2459999999'],
-            'telefonocliente' => ['required','numeric','max:9999999999','between:0900000000,0999999999'],
             'fotouser'=>['required'],
         ]);
     }
@@ -71,7 +70,6 @@ class RegisterController extends Controller
         $nombre='';
         InformacionCliente::create([
             'idcedulacliente'=>$data['idcedulacliente'],
-            'telefonocliente' =>$data['telefonocliente'],
             'nombrecliente' => $data['name'].' '.$data['apellido'],
             'generocliente'=>$data['generocliente'],
         ]);
