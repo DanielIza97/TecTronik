@@ -3,7 +3,7 @@
         <div class="row justify-content-end">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body1">
                         <h3 style="text-align:center">Mi información</h3>
                         <h4 style="text-align:center">  Mira tu información personal a continuación</h4>
                         <h4>Cedula: </h4><h5>{{informacioncliente.cedula}}</h5>
