@@ -3,14 +3,14 @@
         
         <div class="modal-header bg-white">
           <div class="modal-title navbar-brand ">Confirmar orden</div>
-            <button class="close btn1 btn-success" data-dismiss="modal" data-target="#modal1" >X</button>
+            <button class="close btn1 btn-outline-success" data-dismiss="modal" data-target="#modal1" >X</button>
         </div>
         <div class="modal-body">
             <div class="container">
                 <transition name="tap" >
                     <div v-if="tap">
                         <div class="row justify-content-center">
-                            <table class=" table table-success table-hover">
+                            <table class=" table table-success">
                                 <tbody>
                                     <tr>
                                         <th class="text-center">Subtotal:</th>
@@ -28,7 +28,7 @@
                             </table>
                         </div>
                         <div class="row justify-content-end">
-                            <input type="submit" @click="activodireccion=true; tap=false;izder=true" class="btn btn-add" value="Sigiente" >
+                            <input type="submit" @click="activodireccion=true; tap=false;izder=true" class="btn1 btn-outline-success close offset-md-3" value="Sigiente" >
                         </div>
                     </div>
                 </transition>
@@ -38,7 +38,6 @@
                         <label for="uno">Ingresar nueva direccion</label>
                         <input type="radio" id="Dos" value="viejo" v-model="direcc">
                         <label for="Dos">Elegir direccion</label>
-                        {{direcc}}
                         <div v-if="direcc==='nuevo'">
                             <h4 class="mb-4">Ingrese la direccion a enviar</h4>
                         </div>
@@ -46,46 +45,46 @@
                             <h4 class="mb-4">Elija la direccion de su domicilio</h4>
                             <div class="row justify-content-center">
                                 <select @click="asignar(selected)" v-model="selected" class="select">
-                                    <option disabled value="">Seleccione una direccion</option>
+                                    <option disabled value="" selected>Seleccione una direccion</option>
                                     <option :label="'Direccion '+((index++)+1)" v-for="(d,index) in direcciones" :key="index">{{index-1}}</option>
                                 </select>
                             </div>
                         </div>
-                        <form  method="post" @submit.prevent="agregardireccion" enctype="multipart/form-data" >
+                        <form method="post" @submit.prevent="agregardireccion" enctype="multipart/form-data" >
                             <div class="form-group row">
                                 <label for ="provincia" class="col-sm-2 col-form-label text-left">Provincia</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="provincia" id="provincia" v-model="direccion.provincia" class="form-control" required>
+                                    <input type="text" name="provincia" id="provincia" :class="status($v.direccion.provincia)" v-model="$v.direccion.provincia.$model" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for ="ciudad" class="col-sm-2 col-form-label text-left">Ciudad</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="ciudad" id="ciudad" v-model="direccion.ciudad"  class="form-control" required>
+                                    <input type="text" name="ciudad" id="ciudad" :class="status($v.direccion.ciudad)" v-model="$v.direccion.ciudad.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for ="sector" class="col-sm-2 col-form-label text-left">Sector</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="sector" id="sector" v-model="direccion.sector"  class="form-control" required>
+                                    <input type="text" name="sector" id="sector" :class="status($v.direccion.sector)" v-model="$v.direccion.sector.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for ="calleprincipal" class="col-sm-2 col-form-label text-left">Calle principal</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="calleprincipal" id="calleprincipal" v-model="direccion.calleprincipal"  class="form-control" required>
+                                    <input type="text" name="calleprincipal" id="calleprincipal" :class="status($v.direccion.calleprincipal)" v-model="$v.direccion.calleprincipal.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for ="callesecundaria" class="col-sm-2 col-form-label text-left">Calle secundaria</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="callesecundaria" id="callesecundaria" v-model="direccion.callesecundaria"  class="form-control" required>
+                                    <input type="text" name="callesecundaria" id="callesecundaria" :class="status($v.direccion.callesecundaria)" v-model="$v.direccion.callesecundaria.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for ="numerodecasa" class="col-sm-2 col-form-label text-left">Numero de casa</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="numerodecasa" id="numerodecasa" v-model="direccion.numerodecasa"  class="form-control" required>
+                                    <input type="text" name="numerodecasa" id="numerodecasa" :class="status($v.direccion.numerodecasa)" v-model="$v.direccion.numerodecasa.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -98,11 +97,11 @@
                                     <label for ="imagendireccion" class="col-sm-2 col-form-label text-left">{{imagen}}</label>
                             </div>
                             <div class="row justify-content-end">
-                                <input type="submit" class="btn btn-add" value="Siguiente" >
+                                <input type="submit" class="btn1 btn-outline-success close offset-md-3" value="Siguiente" >
                             </div>
                         </form>
                         <div class="puesto">
-                            <input type="submit" @click="activodireccion=false; tap=true" class="btn btn-add" value="Atras" >
+                            <input type="submit" @click="activodireccion=false; tap=true" class="btn1 btn-outline-warning close " value="Atras" >
                         </div>
                     </div>
                 </transition>
@@ -113,33 +112,31 @@
                                 <div class="form-group row">
                                     <label for ="celular" class="col-sm-2 col-form-label text-left">Número celular</label>
                                     <div class="col-sm-10">
-                                        <input type="number" name="celular" id="celular" v-model="direccion.telefonocliente" class="form-control" required>
+                                        <input type="number" name="celular" id="celular" :class="status($v.direccion.telefonocliente)" v-model="$v.direccion.telefonocliente.$model" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row justify-content-end">
-                                    <input type="submit" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-add" value="Confirmar orden de compra" >
+                                    <input v-if="!$v.direccion.telefonocliente.$invalid" type="submit" data-toggle="modal" data-target="#modal2" class="btn1 btn-outline-success close offset-md-3" value="Confirmar orden de compra" >
                                 </div>
                         </form>
-                        <div class="puesto">
-                            <input type="submit" @click="activodireccion=true; activocel=false;izder=false" class="btn btn-add" value="Atras" >
+                        <div :class="puest($v.direccion.telefonocliente)">
+                            <input type="submit" @click="activodireccion=true; activocel=false;izder=false" class="btn1 btn-outline-warning close " value="Atras" >
                         </div>
                     </div>
                 </transition>
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog">
+                <div class="modal fade" id="modal2" tabindex="-1" role="dialog">
                     <div class="modal-dialog modal-lg modal-dialog-centered justify-content-center">
                         <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Confirmar Pedido</h5>
-                            <button type="button" class="close" data-dismiss="modal" data-target="#exampleModalCenter" aria-label="Close">
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                           Está Seguro de Confirmar Pedido?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter" >Cancelar</button>
-                            <button type="button" @click="confirmar" data-dismiss="modal"  class="btn btn-success">Aceptar</button>
-                        </div>
+                            <div class="modal-header bg-white">
+                                <div class="modal-title navbar-brand ">Confirmar</div>
+                            </div>
+                            <div class="modal-body close">
+                            Confirme su pedido por favor
+                            </div>
+                            <div class="modal-footer row justify-content-center">
+                                <button type="button" class="btn1 btn-outline-danger close offset-md-3" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                                <button type="button"  @click="confirmar"><a href="/vercarrito"  class="btn1 btn-outline-success close offset-md-3">Aceptar</a></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -147,18 +144,19 @@
         </div>
         <div class="modal-footer">
         </div>
+            <pre>{{$v.direccion.provincia}}</pre>
     </div>
 </template>
 <script>
+import $ from 'jquery';
 import { METHODS } from 'http'
+import {required, minLength, maxLength } from 'vuelidate/lib/validators'
+const ceroynueve = (value)=>value.substring(0,2)=='09';
 export default {
     props:['sub'],
     data(){
         return{
-            selected:'',
-            direcciones:[],
-            direcc:'nuevo',
-            imagen:'',
+            selected:'',direcciones:[],direcc:'nuevo',imagen:'',
             direccion:{
                 imagendireccion:null,
                 subtotal:0,
@@ -172,18 +170,36 @@ export default {
                 numerodecasa:'',
                 telefonocliente:'',
             },
-            activodireccion:false,
-            activocel:false,
-            respuesta:[],
-            direc:'viejo',
-            i:0,
-            tap:0,
-            subtot:0,
-            tap:true,
-            izder:true,
-            transicion:'entar1',
-            html:'<div>hola<div>',
+            activodireccion:false,activocel:false,respuesta:[],direc:'viejo',
+            i:0,tap:0,subtot:0,tap:true,izder:true,transicion:'entar1',
             confirmado:false,
+        }
+    },
+    validations:{
+        direccion:{
+            provincia:{
+                required
+            },
+            ciudad:{
+                required
+            },
+            sector:{
+                required
+            },
+            calleprincipal:{
+                required
+            },
+            callesecundaria:{
+                required
+            },
+            numerodecasa:{
+                required
+            },
+            telefonocliente:{
+                ceroynueve,
+                minLength:minLength(10),
+                maxLength:maxLength(10),
+            }
         }
     },
     mounted(){
@@ -194,6 +210,14 @@ export default {
         .catch(function(error){
             console.log(error)
         });
+       $(function(){
+            $('#modal2').modal({
+                backdrop:'static',
+                keyboard:false,
+                focus:false,
+                show:false,
+                });
+            });
     },
     computed:{
         transi(){
@@ -207,6 +231,12 @@ export default {
         
     },
     methods:{
+        status(validacion) {
+            return {
+                incorrecto: validacion.$error,
+                correcto: !validacion.$invalid,
+            }
+        },
         agregardireccion(){
             this.subtot=this.sub;
             this.i=parseFloat(this.sub*0.12).toFixed(2);
@@ -214,21 +244,45 @@ export default {
             this.direccion.subtotal=(this.subtot++);
             this.tap=parseFloat(this.direccion.iva+this.direccion.subtotal).toFixed(2);
             this.direccion.totalpag=(this.tap++);
-            this.activodireccion=false;
-            this.activocel=true;
-            this.tap=false;
+            if(!(this.$v.direccion.provincia.$invalid || this.$v.direccion.ciudad.$invalid ||
+                this.$v.direccion.sector.$invalid || this.$v.direccion.calleprincipal.$invalid ||
+                this.$v.direccion.callesecundaria.$invalid || this.$v.direccion.numerodecasa.$invalid))
+            {
+                this.activodireccion=false;
+                this.activocel=true;
+            }
+            else{
+                toastr.error("Los campos de la direccion son obligatorios")
+            }
+                this.tap=false;
         },
         prevenir:  function(){
+             if(this.$v.direccion.telefonocliente.$invalid)
+                return false;
         },
         confirmar(){
             axios.post('/apiconfirmar/'+this.direc,this.direccion)
             .then((response)=>{
-                //this.respuesta=response.data.data;
+                if (! (Notification)) {
+                    alert('Web Notification is not supported');
+                    return;
+                    }
+                    if(Notification.permission !=="granted")
+                        Notification.requestPermission();
+                    else
+                    {
+                        let notification = new Notification('Pedido generado correctamente', {
+                            icon: "../images/correcto.png" // optional image url
+                        });
+                    }
             })
             .catch(function(error){
                 console.log(error)
             });
-            console.log(this.direccion);
+            $(function(){
+                $('#modal1').modal('hide');
+                $('#modal2').modal('hide');
+            });
         },
         asignarruta(e){
             this.imagen=e.target.files[0].name;
@@ -240,9 +294,20 @@ export default {
         },
         borrar(){
             this.direccion.iddireccion=this.direcciones.length+1;
-            if(this.direcc=='viejo'){
-                    this.direccion={};
+            this.direccion={
+                provincia:'',
+                ciudad:'',
+                sector:'',
+                sector:'',
+                calleprincipal:'',
+                callesecundaria:'',
+                numerodecasa:'',
             };
+        },
+        puest(validacion){
+            return {
+                puesto:!validacion.$invalid
+            }
         }
     }
 }
@@ -294,7 +359,7 @@ export default {
     color: #000;
 }
 .puesto{
-    margin-top: -2.2rem;
+    margin-top: -2.6rem;
 }
 .select{
     border-radius: 5px;
@@ -317,5 +382,24 @@ export default {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
     border-radius: 10px;
+}
+
+.correcto, .correcto:focus{
+    border-color: #0ed145;
+    padding-right: calc(1.6em + 0.75rem);
+    background-image: url('~/images/correcto.png');
+    background-repeat: no-repeat;
+    background-position: right calc(0.4em + 0.1875rem) center;
+    background-size: calc(0.8em + 0.375rem) calc(0.8em + 0.375rem);
+    outline-color: #0ed145;
+}
+.incorrecto, .incorrecto:focus{
+    border-color: #e3342f;
+    padding-right: calc(1.6em + 0.75rem);
+    background-image: url('~/images/incorrecto.png');
+    background-repeat: no-repeat;
+    background-position: right calc(0.4em + 0.1875rem) center;
+    background-size: calc(0.8em + 0.375rem) calc(0.8em + 0.375rem);
+    outline-color: #e3342f;
 }
 </style>

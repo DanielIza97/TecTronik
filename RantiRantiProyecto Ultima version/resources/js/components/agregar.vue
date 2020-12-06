@@ -1,28 +1,27 @@
 <template>
 <div class="pt1">
-    <button class=" btn fa fa-minus-circle text-lg-center" @click="resta"  ></button>
-                <div class="linea" v-if="medida=='M1'">
-                    <div class="linea pt1">
-                    <div class="linea" v-if="cantidad===0.5">{{render=''}} media libra</div>
-                    <div class="linea" v-else-if="cantidad==1">{{render}} libra</div>
-                    <div class="linea" v-else-if="render===1&cantidad===1.5">{{render}} libra y media</div>
-                    <div class="linea" v-else-if="(cantidad/0.5)%2===0&cantidad!=0">{{render}} libras</div>
-                    <div class="linea" v-else-if="cantidad!=0">{{render}} libras y media</div>
-                    <div class="linea" v-else>{{render}}</div>
-                </div>
-                </div>
-                <div class="linea2" v-else>
-                    {{cantidad}}
-                </div>
-        <button class=" btn fa fa-plus-circle" @click="suma"></button>
-        <div v-if="cantidad>0">
-        <div v-if="verificado.valido===true">
-            <button class="btn btn-block btn-add my-4" @click="agregar(cantidad)"> Agregar </button>
+    <button class="btn fa fa-minus-circle text-lg-center" @click="resta"  ></button>
+        <div class="linea" v-if="medida=='M1'">
+            <div class="linea pt1">
+            <div class="linea" v-if="cantidad===0.5">{{render=''}} media libra</div>
+            <div class="linea" v-else-if="cantidad==1">{{render}} libra</div>
+            <div class="linea" v-else-if="render===1&cantidad===1.5">{{render}} libra y media</div>
+            <div class="linea" v-else-if="(cantidad/0.5)%2===0&cantidad!=0">{{render}} libras</div>
+            <div class="linea" v-else-if="cantidad!=0">{{render}} libras y media</div>
+            <div class="linea" v-else>{{render}}</div>
         </div>
-        <div v-else>
-            <a href="/login" class="btn btn-block btn-add my-4">Agregar</a>
         </div>
-        {{respuesta}}
+        <div class="linea2" v-else>
+            {{cantidad}}
+        </div>
+    <button class=" btn fa fa-plus-circle" @click="suma"></button>
+    <div v-if="cantidad>0" class="row justify-content-center ">
+        <div v-if="verificado.valido===true" class="text-center">
+            <button class="btn1 btn-outline-success close " @click="agregar(cantidad)"> Agregar </button>
+        </div>
+        <div v-else >
+            <a href="/login" class="btn1 btn-outline-success close ">Agregar</a>
+        </div>
     </div>
 </div>
 </template>

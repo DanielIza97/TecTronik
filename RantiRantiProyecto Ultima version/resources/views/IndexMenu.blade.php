@@ -3,11 +3,12 @@
 <div class="flex-center position-ref full-height">
     <section   >
         <div >
-            <a href="{{'/admi/users'}}" class ="btn btn-primary">Usuarios</a>
-            <a href="{{'/productosprotegido'}}" class ="btn btn-primary">Productos </a>
-            <a href="{{'/recetasprotegido'}}" class ="btn btn-primary">Recetas </a>
-            <a href="{{'/categoriasP'}}" class ="btn btn-primary">Categorias Productos </a>
-            <a href="{{'/categoriasR'}}" class ="btn btn-primary">Categorias Recetas </a>
+            <a href="{{'/admi/users'}}" class ="btn btn-add">Usuarios</a>
+            <a href="{{'/productosprotegido'}}" class ="btn btn-add">Productos </a>
+            <a href="{{'/recetasprotegido'}}" class ="btn btn-add">Recetas </a>
+            <a href="{{'/categoriasP'}}" class ="btn btn-add">Categorias Productos </a>
+            <a href="{{'/categoriasR'}}" class ="btn btn-add">Categorias Recetas </a>
+            <a href="{{'/pedidos'}}" class ="btn btn-add">Ver pedidos</a>
         </div>
     </section>
 </div>

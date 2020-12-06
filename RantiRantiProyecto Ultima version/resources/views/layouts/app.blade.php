@@ -43,7 +43,10 @@
                         </ul>
 
                         <!-- Right Side Of Navbar -->
-                        <carrito-navbar></carrito-navbar>
+                        @guest
+                        @else    
+                            <carrito-navbar></carrito-navbar>
+                        @endguest
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                             @guest
@@ -85,11 +88,23 @@
                     </div>
                 </div>
             </div>
-            <nav class="navbar navbar-expand-md navbar-light bg-white1 shadow-sm">
-                <menu-navbar></menu-navbar>
-            </nav>
+            @if(!(Auth::user()==null))
+                @if(!(Auth::user()->rol=='administrador'))
+                    <nav class="navbar navbar-expand-md navbar-light bg-white1 shadow-sm">
+                            <menu-navbar></menu-navbar>
+                        </nav>
+                @endif
+            @else
+                <nav class="navbar navbar-expand-md navbar-light bg-white1 shadow-sm">
+                    <menu-navbar></menu-navbar>
+                </nav>      
+            @endif 
         </header>
         <main class="">
+            @guest
+            @else    
+                <notificacion-vue usuario="{{Auth::user()->idcedulacliente}}"></notificacion-vue>
+            @endguest
             @yield('content')
         </main>
         <footer class="card-footer">

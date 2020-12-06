@@ -27,12 +27,20 @@ Vue.component('agregar-page', require('./components/agregar.vue').default);
 Vue.component('carrito-navbar', require('./components/carrito.vue').default);
 Vue.component('ordendecompra-page', require('./components/ordendecompra.vue').default);
 Vue.component('confirmar-page', require('./components/confirmar.vue').default);
+Vue.component('notificacion-vue',require('./components/pushnotificacion').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+import Vuelidate from 'vuelidate';
+Vue.use(Vuelidate);
 const app = new Vue({
     el: '#app',
+    mounted(){
+        window.Echo.channel('ranti-ranti.'+'1726475236')
+        .listen('OrderStatusChangedEvent',
+                (e)=>{console.log('Ojala funcione general')}
+        );
+    }
 });

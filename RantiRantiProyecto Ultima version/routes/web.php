@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\CrudControllers\InformacionController;
+use App\Events\OrderStatusChangedEvent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,3 +73,13 @@ Route::post('/agregarcarrito/{cantidad}','CarritoController@agregar');
 Route::get('/borrarcarrito/{accion}','CarritoController@borrarcarrito');
 
 Route::get('/vercarrito','CarritoController@carrito');
+
+Route::get('pedidos','NotificacionesController@index');
+
+Route::get('pedidos/detalles/{idpedido}','NotificacionesController@showdetalle');
+
+Route::patch('pedidos/notificar/{idpedido}','NotificacionesController@update');
+
+Route::get('/api/enviarsms/{numero}','NotificacionesController@sms');
+
+Route::post('apiborrar/{index}','DireccionesController@delete');

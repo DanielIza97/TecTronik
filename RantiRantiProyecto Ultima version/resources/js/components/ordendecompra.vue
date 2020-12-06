@@ -44,7 +44,7 @@
             </div>
             <div class="row ">
                <a href="/" class="btn1 btn-outline-danger  my-4 close offset-md-4"><i class="fa fa-arrow-left"></i> Seguir Comprando</a>
-               <div class="btn1 btn-outline-success my-4 close col-md-2 offset-md-3" data-toggle="modal" data-target="#modal1" >Generar Orden de compra</div>
+               <div class="btn1 btn-outline-success my-4 close col-md-2 offset-md-3" data-toggle="modal" data-target="#modal1" ><i class="fa fa-check"></i>Generar Orden de compra</div>
             </div>
         </div>
         <div v-else> <h3 class="row justify-content-center my-5">Sin productos en el carrito </h3></div>
@@ -74,9 +74,6 @@ export default {
         axios.get('/borrarcarrito/mostrar')
         .then((response)=>{
             this.carrito=response.data.data;
-            this.carrito.forEach(element => {
-                var cati=element.cantidad;
-            });
         })
         .catch(function(error){
             console.log(error)
@@ -91,7 +88,6 @@ export default {
                 });
     },
     methods:{
-        
         eliminardelCarrito:function(index){
             this.carrito.splice(index,1);
             axios.post('/agregarcarrito/borrar',this.carrito)
@@ -137,7 +133,7 @@ export default {
             this.subtotal=0;
             if(this.carrito.length>0)
             {
-            this.carrito.forEach(element => {
+                this.carrito.forEach(element => {
                     var cati=element.cantidad*element.precio;
                     this.subtotal=this.subtotal+(cati++);
                 });

@@ -1,0 +1,115 @@
+
+Thu, 03 Dec 2020 22:02:21 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:02:21 +0000 : NO senderId 
+
+Thu, 03 Dec 2020 22:02:21 +0000 : NO concat 
+
+Thu, 03 Dec 2020 22:02:21 +0000 : NO encoding
+
+Thu, 03 Dec 2020 22:02:22 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:02:22 +0000 : Error sending SMS: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:20:37 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:20:37 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:20:37 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:20:37 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:21:09 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:21:09 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:21:10 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:21:10 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:21:30 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:21:30 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:21:31 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:21:31 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:21:50 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:21:50 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:21:51 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:21:51 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:40 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:22:40 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:22:40 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:40 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:42 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:22:42 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:22:42 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:42 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:43 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:22:43 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:22:44 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:44 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:47 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:22:47 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:22:47 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:47 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:48 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:22:48 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:22:48 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:48 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:49 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:22:49 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:22:49 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:49 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:50 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:22:50 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:22:50 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:22:50 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:24:13 +0000 : Dominio: .
+
+Thu, 03 Dec 2020 22:24:13 +0000 : NO domainId
+
+Thu, 03 Dec 2020 22:24:13 +0000 : Server Altiria response: ERROR errNum:020
+
+Thu, 03 Dec 2020 22:24:13 +0000 : Error asking SMS credit: ERROR errNum:020
+
+Sun, 06 Dec 2020 18:25:57 +0000 : Dominio: .
+
+Sun, 06 Dec 2020 18:25:57 +0000 : NO domainId
+
+Sun, 06 Dec 2020 18:25:58 +0000 : Server Altiria response: OK credit(0):15.00
+

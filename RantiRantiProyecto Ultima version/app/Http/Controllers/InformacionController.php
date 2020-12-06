@@ -20,11 +20,12 @@ class InformacionController extends Controller
     }
     public function direcciones()
     {
-        return DireccionResource::collection(Direccion::where('idcedulacliente',Auth::user()->idcedulacliente)->get());
+        return DireccionResource::collection(Direccion::where('estado',true)->get());
     }
     public function informacion($nombre)
     {
         $cedula=InformacionCliente::where('nombrecliente',$nombre)->get()[0]->idcedulacliente;
-        return view('informacion',compact('nombre','cedula'));
+        $iniciosesion=Auth::user();
+        return view('informacion',compact('nombre','cedula','iniciosesion'));
     }
 }
