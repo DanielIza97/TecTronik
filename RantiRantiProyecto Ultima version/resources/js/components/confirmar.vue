@@ -52,44 +52,44 @@
                         </div>
                         <form method="post" @submit.prevent="agregardireccion" enctype="multipart/form-data" >
                             <div class="form-group row">
-                                <label for ="provincia" class="col-sm-2 col-form-label text-left">Provincia</label>
-                                <div class="col-sm-10">
+                                <label for ="provincia" class="col-sm-12 col-form-label text-left">Provincia</label>
+                                <div class="col-sm-12">
                                     <input type="text" name="provincia" id="provincia" :class="status($v.direccion.provincia)" v-model="$v.direccion.provincia.$model" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for ="ciudad" class="col-sm-2 col-form-label text-left">Ciudad</label>
-                                <div class="col-sm-10">
+                                <label for ="ciudad" class="col-sm-12 col-form-label text-left">Ciudad</label>
+                                <div class="col-sm-12">
                                     <input type="text" name="ciudad" id="ciudad" :class="status($v.direccion.ciudad)" v-model="$v.direccion.ciudad.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for ="sector" class="col-sm-2 col-form-label text-left">Sector</label>
-                                <div class="col-sm-10">
+                                <label for ="sector" class="col-sm-12 col-form-label text-left">Sector</label>
+                                <div class="col-sm-12">
                                     <input type="text" name="sector" id="sector" :class="status($v.direccion.sector)" v-model="$v.direccion.sector.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for ="calleprincipal" class="col-sm-2 col-form-label text-left">Calle principal</label>
-                                <div class="col-sm-10">
+                                <label for ="calleprincipal" class="col-sm-12 col-form-label text-left">Calle principal</label>
+                                <div class="col-sm-12">
                                     <input type="text" name="calleprincipal" id="calleprincipal" :class="status($v.direccion.calleprincipal)" v-model="$v.direccion.calleprincipal.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for ="callesecundaria" class="col-sm-2 col-form-label text-left">Calle secundaria</label>
-                                <div class="col-sm-10">
+                                <label for ="callesecundaria" class="col-sm-12 col-form-label text-left">Calle secundaria</label>
+                                <div class="col-sm-12">
                                     <input type="text" name="callesecundaria" id="callesecundaria" :class="status($v.direccion.callesecundaria)" v-model="$v.direccion.callesecundaria.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for ="numerodecasa" class="col-sm-2 col-form-label text-left">Numero de casa</label>
-                                <div class="col-sm-10">
+                                <label for ="numerodecasa" class="col-sm-12 col-form-label text-left">Numero de casa</label>
+                                <div class="col-sm-12">
                                     <input type="text" name="numerodecasa" id="numerodecasa" :class="status($v.direccion.numerodecasa)" v-model="$v.direccion.numerodecasa.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for ="imagendireccion" class="col-sm-2 col-form-label text-left">Imagen de referencia</label>
-                                <div class="col-sm-3 offset-md-3">
+                                <div class="col-sm-2 offset-md-3">
                                     <div class="div_file form-control ">
                                         <input @change="asignarruta($event)" type="file" name="imagendireccion" id="imagendireccion"  class="btn btn-block btn-add div_button" accept="image/*" >
                                     </div>
@@ -110,8 +110,8 @@
                         <h4 class="mb-4">Ingrese su numero celular para informar la llegada de los productos</h4>
                         <form  method="post" @submit.prevent="prevenir" enctype="multipart/form-data">
                                 <div class="form-group row">
-                                    <label for ="celular" class="col-sm-2 col-form-label text-left">Número celular</label>
-                                    <div class="col-sm-10">
+                                    <label for ="celular" class="col-sm-12 col-form-label text-left">Número celular</label>
+                                    <div class="col-sm-12">
                                         <input type="number" name="celular" id="celular" :class="status($v.direccion.telefonocliente)" v-model="$v.direccion.telefonocliente.$model" class="form-control">
                                     </div>
                                 </div>
@@ -135,16 +135,13 @@
                             </div>
                             <div class="modal-footer row justify-content-center">
                                 <button type="button" class="btn1 btn-outline-danger close offset-md-3" data-dismiss="modal" aria-label="Close">Cancelar</button>
-                                <button type="button"  @click="confirmar"><a href="/vercarrito"  class="btn1 btn-outline-success close offset-md-3">Aceptar</a></button>
+                                <button type="button"  @click="confirmar"><a href="#"  class="btn1 btn-outline-success close offset-md-3">Aceptar</a></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal-footer">
-        </div>
-            <pre>{{$v.direccion.provincia}}</pre>
     </div>
 </template>
 <script>
@@ -244,24 +241,32 @@ export default {
             this.direccion.subtotal=(this.subtot++);
             this.tap=parseFloat(this.direccion.iva+this.direccion.subtotal).toFixed(2);
             this.direccion.totalpag=(this.tap++);
+            this.direccion.iddireccion=this.direcciones.length+1;
             if(!(this.$v.direccion.provincia.$invalid || this.$v.direccion.ciudad.$invalid ||
                 this.$v.direccion.sector.$invalid || this.$v.direccion.calleprincipal.$invalid ||
                 this.$v.direccion.callesecundaria.$invalid || this.$v.direccion.numerodecasa.$invalid))
             {
-                this.activodireccion=false;
-                this.activocel=true;
+            this.activodireccion=false;
+            this.activocel=true;
             }
             else{
                 toastr.error("Los campos de la direccion son obligatorios")
             }
-                this.tap=false;
+            this.tap=false;
         },
         prevenir:  function(){
              if(this.$v.direccion.telefonocliente.$invalid)
                 return false;
         },
         confirmar(){
-            axios.post('/apiconfirmar/'+this.direc,this.direccion)
+            console.log(this.direccion)
+            axios.post('/apiconfirmar',this.direccion)
+            .then((response)=>{
+            })
+            .catch(function(error){
+                console.log(error)
+            });
+            axios.post('/api/enviarsms',this.direccion)
             .then((response)=>{
                 if (! (Notification)) {
                     alert('Web Notification is not supported');
@@ -272,6 +277,7 @@ export default {
                     else
                     {
                         let notification = new Notification('Pedido generado correctamente', {
+                            data:'En breve le llegara un sms',
                             icon: "../images/correcto.png" // optional image url
                         });
                     }
@@ -286,23 +292,27 @@ export default {
         },
         asignarruta(e){
             this.imagen=e.target.files[0].name;
-            this.direccion.imagendireccion='/imagesdireccion/'+this.imagen;
+            this.direccion.imagendireccion=this.imagen;
         },
         asignar(index){
             if(!index=='')
                 this.direccion=this.direcciones[parseInt(index)];
         },
         borrar(){
-            this.direccion.iddireccion=this.direcciones.length+1;
             this.direccion={
+                imagendireccion:null,
+                subtotal:0,
+                iva:0,
+                totalpag:0,
                 provincia:'',
                 ciudad:'',
-                sector:'',
                 sector:'',
                 calleprincipal:'',
                 callesecundaria:'',
                 numerodecasa:'',
-            };
+                telefonocliente:'',
+            }
+            console.log(this.direccion);
         },
         puest(validacion){
             return {

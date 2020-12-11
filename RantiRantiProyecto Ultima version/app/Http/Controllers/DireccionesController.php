@@ -23,15 +23,14 @@ class DireccionesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$crear){
+    public function store(Request $request){
         session_start();
         date_default_timezone_set ("America/Guayaquil");
         if($request->imagendireccion==null)
-            $reques->imagendireccion='casa.png';
-        Direccion::updateOrCreate(
-            ['iddireccion' => $request->iddireccion],
+            $request->imagendireccion='casa.png';
+        $direccion=Direccion::updateOrCreate(
+            ['iddireccion' => $request->iddireccion.'-'.Auth::user()->idcedulacliente,'idcedulacliente'=> Auth::user()->idcedulacliente],
             [
-                'idcedulacliente'=> $request->idcedulacliente,
                 'calleprincipal'=> $request->calleprincipal,
                 'callesecundaria'=> $request->callesecundaria,
                 'imagendireccion'=> $request->imagendireccion,

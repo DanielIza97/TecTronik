@@ -52,7 +52,7 @@ Route::get('/informacion_cliente/crear/{id}', 'CrudControllers\ClientesControlle
 
 Route::get('/direcciones/{id}', 'DireccionesController@index');
 
-Route::post('/apiconfirmar/{crear}', 'DireccionesController@store');
+Route::post('/apiconfirmar', 'DireccionesController@store');
 
 Auth::routes();
 
@@ -80,6 +80,6 @@ Route::get('pedidos/detalles/{idpedido}','NotificacionesController@showdetalle')
 
 Route::patch('pedidos/notificar/{idpedido}','NotificacionesController@update');
 
-Route::get('/api/enviarsms/{numero}','NotificacionesController@sms');
+Route::post('/api/enviarsms','NotificacionesController@sms');
 
 Route::post('apiborrar/{index}','DireccionesController@delete');

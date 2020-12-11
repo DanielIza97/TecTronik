@@ -113,3 +113,32 @@ Sun, 06 Dec 2020 18:25:57 +0000 : NO domainId
 
 Sun, 06 Dec 2020 18:25:58 +0000 : Server Altiria response: OK credit(0):15.00
 
+
+Fri, 11 Dec 2020 20:20:32 +0000 : Dominio: .
+
+Fri, 11 Dec 2020 20:20:32 +0000 : NO domainId
+
+Fri, 11 Dec 2020 20:20:33 +0000 : Server Altiria response: OK credit(0):15.00
+
+
+Fri, 11 Dec 2020 21:00:23 +0000 : NO domainId
+
+Fri, 11 Dec 2020 21:00:23 +0000 : NO senderId 
+
+Fri, 11 Dec 2020 21:00:23 +0000 : NO concat 
+
+Fri, 11 Dec 2020 21:00:23 +0000 : NO encoding
+
+Fri, 11 Dec 2020 21:00:23 +0000 : Server Altiria response: OK dest:593990999042
+
+
+Fri, 11 Dec 2020 21:16:00 +0000 : NO domainId
+
+Fri, 11 Dec 2020 21:16:00 +0000 : NO senderId 
+
+Fri, 11 Dec 2020 21:16:00 +0000 : NO concat 
+
+Fri, 11 Dec 2020 21:16:00 +0000 : NO encoding
+
+Fri, 11 Dec 2020 21:16:01 +0000 : Server Altiria response: OK dest:593990999042
+

@@ -14,34 +14,34 @@
 <body>
 <div class="col-sm-8">
     <h2>
-        Listado de ingredientes-
-        <!--a href="//route('ingredientes.create')}}"class="btn btn-primary pull-right">nuevo</a-->
+        Listado de ingredientes
+        <!--a href="route('ingredientes.create')}}"class="btn btn-primary pull-right">nuevo</a-->
     </h2>
     <form class="form-horizontal" method="POST" action="/ingredientes/create_recetas">
         @csrf
-      <div class="form-inline">
-        <label for="nomre" class="col-sm-2 control-label">Nombre Receta</label>
-        <div>
-            <input type="hidden" name="idreceta"value="{{$receta->idreceta}}">
-            <input type="text" value="{{$receta->nombrereceta}}" readonly>
-        </div>
-      </div><br>
-      <div class="form-inline">
-        <label for="nompro" class="col-sm-2 control-label">Nombre del producto</label>
-        <div>
-            <select name="idproducto">
-                @foreach($productos ?? '' as $producto)
-                    <option label="{{$producto->nombreproducto}}">{{$producto->idproducto}}</option>
-                @endforeach
-            </select><br>
-        </div>
-    </div><br>
-    <div class="form-inline">
-        <label for="nompro" class="col-sm-2 control-label">Cantidad</label>
-        <div>
-            <input type="text" name="cantidad"> 
-        </div>
-    </div><br>
+        <div class="form-inline">
+            <label for="nomre" class="col-sm-2 control-label">Nombre Receta</label>
+            <div>
+                <input type="hidden" name="idreceta"value="{{$receta->idreceta}}">
+                <input type="text" value="{{$receta->nombrereceta}}" readonly>
+            </div>
+        </div><br>
+        <div class="form-inline">
+            <label for="nompro" class="col-sm-2 control-label">Nombre del producto</label>
+            <div>
+                <select name="idproducto">
+                    @foreach($productos ?? '' as $producto)
+                        <option label="{{$producto->nombreproducto}}">{{$producto->idproducto}}</option>
+                    @endforeach
+                </select><br>
+            </div>
+        </div><br>
+        <div class="form-inline">
+            <label for="nompro" class="col-sm-2 control-label">Cantidad</label>
+            <div>
+                <input type="text" name="cantidad"> 
+            </div>
+        </div><br>
         <button type="submit" class="btn btn-success" style="text-align:center">Insertar</button>
     </form>
 

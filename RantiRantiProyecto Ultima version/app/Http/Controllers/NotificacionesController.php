@@ -288,24 +288,14 @@ class NotificacionesController extends Controller
         event(new OrderStatusChangedEvent($pedido));
         return back();
     }
-    public function sms($numero)
+    public function sms(Request $request)
     {
         $altiriaSMS = new AltiriaSMS();
-        echo 'hola';
         $altiriaSMS->setDebug(true);
         $altiriaSMS->setLogin('imasache571@puce.edu.ec');
         $altiriaSMS->setPassword('IMasache100');
-        /*$sDestination = '593990999042';
-        $response = $altiriaSMS->sendSMS($sDestination, "Su pedido 1729334225_Compra_1 se enviara en 25 minutos");
-        if (!$response)
-        echo "El envío ha terminado en error";
-        else
-        echo $response; */ 
-        $str = $altiriaSMS->getCredit();
-        dd($str);
-        if(preg_match('/.*OK credit\(0\):(.*?)$/',$str,$match)==1)
-        {
-            echo "Saldo disponible: ". $match[1]." créditos";
-        }
-    }
+        $sDestination = '593'.substr($request->telefonocliente,1,9);
+		$response = $altiriaSMS->sendSMS($sDestination, "Su orden de compra con un valor a pagrar de ".$request->totalpag." se enviara en 25 minutos");
+		//dd('593'.substr($request,1,9));
+	}
 }

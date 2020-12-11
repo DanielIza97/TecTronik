@@ -2438,9 +2438,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 
@@ -2545,6 +2542,7 @@ var ceroynueve = function ceroynueve(value) {
       this.direccion.subtotal = this.subtot++;
       this.tap = parseFloat(this.direccion.iva + this.direccion.subtotal).toFixed(2);
       this.direccion.totalpag = this.tap++;
+      this.direccion.iddireccion = this.direcciones.length + 1;
 
       if (!(this.$v.direccion.provincia.$invalid || this.$v.direccion.ciudad.$invalid || this.$v.direccion.sector.$invalid || this.$v.direccion.calleprincipal.$invalid || this.$v.direccion.callesecundaria.$invalid || this.$v.direccion.numerodecasa.$invalid)) {
         this.activodireccion = false;
@@ -2559,7 +2557,11 @@ var ceroynueve = function ceroynueve(value) {
       if (this.$v.direccion.telefonocliente.$invalid) return false;
     },
     confirmar: function confirmar() {
-      axios.post('/apiconfirmar/' + this.direc, this.direccion).then(function (response) {
+      console.log(this.direccion);
+      axios.post('/apiconfirmar', this.direccion).then(function (response) {})["catch"](function (error) {
+        console.log(error);
+      });
+      axios.post('/api/enviarsms', this.direccion).then(function (response) {
         if (!Notification) {
           alert('Web Notification is not supported');
           return;
@@ -2567,6 +2569,7 @@ var ceroynueve = function ceroynueve(value) {
 
         if (Notification.permission !== "granted") Notification.requestPermission();else {
           var notification = new Notification('Pedido generado correctamente', {
+            data: 'En breve le llegara un sms',
             icon: "../images/correcto.png" // optional image url
 
           });
@@ -2581,20 +2584,26 @@ var ceroynueve = function ceroynueve(value) {
     },
     asignarruta: function asignarruta(e) {
       this.imagen = e.target.files[0].name;
-      this.direccion.imagendireccion = '/imagesdireccion/' + this.imagen;
+      this.direccion.imagendireccion = this.imagen;
     },
     asignar: function asignar(index) {
       if (!index == '') this.direccion = this.direcciones[parseInt(index)];
     },
     borrar: function borrar() {
-      var _this$direccion;
-
-      this.direccion.iddireccion = this.direcciones.length + 1;
-      this.direccion = (_this$direccion = {
+      this.direccion = {
+        imagendireccion: null,
+        subtotal: 0,
+        iva: 0,
+        totalpag: 0,
         provincia: '',
         ciudad: '',
-        sector: ''
-      }, _defineProperty(_this$direccion, "sector", ''), _defineProperty(_this$direccion, "calleprincipal", ''), _defineProperty(_this$direccion, "callesecundaria", ''), _defineProperty(_this$direccion, "numerodecasa", ''), _this$direccion);
+        sector: '',
+        calleprincipal: '',
+        callesecundaria: '',
+        numerodecasa: '',
+        telefonocliente: ''
+      };
+      console.log(this.direccion);
     },
     puest: function puest(validacion) {
       return {
@@ -54345,13 +54354,13 @@ var render = function() {
                         _c(
                           "label",
                           {
-                            staticClass: "col-sm-2 col-form-label text-left",
+                            staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "provincia" }
                           },
                           [_vm._v("Provincia")]
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-10" }, [
+                        _c("div", { staticClass: "col-sm-12" }, [
                           _c("input", {
                             directives: [
                               {
@@ -54391,13 +54400,13 @@ var render = function() {
                         _c(
                           "label",
                           {
-                            staticClass: "col-sm-2 col-form-label text-left",
+                            staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "ciudad" }
                           },
                           [_vm._v("Ciudad")]
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-10" }, [
+                        _c("div", { staticClass: "col-sm-12" }, [
                           _c("input", {
                             directives: [
                               {
@@ -54435,13 +54444,13 @@ var render = function() {
                         _c(
                           "label",
                           {
-                            staticClass: "col-sm-2 col-form-label text-left",
+                            staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "sector" }
                           },
                           [_vm._v("Sector")]
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-10" }, [
+                        _c("div", { staticClass: "col-sm-12" }, [
                           _c("input", {
                             directives: [
                               {
@@ -54479,13 +54488,13 @@ var render = function() {
                         _c(
                           "label",
                           {
-                            staticClass: "col-sm-2 col-form-label text-left",
+                            staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "calleprincipal" }
                           },
                           [_vm._v("Calle principal")]
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-10" }, [
+                        _c("div", { staticClass: "col-sm-12" }, [
                           _c("input", {
                             directives: [
                               {
@@ -54525,13 +54534,13 @@ var render = function() {
                         _c(
                           "label",
                           {
-                            staticClass: "col-sm-2 col-form-label text-left",
+                            staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "callesecundaria" }
                           },
                           [_vm._v("Calle secundaria")]
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-10" }, [
+                        _c("div", { staticClass: "col-sm-12" }, [
                           _c("input", {
                             directives: [
                               {
@@ -54572,13 +54581,13 @@ var render = function() {
                         _c(
                           "label",
                           {
-                            staticClass: "col-sm-2 col-form-label text-left",
+                            staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "numerodecasa" }
                           },
                           [_vm._v("Numero de casa")]
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-10" }, [
+                        _c("div", { staticClass: "col-sm-12" }, [
                           _c("input", {
                             directives: [
                               {
@@ -54624,7 +54633,7 @@ var render = function() {
                           [_vm._v("Imagen de referencia")]
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-3 offset-md-3" }, [
+                        _c("div", { staticClass: "col-sm-2 offset-md-3" }, [
                           _c("div", { staticClass: "div_file form-control " }, [
                             _c("input", {
                               staticClass: "btn btn-block btn-add div_button",
@@ -54704,13 +54713,13 @@ var render = function() {
                         _c(
                           "label",
                           {
-                            staticClass: "col-sm-2 col-form-label text-left",
+                            staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "celular" }
                           },
                           [_vm._v("Número celular")]
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-10" }, [
+                        _c("div", { staticClass: "col-sm-12" }, [
                           _c("input", {
                             directives: [
                               {
@@ -54840,7 +54849,7 @@ var render = function() {
                               {
                                 staticClass:
                                   "btn1 btn-outline-success close offset-md-3",
-                                attrs: { href: "/vercarrito" }
+                                attrs: { href: "#" }
                               },
                               [_vm._v("Aceptar")]
                             )
@@ -54856,11 +54865,7 @@ var render = function() {
         ],
         1
       )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "modal-footer" }),
-    _vm._v(" "),
-    _c("pre", [_vm._v(_vm._s(_vm.$v.direccion.provincia))])
+    ])
   ])
 }
 var staticRenderFns = [
