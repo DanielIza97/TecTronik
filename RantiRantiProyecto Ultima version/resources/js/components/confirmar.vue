@@ -135,7 +135,7 @@
                             </div>
                             <div class="modal-footer row justify-content-center">
                                 <button type="button" class="btn1 btn-outline-danger close offset-md-3" data-dismiss="modal" aria-label="Close">Cancelar</button>
-                                <button type="button"  @click="confirmar"><a href="#"  class="btn1 btn-outline-success close offset-md-3">Aceptar</a></button>
+                                <button type="button"  @click="confirmar"><a href="/vercarrito"  class="btn1 btn-outline-success close offset-md-3">Aceptar</a></button>
                             </div>
                         </div>
                     </div>
