@@ -1971,16 +1971,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id', 'cedula', 'iniciosesion'],
   data: function data() {
     return {
       informacioncliente: [],
       direccionescliente: [],
+      pedidoscliente: [],
       rutainformacion: '/clienteperfil',
       rutadirecciones: '/clientedirecciones',
       activo: '1',
-      activodir: '0'
+      activodir: '0',
+      tiempo: 0,
+      verificar: {
+        cancelar: true
+      }
     };
   },
   mounted: function mounted() {
@@ -2002,6 +2040,17 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    eliminar: function eliminar(index) {
+      axios.post('/apieliminar/' + this.pedidoscliente[index].idpedido).then(function (response) {
+        toastr.success("Pedido cancelado exitosamente");
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    activod: function activod(index) {
+      this.activodir = index + 1;
+      console.log(this.activodir);
     }
   },
   computed: {
@@ -2014,6 +2063,31 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
       return this.direccionescliente;
+    },
+    loadPedidos: function loadPedidos() {
+      var _this3 = this;
+
+      axios.get('/clientepedidos').then(function (response) {
+        _this3.pedidoscliente = response.data.data;
+        _this3.tiempo = _this3.pedidoscliente[0].tiempo;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      return this.pedidoscliente;
+    },
+    eliminarpedido: function eliminarpedido() {
+      var _this4 = this;
+
+      console.log(this.verificar.cancelar);
+      console.log(this.verificar.diferencia);
+      console.log(this.verificar.tiempo);
+      console.log(this.verificar.catual);
+      axios.get('/apicancelar/' + this.tiempo).then(function (response) {
+        _this4.verificar = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      return this.verificar.cancelar;
     }
   }
 });
@@ -2141,6 +2215,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2561,10 +2637,14 @@ var ceroynueve = function ceroynueve(value) {
     },
     confirmar: function confirmar() {
       console.log(this.direccion);
-      axios.post('/apiconfirmar', this.direccion).then(function (response) {})["catch"](function (error) {
-        console.log(error);
-      });
-      axios.post('/api/enviarsms', this.direccion).then(function (response) {
+      /*axios.post('/apiconfirmar',this.direccion)
+      .then((response)=>{
+      })
+      .catch(function(error){
+          console.log(error)
+      });*/
+
+      axios.post('/apiconfirmar', this.direccion).then(function (response) {
         if (!Notification) {
           alert('Web Notification is not supported');
           return;
@@ -2986,7 +3066,8 @@ __webpack_require__.r(__webpack_exports__);
   props: ['usuario'],
   data: function data() {
     return {
-      mensaje: ''
+      mensaje: '',
+      imagen: ''
     };
   },
   created: function created() {},
@@ -3000,7 +3081,14 @@ __webpack_require__.r(__webpack_exports__);
       if (Notification.permission !== "granted") Notification.requestPermission();else {
         Echo.channel('ranti-ranti.' + this.usuario).listen('OrderStatusChangedEvent', function (pedido) {
           console.log(pedido.pedido.estado);
-          if (pedido.pedido.estado == 'entregado') _this.mensaje = 'Su producto ha sido entregado exitosamente';else _this.mensaje = 'Su pedido será entregado en 25 minutos';
+
+          if (pedido.pedido.estado == 'entregado') {
+            _this.mensaje = 'Su producto ha sido entregado exitosamente';
+            _this.imagen = "../images/logo.png";
+          } else {
+            _this.mensaje = 'Su pedido será entregado en 25 minutos';
+            _this.imagen = "../images/entregando.png";
+          }
 
           if (!Notification) {
             alert('Web Notification is not supported');
@@ -3011,7 +3099,7 @@ __webpack_require__.r(__webpack_exports__);
             var notification = new Notification('Pedido:' + pedido.pedido.idpedido, {
               body: _this.mensaje,
               // content for the alert
-              icon: "../images/car.png" // optional image url
+              icon: _this.imagen // optional image url
 
             });
           }
@@ -9642,7 +9730,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.carrito{\r\n    width: 40px;\r\n    height: 40px;\r\n    text-align: center;\r\n    background-image: url(\"/images/car.png\");\r\n    background-repeat: no-repeat;\r\n    background-size: contain;\r\n    background-position: top;\r\n    color: black;\n}\n.circulo{\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background-color: #006ca8;\r\n    color:white;\r\n    margin-left: 10px;\n}\r\n", ""]);
+exports.push([module.i, "\n.carrito{\r\n    width: 40px;\r\n    height: 40px;\r\n    text-align: center;\r\n    background-image: url(\"/images/car.png\");\r\n    background-repeat: no-repeat;\r\n    background-size: contain;\r\n    background-position: top;\r\n    color: black;\n}\n.circulo{\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background-color: #006ca8;\r\n    color: white;\r\n    margin-left: -60%;\r\n    margin-bottom: -75%;\n}\n.circulo1{\r\n    border-radius: 40px;\r\n    background-color: #006ca8;\r\n    padding: 10px 20px 0 30px;\n}\r\n", ""]);
 
 // exports
 
@@ -53581,6 +53669,20 @@ var render = function() {
                 }
               },
               [_vm._v("\n                    Direcciones\n                ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "nav-item nav-link",
+                class: [_vm.activo === "3" ? "active" : ""],
+                on: {
+                  click: function($event) {
+                    _vm.activo = "3"
+                  }
+                }
+              },
+              [_vm._v("\n                    Pedidos\n                ")]
             )
           ]),
           _vm._v(" "),
@@ -53663,8 +53765,7 @@ var render = function() {
                         { staticClass: "card-body3" },
                         _vm._l(_vm.loadDirecciones, function(direccion, index) {
                           return _c("div", { key: index }, [
-                            _vm.activodir === "" + index &&
-                            direccion.estado === true
+                            _vm.activodir === "" + index
                               ? _c("div", [
                                   _c(
                                     "h4",
@@ -53783,7 +53884,160 @@ var render = function() {
                     ])
                   : _c("div", { staticClass: "text-center" }, [
                       _vm._v(
-                        "\n                    Agrega direcciones comprando en nuestra tienda online\n                "
+                        "\n                    Agrega direcciones comprando en nuestro mercadillo online\n                "
+                      )
+                    ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.activo === "3"
+            ? _c("div", [
+                _vm.loadPedidos.length > 0
+                  ? _c("div", [
+                      _c("h3", { staticClass: "textoh4 " }, [
+                        _vm._v("Mis Pedidos:")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "ul",
+                        { staticClass: "nav nav-tabs" },
+                        _vm._l(_vm.loadPedidos, function(pedido, index) {
+                          return _c("div", { key: index }, [
+                            _c(
+                              "li",
+                              {
+                                staticClass: " nav-item nav-link",
+                                class: [
+                                  _vm.activodir === "" + index ? "active" : ""
+                                ],
+                                on: {
+                                  click: function($event) {
+                                    ;[(_vm.activodir = "" + index)]
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                Pedido " +
+                                    _vm._s(index + 1) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          ])
+                        }),
+                        0
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "card-body3" },
+                        _vm._l(_vm.loadPedidos, function(pedido, index) {
+                          return _c("div", { key: index }, [
+                            _vm.activodir === "" + index
+                              ? _c("div", [
+                                  _c(
+                                    "h4",
+                                    {
+                                      staticClass:
+                                        "textoh5 custom-control-inline"
+                                    },
+                                    [_vm._v("Fecha del pedido:")]
+                                  ),
+                                  _c(
+                                    "h5",
+                                    {
+                                      staticClass:
+                                        "textoh5 custom-control-inline"
+                                    },
+                                    [_vm._v(_vm._s(pedido.fechapedido))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _c(
+                                    "h4",
+                                    {
+                                      staticClass:
+                                        "textoh5 custom-control-inline"
+                                    },
+                                    [_vm._v("Total a pagar:")]
+                                  ),
+                                  _c(
+                                    "h5",
+                                    {
+                                      staticClass:
+                                        "textoh5 custom-control-inline"
+                                    },
+                                    [_vm._v(" " + _vm._s(pedido.totalpag))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _c(
+                                    "h4",
+                                    {
+                                      staticClass:
+                                        "textoh5 custom-control-inline"
+                                    },
+                                    [_vm._v("Estado del pedido:")]
+                                  ),
+                                  _c(
+                                    "h5",
+                                    {
+                                      staticClass:
+                                        "textoh5 custom-control-inline"
+                                    },
+                                    [_vm._v(_vm._s(pedido.estado))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _vm.verificar.cancelar
+                                    ? _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "row justify-content-center"
+                                        },
+                                        [
+                                          _vm.eliminarpedido
+                                            ? _c(
+                                                "form",
+                                                {
+                                                  attrs: { action: "PUT" },
+                                                  on: {
+                                                    submit: function($event) {
+                                                      $event.preventDefault()
+                                                      return _vm.eliminar(index)
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c(
+                                                    "button",
+                                                    {
+                                                      staticClass:
+                                                        "btn1 btn-outline-danger",
+                                                      attrs: { type: "submit" }
+                                                    },
+                                                    [_vm._v("Eliminar pedido")]
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ])
+                              : _vm._e()
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  : _c("div", { staticClass: "text-center" }, [
+                      _vm._v(
+                        "\n                    Animate a realizar pedidos en nuestro mercadillo online\n                "
                       )
                     ])
               ])
@@ -53913,11 +54167,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("a", { attrs: { href: "/vercarrito" } }, [
-      _c("div", { staticClass: "circulo text-center" }, [
-        _vm._v(_vm._s(_vm.Items))
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "carrito" })
+      _c("div", { staticClass: "circulo1" }, [
+        _c("div", { staticClass: "circulo text-center" }, [
+          _vm._v(_vm._s(_vm.Items))
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "carrito" })
+      ])
     ])
   ])
 }

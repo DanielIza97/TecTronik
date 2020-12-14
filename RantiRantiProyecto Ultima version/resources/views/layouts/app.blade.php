@@ -43,10 +43,11 @@
                         </ul>
 
                         <!-- Right Side Of Navbar -->
-                        @guest
-                        @else    
-                            <carrito-navbar></carrito-navbar>
-                        @endguest
+                        @if(!(Auth::user()==null))
+                            @if(!(Auth::user()->rol=='administrador'))
+                                <carrito-navbar></carrito-navbar>
+                            @endif  
+                        @endif 
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                             @guest
@@ -64,7 +65,6 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <div class="centrado">{{ Auth::user()->name}}</div>  
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if (Auth::user()->rol=='cliente')
                                         <a class="dropdown-item" href="/clienteinformacion/{{Auth::user()->name}}">
@@ -76,9 +76,7 @@
                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">                                        
                                         @csrf
                                     </form>
                                 </div>

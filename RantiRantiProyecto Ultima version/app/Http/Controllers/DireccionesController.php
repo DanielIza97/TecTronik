@@ -9,6 +9,7 @@ use App\Pedido;
 use App\Producto;
 use App\Http\Resources\DetalleResource;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\CarritoResource;
 
 class DireccionesController extends Controller
 {
@@ -26,6 +27,7 @@ class DireccionesController extends Controller
     public function store(Request $request){
         session_start();
         date_default_timezone_set ("America/Guayaquil");
+        //dd($currentTime = time());  
         if($request->imagendireccion==null)
             $request->imagendireccion='casa.png';
         $direccion=Direccion::updateOrCreate(
@@ -50,16 +52,18 @@ class DireccionesController extends Controller
         $pedido->subtotal=$request->subtotal;
         $pedido->iva=$request->iva;
         $pedido->totalpag=$request->totalpag;
-        $pedido->iddireccion=$request->iddireccion.'-'.Auth::user()->idcedulacliente;
+        $pedido->iddireccion=$direccion->iddireccion;
         $pedido->estado='pendiente';
+        $pedido->tiempo=$currentTime = time();
+        $pedido->cancelar=false;
         $pedido->save();
-        $productos=$_SESSION['carrito'];
+        /*$productos=$_SESSION['carrito'];
         $pxp=Pedido::findOrFail(Auth::user()->idcedulacliente.'_Compra_'.(count(Pedido::where('idcedulacliente',Auth::user()->idcedulacliente)->get())));
         foreach($productos as $producto){
             $pxp->productos()->detach($producto['id']);
             $pxp->productos()->attach($producto['id'],['cantidad' => $producto['cantidad']]);
         }
-        session_destroy();
+        session_destroy();*/
     }
     public function delete($index)
     {
@@ -69,5 +73,22 @@ class DireccionesController extends Controller
                 'estado'=>false,
             ]
         );
+    }
+    public function cancelarpedido($index)
+    {
+        Pedido::updateOrCreate(
+            ['idpedido' => $index],
+            [
+                'cancelar'=>true,
+            ]
+        );
+    }
+    public function cancelar($tiempo)
+    {
+        $diff=time()-$tiempo;
+        $cancelar=true;
+        if($diff>60)
+            $cancelar=false;
+        return CarritoResource::collection(array(['cancelar'=>$cancelar,'diferencia'=>$diff,'tiempo'=>$tiempo,'catual'=>time()]))[0];
     }
 }

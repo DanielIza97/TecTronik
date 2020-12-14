@@ -9,7 +9,8 @@ export default {
     ],
     data:function(){
         return{
-            mensaje:''
+            mensaje:'',
+            imagen:'',
         }
     },
     created(){
@@ -27,11 +28,17 @@ export default {
                 .listen('OrderStatusChangedEvent', (pedido) => {
                     console.log(pedido.pedido.estado);
                     if(pedido.pedido.estado=='entregado')
+                    {
                         this.mensaje='Su producto ha sido entregado exitosamente';
+                        this.imagen="../images/logo.png"
+                    }
                     else
+                    {
                         this.mensaje='Su pedido será entregado en 25 minutos';
+                        this.imagen="../images/entregando.png"
+                    }
                     if (! (Notification)) {
-                    alert('Web Notification is not supported');
+                        alert('Web Notification is not supported');
                     return;
                     }
                     if(Notification.permission !=="granted")
@@ -40,7 +47,7 @@ export default {
                     {
                         let notification = new Notification('Pedido:'+pedido.pedido.idpedido, {
                             body: this.mensaje, // content for the alert
-                            icon: "../images/car.png" // optional image url
+                            icon: this.imagen, // optional image url
                         });
                     }
                 })

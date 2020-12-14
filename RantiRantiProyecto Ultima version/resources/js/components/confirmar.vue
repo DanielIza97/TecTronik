@@ -266,13 +266,13 @@ export default {
         },
         confirmar(){
             console.log(this.direccion)
-            axios.post('/apiconfirmar',this.direccion)
+            /*axios.post('/apiconfirmar',this.direccion)
             .then((response)=>{
             })
             .catch(function(error){
                 console.log(error)
-            });
-            axios.post('/api/enviarsms',this.direccion)
+            });*/
+           axios.post('/apiconfirmar',this.direccion)
             .then((response)=>{
                 if (! (Notification)) {
                     alert('Web Notification is not supported');

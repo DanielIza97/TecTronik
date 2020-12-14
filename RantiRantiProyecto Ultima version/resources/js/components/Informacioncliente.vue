@@ -17,6 +17,9 @@
                     <li @click="activo='2'" :class="[activo==='2' ? 'active':'']"  class="nav-item nav-link">
                         Direcciones
                     </li>
+                    <li @click="activo='3'" :class="[activo==='3' ? 'active':'']"  class="nav-item nav-link">
+                        Pedidos
+                    </li>
                 </ul>
                 <div class="card-body3 " v-if="activo==='1'">
                     <h3 class="textoh4 ">Mi información</h3>
@@ -37,7 +40,7 @@
                         </ul>
                         <div  class="card-body3"> 
                             <div v-for="(direccion,index) in loadDirecciones" :key="index">
-                                <div v-if="activodir===`${index}` && direccion.estado===true">
+                                <div v-if="activodir===`${index}`">
                                     <h4 class="textoh5 custom-control-inline">Calle Principal:</h4><h5 class="textoh5 custom-control-inline">{{direccion.calleprincipal}}</h5>
                                     <br><h4 class="textoh5 custom-control-inline">Calle Secundaria:</h4><h5 class="textoh5 custom-control-inline"> {{direccion.callesecundaria}}</h5>
                                     <br><h4 class="textoh5 custom-control-inline">No. de Casa:</h4><h5 class="textoh5 custom-control-inline">{{direccion.numerodecasa}}</h5>
@@ -52,7 +55,37 @@
                         </div>
                     </div>
                     <div v-else class="text-center">
-                        Agrega direcciones comprando en nuestra tienda online
+                        Agrega direcciones comprando en nuestro mercadillo online
+                    </div>
+                </div>
+                <div v-if="activo==='3'">
+                    <div v-if="loadPedidos.length>0">
+                            <h3 class="textoh4 ">Mis Pedidos:</h3>
+                        <ul class="nav nav-tabs">
+                            <div v-for="(pedido,index) in loadPedidos" :key="index">
+                                <li @click="[activodir=`${index}`]" :class="[activodir===`${index}` ? 'active':'']"  class=" nav-item nav-link">
+                                    Pedido {{index+1}}
+                                </li>
+                            </div>
+                        </ul>
+                        <div  class="card-body3"> 
+                            <div v-for="(pedido,index) in loadPedidos" :key="index">
+                                <div v-if="activodir===`${index}`">
+                                    <h4 class="textoh5 custom-control-inline">Fecha del pedido:</h4><h5 class="textoh5 custom-control-inline">{{pedido.fechapedido}}</h5>
+                                    <br><h4 class="textoh5 custom-control-inline">Total a pagar:</h4><h5 class="textoh5 custom-control-inline"> {{pedido.totalpag}}</h5>
+                                    <br><h4 class="textoh5 custom-control-inline">Estado del pedido:</h4><h5 class="textoh5 custom-control-inline">{{pedido.estado}}</h5>
+                                    <br><br>
+                                    <div v-if="verificar.cancelar" class="row justify-content-center">
+                                        <form v-if="eliminarpedido" action="PUT" @submit.prevent="eliminar(index)">
+                                            <button type="submit" class="btn1 btn-outline-danger">Eliminar pedido</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else class="text-center">
+                        Animate a realizar pedidos en nuestro mercadillo online
                     </div>
                 </div>
             </div>
@@ -69,10 +102,15 @@
             return {
                 informacioncliente:[],
                 direccionescliente:[],
+                pedidoscliente:[],
                 rutainformacion:'/clienteperfil',
                 rutadirecciones:'/clientedirecciones',
                 activo:'1',
-                activodir:'0'
+                activodir:'0',
+                tiempo:0,
+                verificar:{
+                    cancelar:true
+                },
             }
         },
         mounted() {
@@ -96,6 +134,19 @@
                 .catch(function(error){
                     console.log(error);
                 })
+            },
+            eliminar(index){
+                axios.post('/apieliminar/'+this.pedidoscliente[index].idpedido)
+                .then(response=>{
+                    toastr.success("Pedido cancelado exitosamente");
+                })
+                .catch(function(error){
+                    console.log(error);
+                })
+            },
+            activod(index){
+                this.activodir=index+1;
+                console.log(this.activodir)
             }
         },
         computed:{
@@ -109,6 +160,31 @@
                 });
                 return this.direccionescliente;
             },
+            loadPedidos:function(){
+                axios.get('/clientepedidos')
+                .then((response)=>{
+                    this.pedidoscliente=response.data.data;
+                    this.tiempo=this.pedidoscliente[0].tiempo;
+                })
+                .catch(function(error){
+                    console.log(error)
+                });
+                return this.pedidoscliente;
+            },
+            eliminarpedido(){
+                console.log(this.verificar.cancelar);
+                console.log(this.verificar.diferencia);
+                console.log(this.verificar.tiempo);
+                console.log(this.verificar.catual);
+                axios.get('/apicancelar/'+this.tiempo)
+                .then(response=>{
+                    this.verificar=response.data.data;
+                })
+                .catch(function(error){
+                    console.log(error)
+                });
+                return this.verificar.cancelar;
+            }
         }
     }
 </script>

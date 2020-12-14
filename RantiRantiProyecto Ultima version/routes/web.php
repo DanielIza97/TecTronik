@@ -66,6 +66,8 @@ Route::get('/clienteperfil','InformacionController@perfil');
 
 Route::get('/clientedirecciones','InformacionController@direcciones');
 
+Route::get('/clientepedidos','InformacionController@pedidos');
+
 Route::get('/confirmaautentificacion','CarritoController@verificar');
 
 Route::post('/agregarcarrito/{cantidad}','CarritoController@agregar');
@@ -85,3 +87,7 @@ Route::delete('pedidos/delete/{idpedido}','NotificacionesController@delete');
 Route::post('/api/enviarsms','NotificacionesController@sms');
 
 Route::post('apiborrar/{index}','DireccionesController@delete');
+
+Route::post('apieliminar/{index}','DireccionesController@cancelarpedido');
+
+Route::get('apicancelar/{index}','DireccionesController@cancelar');

@@ -6,6 +6,7 @@ use App\InformacionCliente;
 use App\Http\Resources\InformacionResource;
 use App\Http\Resources\DireccionResource;
 use App\Direccion;
+use App\Pedido;
 use Illuminate\Support\Facades\Auth;
 
 class InformacionController extends Controller
@@ -27,5 +28,9 @@ class InformacionController extends Controller
         $cedula=InformacionCliente::where('nombrecliente',$nombre)->get()[0]->idcedulacliente;
         $iniciosesion=Auth::user();
         return view('informacion',compact('nombre','cedula','iniciosesion'));
+    }
+    public function pedidos()
+    {
+        return DireccionResource::collection(Pedido::orderBy('idpedido','desc')->where('idcedulacliente',Auth::user()->idcedulacliente)->where('cancelar',false)->get());
     }
 }

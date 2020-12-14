@@ -9,7 +9,7 @@
             <div class="card-body1">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-
+                    <input type="hidden" value="{{encrypt($url)}}" name="url">
                     <div class="form-group row">
                         <label for="email" class="col-md-12 col-form-label">{{ __('Correo electrónico') }}</label>
 

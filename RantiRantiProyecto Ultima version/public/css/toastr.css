@@ -161,11 +161,11 @@ button.toast-close-button {
   background-color: #030303;
 }
 .toast-success {
-  background-color: black;
+  background-color: #38c172;
   opacity: 1;
 }
 .toast-error {
-  background-color: #BD362F;
+  background-color: #e3342f;
 }
 .toast-info {
   background-color: #2F96B4;
