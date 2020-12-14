@@ -2438,6 +2438,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2467,7 +2468,8 @@ var ceroynueve = function ceroynueve(value) {
         calleprincipal: '',
         callesecundaria: '',
         numerodecasa: '',
-        telefonocliente: ''
+        telefonocliente: '',
+        iddireccion: ''
       },
       activodireccion: false,
       activocel: false,
@@ -2542,7 +2544,7 @@ var ceroynueve = function ceroynueve(value) {
       this.direccion.subtotal = this.subtot++;
       this.tap = parseFloat(this.direccion.iva + this.direccion.subtotal).toFixed(2);
       this.direccion.totalpag = this.tap++;
-      this.direccion.iddireccion = this.direcciones.length + 1;
+      if (this.direccion.iddireccion == '') this.direccion.iddireccion = this.direcciones.length + 1;else this.direccion.iddireccion = this.direcciones.length;
 
       if (!(this.$v.direccion.provincia.$invalid || this.$v.direccion.ciudad.$invalid || this.$v.direccion.sector.$invalid || this.$v.direccion.calleprincipal.$invalid || this.$v.direccion.callesecundaria.$invalid || this.$v.direccion.numerodecasa.$invalid)) {
         this.activodireccion = false;
@@ -2552,6 +2554,7 @@ var ceroynueve = function ceroynueve(value) {
       }
 
       this.tap = false;
+      console.log(this.direccion);
     },
     prevenir: function prevenir() {
       if (this.$v.direccion.telefonocliente.$invalid) return false;
@@ -2601,7 +2604,8 @@ var ceroynueve = function ceroynueve(value) {
         calleprincipal: '',
         callesecundaria: '',
         numerodecasa: '',
-        telefonocliente: ''
+        telefonocliente: '',
+        iddireccion: ''
       };
       console.log(this.direccion);
     },
@@ -53532,7 +53536,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container mt-5" }, [
     _c("div", { staticClass: "row " }, [
       _c("div", { staticClass: "row col justify-content-center" }, [
         _c("div", { staticClass: "m5 m" }, [
@@ -54338,6 +54342,8 @@ var render = function() {
                         )
                       ]),
                   _vm._v(" "),
+                  _c("pre", [_vm._v("(*)Campos obligatorios")]),
+                  _vm._v(" "),
                   _c(
                     "form",
                     {
@@ -54357,7 +54363,7 @@ var render = function() {
                             staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "provincia" }
                           },
-                          [_vm._v("Provincia")]
+                          [_vm._v("Provincia"), _c("span", [_vm._v("*")])]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-sm-12" }, [
@@ -54403,7 +54409,7 @@ var render = function() {
                             staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "ciudad" }
                           },
-                          [_vm._v("Ciudad")]
+                          [_vm._v("Ciudad"), _c("span", [_vm._v("*")])]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-sm-12" }, [
@@ -54447,7 +54453,7 @@ var render = function() {
                             staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "sector" }
                           },
-                          [_vm._v("Sector")]
+                          [_vm._v("Sector"), _c("span", [_vm._v("*")])]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-sm-12" }, [
@@ -54491,7 +54497,7 @@ var render = function() {
                             staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "calleprincipal" }
                           },
-                          [_vm._v("Calle principal")]
+                          [_vm._v("Calle principal"), _c("span", [_vm._v("*")])]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-sm-12" }, [
@@ -54537,7 +54543,10 @@ var render = function() {
                             staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "callesecundaria" }
                           },
-                          [_vm._v("Calle secundaria")]
+                          [
+                            _vm._v("Calle secundaria"),
+                            _c("span", [_vm._v("*")])
+                          ]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-sm-12" }, [
@@ -54584,7 +54593,7 @@ var render = function() {
                             staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "numerodecasa" }
                           },
-                          [_vm._v("Numero de casa")]
+                          [_vm._v("Numero de casa"), _c("span", [_vm._v("*")])]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-sm-12" }, [
@@ -54716,7 +54725,7 @@ var render = function() {
                             staticClass: "col-sm-12 col-form-label text-left",
                             attrs: { for: "celular" }
                           },
-                          [_vm._v("Número celular")]
+                          [_vm._v("Número celular"), _c("span", [_vm._v("*")])]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-sm-12" }, [
@@ -54849,7 +54858,7 @@ var render = function() {
                               {
                                 staticClass:
                                   "btn1 btn-outline-success close offset-md-3",
-                                attrs: { href: "#" }
+                                attrs: { href: "/vercarrito" }
                               },
                               [_vm._v("Aceptar")]
                             )

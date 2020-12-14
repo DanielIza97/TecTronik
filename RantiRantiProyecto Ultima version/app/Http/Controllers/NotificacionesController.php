@@ -274,7 +274,7 @@ class NotificacionesController extends Controller
     }
     public function showdetalle($idpedido)
     {
-        $pedido=Pedido::findOrFail($idpedido);
+		$pedido=Pedido::findOrFail($idpedido);
         return view('ordendetalle',compact('pedido'));
     }
     public function update(Request $request,$idpedido)
@@ -287,6 +287,11 @@ class NotificacionesController extends Controller
             );
         event(new OrderStatusChangedEvent($pedido));
         return back();
+	}
+	public function delete($idpedido)
+    {
+		Pedido::destroy($idpedido);
+        return redirect('/pedidos');
     }
     public function sms(Request $request)
     {
@@ -295,7 +300,7 @@ class NotificacionesController extends Controller
         $altiriaSMS->setLogin('imasache571@puce.edu.ec');
         $altiriaSMS->setPassword('IMasache100');
         $sDestination = '593'.substr($request->telefonocliente,1,9);
-		$response = $altiriaSMS->sendSMS($sDestination, "Su orden de compra con un valor a pagrar de ".$request->totalpag." se enviara en 25 minutos");
+		$response = $altiriaSMS->sendSMS($sDestination, "Su orden de compra con un valor a pagar de ".$request->totalpag." se enviara en 25 minutos");
 		//dd('593'.substr($request,1,9));
 	}
 }

@@ -19,6 +19,7 @@
                                 <a href="{{ url('pedidos/detalles/'.$pedido->idpedido)}}" class="btn btn-add">Detalle</a>
                             </td>
                             <td>{{$pedido->estado}}</td>
+                            
                         </tr>
                     @endforeach
                 </tbody>

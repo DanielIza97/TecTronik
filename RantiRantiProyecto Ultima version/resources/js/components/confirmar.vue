@@ -50,39 +50,40 @@
                                 </select>
                             </div>
                         </div>
+                        <pre>(*)Campos obligatorios</pre>
                         <form method="post" @submit.prevent="agregardireccion" enctype="multipart/form-data" >
                             <div class="form-group row">
-                                <label for ="provincia" class="col-sm-12 col-form-label text-left">Provincia</label>
+                                <label for ="provincia" class="col-sm-12 col-form-label text-left">Provincia<span>*</span></label>
                                 <div class="col-sm-12">
                                     <input type="text" name="provincia" id="provincia" :class="status($v.direccion.provincia)" v-model="$v.direccion.provincia.$model" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for ="ciudad" class="col-sm-12 col-form-label text-left">Ciudad</label>
+                                <label for ="ciudad" class="col-sm-12 col-form-label text-left">Ciudad<span>*</span></label>
                                 <div class="col-sm-12">
                                     <input type="text" name="ciudad" id="ciudad" :class="status($v.direccion.ciudad)" v-model="$v.direccion.ciudad.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for ="sector" class="col-sm-12 col-form-label text-left">Sector</label>
+                                <label for ="sector" class="col-sm-12 col-form-label text-left">Sector<span>*</span></label>
                                 <div class="col-sm-12">
                                     <input type="text" name="sector" id="sector" :class="status($v.direccion.sector)" v-model="$v.direccion.sector.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for ="calleprincipal" class="col-sm-12 col-form-label text-left">Calle principal</label>
+                                <label for ="calleprincipal" class="col-sm-12 col-form-label text-left">Calle principal<span>*</span></label>
                                 <div class="col-sm-12">
                                     <input type="text" name="calleprincipal" id="calleprincipal" :class="status($v.direccion.calleprincipal)" v-model="$v.direccion.calleprincipal.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for ="callesecundaria" class="col-sm-12 col-form-label text-left">Calle secundaria</label>
+                                <label for ="callesecundaria" class="col-sm-12 col-form-label text-left">Calle secundaria<span>*</span></label>
                                 <div class="col-sm-12">
                                     <input type="text" name="callesecundaria" id="callesecundaria" :class="status($v.direccion.callesecundaria)" v-model="$v.direccion.callesecundaria.$model"  class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for ="numerodecasa" class="col-sm-12 col-form-label text-left">Numero de casa</label>
+                                <label for ="numerodecasa" class="col-sm-12 col-form-label text-left">Numero de casa<span>*</span></label>
                                 <div class="col-sm-12">
                                     <input type="text" name="numerodecasa" id="numerodecasa" :class="status($v.direccion.numerodecasa)" v-model="$v.direccion.numerodecasa.$model"  class="form-control">
                                 </div>
@@ -110,7 +111,7 @@
                         <h4 class="mb-4">Ingrese su numero celular para informar la llegada de los productos</h4>
                         <form  method="post" @submit.prevent="prevenir" enctype="multipart/form-data">
                                 <div class="form-group row">
-                                    <label for ="celular" class="col-sm-12 col-form-label text-left">Número celular</label>
+                                    <label for ="celular" class="col-sm-12 col-form-label text-left">Número celular<span>*</span></label>
                                     <div class="col-sm-12">
                                         <input type="number" name="celular" id="celular" :class="status($v.direccion.telefonocliente)" v-model="$v.direccion.telefonocliente.$model" class="form-control">
                                     </div>
@@ -166,6 +167,7 @@ export default {
                 callesecundaria:'',
                 numerodecasa:'',
                 telefonocliente:'',
+                iddireccion:'',
             },
             activodireccion:false,activocel:false,respuesta:[],direc:'viejo',
             i:0,tap:0,subtot:0,tap:true,izder:true,transicion:'entar1',
@@ -241,7 +243,10 @@ export default {
             this.direccion.subtotal=(this.subtot++);
             this.tap=parseFloat(this.direccion.iva+this.direccion.subtotal).toFixed(2);
             this.direccion.totalpag=(this.tap++);
-            this.direccion.iddireccion=this.direcciones.length+1;
+            if(this.direccion.iddireccion=='')
+                this.direccion.iddireccion=this.direcciones.length+1;
+            else
+                this.direccion.iddireccion=this.direcciones.length;
             if(!(this.$v.direccion.provincia.$invalid || this.$v.direccion.ciudad.$invalid ||
                 this.$v.direccion.sector.$invalid || this.$v.direccion.calleprincipal.$invalid ||
                 this.$v.direccion.callesecundaria.$invalid || this.$v.direccion.numerodecasa.$invalid))
@@ -253,6 +258,7 @@ export default {
                 toastr.error("Los campos de la direccion son obligatorios")
             }
             this.tap=false;
+            console.log(this.direccion);
         },
         prevenir:  function(){
              if(this.$v.direccion.telefonocliente.$invalid)
@@ -311,6 +317,7 @@ export default {
                 callesecundaria:'',
                 numerodecasa:'',
                 telefonocliente:'',
+                iddireccion:''
             }
             console.log(this.direccion);
         },

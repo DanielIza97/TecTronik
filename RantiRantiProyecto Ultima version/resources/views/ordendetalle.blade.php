@@ -21,6 +21,8 @@
                                 <div class="card-body1 row justify-content-center">
                                     <input type="submit" class="btn btn-add" value="Entregar" {{("entregado" == $pedido->estado ? "disabled":"")}}>
                                 </div>
+                                <div>
+                                </div>
                         </form>
                     </div>
                 </div>

@@ -29,8 +29,9 @@ class DireccionesController extends Controller
         if($request->imagendireccion==null)
             $request->imagendireccion='casa.png';
         $direccion=Direccion::updateOrCreate(
-            ['iddireccion' => $request->iddireccion.'-'.Auth::user()->idcedulacliente,'idcedulacliente'=> Auth::user()->idcedulacliente],
+            ['iddireccion' => $request->iddireccion.'-'.Auth::user()->idcedulacliente],
             [
+                'idcedulacliente'=> Auth::user()->idcedulacliente,
                 'calleprincipal'=> $request->calleprincipal,
                 'callesecundaria'=> $request->callesecundaria,
                 'imagendireccion'=> $request->imagendireccion,
@@ -49,7 +50,7 @@ class DireccionesController extends Controller
         $pedido->subtotal=$request->subtotal;
         $pedido->iva=$request->iva;
         $pedido->totalpag=$request->totalpag;
-        $pedido->iddireccion=$request->iddireccion;
+        $pedido->iddireccion=$request->iddireccion.'-'.Auth::user()->idcedulacliente;
         $pedido->estado='pendiente';
         $pedido->save();
         $productos=$_SESSION['carrito'];

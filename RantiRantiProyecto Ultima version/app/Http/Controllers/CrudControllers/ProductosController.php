@@ -101,7 +101,7 @@ class ProductosController extends Controller
         $producto->fill($request->all());
         if($file=$request->file('imagenproducto'))
         {
-            $nombre=time().$file->getClientOriginalName();
+            $nombre=$file->getClientOriginalName();
             $file->move(public_path().'/imagesproducto/',$nombre);
             $producto->imagenproducto=$nombre;
         }

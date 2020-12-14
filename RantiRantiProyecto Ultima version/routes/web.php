@@ -80,6 +80,8 @@ Route::get('pedidos/detalles/{idpedido}','NotificacionesController@showdetalle')
 
 Route::patch('pedidos/notificar/{idpedido}','NotificacionesController@update');
 
+Route::delete('pedidos/delete/{idpedido}','NotificacionesController@delete');
+
 Route::post('/api/enviarsms','NotificacionesController@sms');
 
 Route::post('apiborrar/{index}','DireccionesController@delete');
